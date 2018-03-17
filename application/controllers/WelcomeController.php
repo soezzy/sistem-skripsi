@@ -58,7 +58,6 @@ class WelcomeController extends CI_Controller {
 					$this->session->set_flashdata('login_msg', 
 						'<div class="alert alert-danger text-center">Login gagal! Silahkan coba lagi.</div>');
 					redirect('/skripsi');
-
 				}
 		}
 	}
