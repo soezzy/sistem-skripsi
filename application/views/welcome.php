@@ -89,7 +89,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                       <input type="password" name="pass_admin" placeholder="Password" id="pass_admin" class="form-control">
                   </div>
                      <div class="form-group">
-                      <button type="submit" class="submit btn btn-primary btn-block">Submit</button>
+                      <button type="submit" class="submit btn btn-primary" style="margin-left: 10rem;">Submit</button>
                     </div>
                   <?php echo form_close(); ?>
                 </div>
