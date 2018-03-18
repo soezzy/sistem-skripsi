@@ -4,7 +4,7 @@ class AdminDashboardController extends CI_Controller {
 
 	 public function index(){
 
-        $data = array('title' => 'Dashboard');
+        $data = array('title' => 'Admin Dashboard');
         if(isset($_SESSION['iduser']) && ($_SESSION['level'])){
             $this->load->view('admin/header', $data);
 			$this->load->view('admin-dashboard');
