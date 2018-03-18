@@ -8,8 +8,9 @@ $route['dashboard'] = '/dashboardcontroller';
 $route['logout'] = '/dashboardcontroller/logout';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
-
+//---------------- login ---------------------------
 $route['login'] = 'WelcomeController/login';
+$route['loginadmin'] = 'WelcomeController/loginAdmin';
 
 //--------------- menu profil-mhs -------------------
 $route['profil'] = 'InfomhsController';
@@ -18,6 +19,14 @@ $route['profil/edit'] = 'InfomhsController/editmhs';
 //--------------- menu pengajaun-mhs -------------------
 $route['pengajuan'] = 'PengajuanController';
 $route['pengajuan/edit'] = 'PengajuanController/editskripsi';
+//--------------- menu bimbingan skripsi ----------------
 $route['bimbingan'] = 'BimbinganController';
+//--------------- menu status skripsi -----------------
 $route['status'] = 'StatusController';
+//--------------- menu pesan ------------------------- 
 $route['pesan'] = 'PesanController';
+
+
+$route['admin'] = 'AdminDashboardController';
+
+$route['adlogout'] = '/AdminDashboardController/logout';

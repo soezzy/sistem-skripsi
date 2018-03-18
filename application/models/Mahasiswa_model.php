@@ -64,14 +64,14 @@
             
             $userArr = array();
             foreach($query->result() as $row){
+                $userArr[0] = $row->idmhs;
                 $userArr[1] = $row->nim;
-                $userArr[9] = $row->password;
                 $userArr[10] = $row->level;
                 
             }
             $userData = array(
+                'idmhs'     => $userArr[0],
                 'iduser' 	=> $userArr[1],
-                'password' 	=> $userArr[9],
                 'level'		=> $userArr[10],
                 'logged_in'	=> TRUE
             );
@@ -82,6 +82,37 @@
             return false;
         }
 	}
+
+    public function loginAdmin($email_admin, $pass_admin)
+    {
+        $query = $this->db->get_where('dt_pegawai', 
+                 array('email'    => $email_admin, 
+                       'password' => $pass_admin,
+                       'status'   => 'aktif'
+                    )); 
+        
+        if($query->num_rows() == 1){
+            
+            $userArr = array();
+            foreach($query->result() as $row){
+                $userArr[0]  = $row->idpeg;
+                $userArr[1]  = $row->nip;
+                $userArr[12] = $row->level;
+                
+            }
+            $userData = array(
+                'idpeg'     => $userArr[0],
+                'iduser'    => $userArr[1],
+                'level'     => $userArr[12],
+                'logged_in' => TRUE
+            );
+            $this->session->set_userdata($userData);
+            
+            return $query->result();
+        }else{
+            return false;
+        }
+    }
 }
 		
  ?>
