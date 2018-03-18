@@ -42,7 +42,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <body>
 
 <div class="wrapper">
-    <div class="sidebar" data-color="blue" data-image="<?php echo base_url(); ?>assets/img/sidebar-5.jpg">
+    <div class="sidebar" data-color="green" data-image="<?php echo base_url(); ?>assets/img/sidebar-5.jpg">
 
     <!--
 
@@ -52,44 +52,43 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     -->
 
         <div class="sidebar-wrapper">
-
             <ul class="nav">
-                <li <?php if($this->uri->segment(1)=="dashboard"){echo 'class="active"';}?>>
-                    <a href="/skripsi/dashboard">
+                <li <?php if($this->uri->segment(1)=="admin"){echo 'class="active"';}?>>
+                    <a href="/skripsi/admin">
                         <i class="pe-7s-graph"></i>
                         <p>Dashboard</p>
                     </a>
                 </li>
-                <li <?php if($this->uri->segment(1)=="profil"){echo 'class="active"';}?>>
-                    <a href="/skripsi/profil">
+                <li <?php if($this->uri->segment(1)=="adm-profil"){echo 'class="active"';}?>>
+                    <a href="/skripsi/adm-profil">
                         <i class="pe-7s-user"></i>
                         <p>Profil</p>
                     </a>
                 </li>
-                <li <?php if($this->uri->segment(1)=="pengajuan"){echo 'class="active"';}?>>
+                <!-- <li <?php if($this->uri->segment(1)=="pengajuan"){echo 'class="active"';}?>>
                     <a href="/skripsi/pengajuan">
                         <i class="pe-7s-note2"></i>
                         <p>Pengajuan Skripsi</p>
                     </a>
-                </li>
-                <li <?php if($this->uri->segment(1)=="bimbingan"){echo 'class="active"';}?>>
+                </li> -->
+               <!--  <li <?php if($this->uri->segment(1)=="bimbingan"){echo 'class="active"';}?>>
                     <a href="/skripsi/bimbingan">
                         <i class="pe-7s-news-paper"></i>
                         <p>Bimbingan Skripsi</p>
                     </a>
-                </li>
-                <li <?php if($this->uri->segment(1)=="status"){echo 'class="active"';}?>>
+                </li> -->
+                <!-- <li <?php if($this->uri->segment(1)=="status"){echo 'class="active"';}?>>
                     <a href="/skripsi/status">
                         <i class="pe-7s-graph1"></i>
                         <p>Status Skripsi</p>
                     </a>
-                </li>
-                <li <?php if($this->uri->segment(1)=="pesan"){echo 'class="active"';}?>>
+                </li> -->
+               <!--  <li <?php if($this->uri->segment(1)=="pesan"){echo 'class="active"';}?>>
                     <a href="/skripsi/pesan">
                         <i class="pe-7s-chat"></i>
                         <p>Pesan<span class="badge badge-primary pull-right">5</span></p>
                     </a>
-                </li>
+                </li> -->
             </ul>
         </div>
     </div>

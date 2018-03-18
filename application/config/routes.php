@@ -30,3 +30,5 @@ $route['pesan'] = 'PesanController';
 $route['admin'] = 'AdminDashboardController';
 
 $route['adlogout'] = '/AdminDashboardController/logout';
+$route['adm-profil'] = 'AdminProfilController';
+$route['adm-profil/edit'] = 'AdminProfilController/editAdm';
