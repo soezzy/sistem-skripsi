@@ -80,19 +80,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                   </button>
                 </div>
                 <div class="modal-body">
-                   <?php echo form_open('login-admin'); ?>
+                   <?php echo form_open('loginadmin'); ?>
                     <div class="form-group">
                       <br>
-                      <input type="text" name="login_nim" placeholder="Email" id="login_nim" class="form-control">
+                      <input type="text" name="email_admin" placeholder="Email" id="email_admin" class="form-control">
+                    </div>
+                    <div class="form-group">
+                      <input type="password" name="pass_admin" placeholder="Password" id="pass_admin" class="form-control">
                   </div>
-                   <div class="form-group">
-                     
-                      <input type="text" name="login_nim" placeholder="Password" id="login_nim" class="form-control">
-                  </div>
+                     <div class="form-group">
+                      <button type="submit" class="submit btn btn-primary btn-block">Submit</button>
+                    </div>
                   <?php echo form_close(); ?>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-primary btn-block">Submit</button>
                 </div>
               </div>
             </div>

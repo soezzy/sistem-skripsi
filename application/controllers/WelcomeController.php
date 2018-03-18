@@ -61,4 +61,31 @@ class WelcomeController extends CI_Controller {
 				}
 		}
 	}
+
+	public function loginAdmin()
+	{
+		$this->form_validation->set_rules('email_admin','Email Login', 'required|trim',
+		array('required' => 'Email wajib di isi.',));
+
+		$this->form_validation->set_rules('pass_admin','Password Admin Login','required|trim',
+		array('required' => 'Password harus diisi.'));
+
+		if ($this->form_validation->run() == false) {
+			redirect('/skripsi');
+		}else{
+			$email_admin = $this->input->post('email_admin');
+			$pass_admin = md5($this->input->post('pass_admin'));
+
+			if ($this->Mahasiswa_model->LoginAdmin($email_admin, $pass_admin)) {
+					$userInfo = $this->Mahasiswa_model->loginAdmin($email_admin, $pass_admin);
+					$this->session->set_flashdata('login_msg',
+						'<div class="alert alert-success text-center">Login Sukses.</div>');
+					redirect('admin');
+				}else{
+					$this->session->set_flashdata('login_msg', 
+						'<div class="alert alert-danger text-center">Login gagal! Silahkan coba lagi.</div>');
+					redirect('/skripsi');
+				}
+		}
+	}
 }
