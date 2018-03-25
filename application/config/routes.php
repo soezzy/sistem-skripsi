@@ -32,3 +32,6 @@ $route['admin'] = 'AdminDashboardController';
 $route['adlogout'] = '/AdminDashboardController/logout';
 $route['adm-profil'] = 'AdminProfilController';
 $route['adm-profil/edit'] = 'AdminProfilController/editAdm';
+$route['adm-pengajuan'] = 'AdminPengajuanController';
+$route['adm-pengajuan/detailskripsi'] = 'AdminPengajuanController/detailSkripsi';
+$route['adm-pengajuan/detailpengajuan'] = 'AdminPengajuanController/detailPengajuan';
