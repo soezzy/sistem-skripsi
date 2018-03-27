@@ -35,3 +35,5 @@ $route['adm-profil/edit'] = 'AdminProfilController/editAdm';
 $route['adm-pengajuan'] = 'AdminPengajuanController';
 $route['adm-pengajuan/detailskripsi'] = 'AdminPengajuanController/detailSkripsi';
 $route['adm-pengajuan/detailpengajuan'] = 'AdminPengajuanController/detailPengajuan';
+$route['adm-bimbingan'] = 'AdminBimbinganController';
+$route['adm-bimbingan/detailbimbingan'] = 'AdminBimbinganController/detailBimbingan';
