@@ -77,18 +77,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <p>Bimbingan Mahasiswa</p>
                     </a>
                 </li>
+                <li <?php if($this->uri->segment(1)=="adm-pesan"){echo 'class="active"';}?>>
+                    <a href="/skripsi/adm-pesan">
+                        <i class="pe-7s-chat"></i>
+                        <p>Pesan<span class="badge badge-primary pull-right">5</span></p>
+                    </a>
+                </li> 
                 <!-- <li <?php if($this->uri->segment(1)=="status"){echo 'class="active"';}?>>
                     <a href="/skripsi/status">
                         <i class="pe-7s-graph1"></i>
                         <p>Status Skripsi</p>
                     </a>
                 </li> -->
-               <!--  <li <?php if($this->uri->segment(1)=="pesan"){echo 'class="active"';}?>>
-                    <a href="/skripsi/pesan">
-                        <i class="pe-7s-chat"></i>
-                        <p>Pesan<span class="badge badge-primary pull-right">5</span></p>
-                    </a>
-                </li> -->
+               
             </ul>
         </div>
     </div>
