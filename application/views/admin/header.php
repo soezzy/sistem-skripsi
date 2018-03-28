@@ -68,19 +68,31 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <li <?php if($this->uri->segment(1)=="adm-pengajuan"){echo 'class="active"';}?>>
                     <a href="/skripsi/adm-pengajuan">
                         <i class="pe-7s-note2"></i>
-                        <p>Pengajuan Mahasiswa</p>
+                        <p>Pengajuan Skripsi</p>
                     </a>
                 </li>
                 <li <?php if($this->uri->segment(1)=="adm-bimbingan"){echo 'class="active"';}?>>
                     <a href="/skripsi/adm-bimbingan">
                         <i class="pe-7s-news-paper"></i>
-                        <p>Bimbingan Mahasiswa</p>
+                        <p>Bimbingan Skripsi</p>
+                    </a>
+                </li>
+                 <li <?php if($this->uri->segment(1)=="adm-dosen"){echo 'class="active"';}?>>
+                    <a href="/skripsi/adm-dosen">
+                        <i class="pe-7s-users"></i>
+                        <p>Dosen</p>
                     </a>
                 </li>
                 <li <?php if($this->uri->segment(1)=="adm-pesan"){echo 'class="active"';}?>>
                     <a href="/skripsi/adm-pesan">
                         <i class="pe-7s-chat"></i>
                         <p>Pesan<span class="badge badge-primary pull-right">5</span></p>
+                    </a>
+                </li> 
+                <li <?php if($this->uri->segment(1)=="adm-pegawai"){echo 'class="active"';}?>>
+                    <a href="/skripsi/adm-pegawai">
+                        <i class="pe-7s-config"></i>
+                        <p>Pengaturan Pegawai</p>
                     </a>
                 </li> 
                 <!-- <li <?php if($this->uri->segment(1)=="status"){echo 'class="active"';}?>>

@@ -75,12 +75,6 @@
                               <textarea class="form-control" placeholder="Alamat Rumah" disabled>Medokan Ayu A/12, Surabaya</textarea>
                             </div>
                           </div>
-                          <div class="col-md-3">
-                            <div class="form-group">
-                              <label>Kuota</label>
-                              <input type="number" class="form-control" placeholder="" value="8" disabled>
-                            </div>
-                        </div>
                       </div>
                       
                       <a class="btn btn-warning btn-fill pull-right" href="adm-profil/edit" role="button">Ubah</a>

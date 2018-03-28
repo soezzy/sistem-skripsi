@@ -38,3 +38,5 @@ $route['adm-pengajuan/detailpengajuan'] = 'AdminPengajuanController/detailPengaj
 $route['adm-bimbingan'] = 'AdminBimbinganController';
 $route['adm-bimbingan/detailbimbingan'] = 'AdminBimbinganController/detailBimbingan';
 $route['adm-pesan'] = 'AdminPesanController';
+$route['adm-pegawai'] = 'AdminPegawaiController';
+$route['adm-dosen'] = 'AdminDosenController';
