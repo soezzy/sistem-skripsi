@@ -1,73 +1,64 @@
+<style type="text/css">
+  .abu {
+    width: 120px !important;
+  }
+</style>
 <div class="content">
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-12">
+          <?php echo $this->session->flashdata('sukses'); ?>
             <div class="card">
-                <div class="header">
-                    <h4 class="title">Profil Mahasiswa</h4>
+              <div class="header">
+                    <h4 class="title text-center">Profil Mahasiswa</h4>
                 </div>
                 <div class="content">
-                    
-                      <div class="row">
-                          <div class="col-md-3">
-                            <div class="form-group">
-                                <label>NIM</label>
-                                <input type="text" class="form-control" disabled value="141080200122">
-                            </div>
-                          </div>
-                          <div class="col-md-9">
-                            <div class="form-group">
-                                <label>Nama Mahasiswa</label>
-                                <input type="text" class="form-control" placeholder="namamhs" value="Akbar Kharisma" disabled>
-                            </div>
-                          </div>
-                          <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="jeniskel">Jenis Kelamin</label>
-                                <input type="text" class="form-control" placeholder="" value="Laki-laki" disabled>
-
-                                 <!-- <select class="form-control" id="jeniskel">
-                                  <option>-</option>
-                                  <option>Laki-laki</option>
-                                  <option>Perempuan</option>
-                                </select> -->
-                            </div>
-                          </div>
-                          <div class="col-md-6">
-                            <div class="form-group">
-                                <label>Jurusan</label>
-                                <input type="text" class="form-control" placeholder="Jurusan" value="Informatika" disabled>
-                            </div>
-                          </div>
+                  <div class="row">
+                  <?php 
+                  foreach ($data as $value) { ?>
+                  <div class="col-md-3 col-md-offset-1">
+                    <p style="line-height: 2.5;">NIM</p>
+                    <p style="line-height: 2.5;">Nama Mahasiswa</p>
+                    <p style="line-height: 2.5;">Jenis Kelamin</p>
+                    <p style="line-height: 2.5;">Email</p>
+                    <p style="line-height: 2.5;">Jurusan</p>
+                    <p style="line-height: 2.5;">Angkatan</p>
+                    <p style="line-height: 2.5;">No. Telepon</p>
+                    <p style="line-height: 2.5;">Alamat</p>
+                  </div>
+                  <div class="col-md-7">
+                    <div class="typo-line">
+                          <p style="line-height: 2.5;">: <?php echo $value->nim ?></p>
+                          <p style="line-height: 2.5;">: <?php echo $value->namamhs ?></p>
+                           <?php 
+                          if ($value->jeniskel=="L") {
+                            echo '<p style="line-height: 2.5;">: Laki-laki</p>';
+                          }else if($value->jeniskel=="P"){
+                            echo '<p style="line-height: 2.5;">: Perempuan</p>';
+                          }else{
+                            echo '<p style="line-height: 2.5;">:</p>';
+                          }
+                           ?>
+                          <p style="line-height: 2.5;">: <?php echo $value->email ?></p>
+                          <p style="line-height: 2.5;">: <?php echo $value->jurusan ?></p>
+                          <p style="line-height: 2.5;">: <?php echo $value->angkatan ?></p>
+                          <p style="line-height: 2.5;">: <?php echo $value->telepon ?></p>
+                          <p style="line-height: 2.5;">: <?php echo $value->alamat ?></p>
                       </div>
+                  </div>
+                </div>
 
-                      <div class="row">
-                          
-                          <div class="col-md-4">
-                            <div class="form-group">
-                              <label>Angkatan</label>
-                              <input type="number" class="form-control" placeholder="Angkatan" value="2014" disabled>
-                            </div>
-                          </div>
-                          <div class="col-md-8">
-                            <div class="form-group">
-                                <label>Nomor Telepon</label>
-                                <input type="number" class="form-control" placeholder="telepon" value="087856635586" disabled>
-                            </div>
-                          </div>
-                      </div>
-
-                      <div class="row">
-                          <div class="col-md-12">
-                            <div class="form-group">
-                              <label>Alamat</label>
-                              <input type="text" class="form-control" placeholder="Alamat Rumah" value="Medokan Ayu A/12, Surabaya" disabled>
-                            </div>
-                          </div>
-                      </div>
-                      <a class="btn btn-warning btn-fill pull-right" href="profil/edit" role="button">Ubah</a>
-                      <div class="clearfix"></div>
-                  
+                <div class="row">
+                  <div class="col-md-9"></div>
+                  <div class="col-md-3">
+                    <?php if ($this->session->userdata('logged_in')) { ?>
+                      <a class="btn btn-warning btn-fill pull-right abu"  href="<?php echo base_url('profil/edit/'.$value->idmhs); ?>" role="button"><i class="fa fa-pencil-square-o"></i>Ubah</a>
+                    <?php } ?>
+                  </div>
+                <div class="clearfix"></div>
+                </div>
+                   <?php } ?>
+               
               </div>
           </div>
       </div>
