@@ -44,20 +44,18 @@ class WelcomeController extends CI_Controller {
 		array('required' => 'Password harus diisi.'));
 
 		if ($this->form_validation->run() == false) {
-			redirect('/skripsi');
+			redirect('/');
 		}else{
 			$login_nim = $this->input->post('login_nim');
 			$login_password = md5($this->input->post('login_password'));
 
 			if ($this->Mahasiswa_model->LoginUser($login_nim, $login_password)) {
 					$userInfo = $this->Mahasiswa_model->loginUser($login_nim, $login_password);
-					$this->session->set_flashdata('login_msg',
-						'<div class="alert alert-success text-center">Login Sukses.</div>');
 					redirect('dashboard');
 				}else{
 					$this->session->set_flashdata('login_msg', 
 						'<div class="alert alert-danger text-center">Login gagal! Silahkan coba lagi.</div>');
-					redirect('/skripsi');
+					redirect('/');
 				}
 		}
 	}
@@ -71,7 +69,7 @@ class WelcomeController extends CI_Controller {
 		array('required' => 'Password harus diisi.'));
 
 		if ($this->form_validation->run() == false) {
-			redirect('/skripsi');
+			redirect('/');
 		}else{
 			$email_admin = $this->input->post('email_admin');
 			$pass_admin = md5($this->input->post('pass_admin'));
@@ -84,7 +82,7 @@ class WelcomeController extends CI_Controller {
 				}else{
 					$this->session->set_flashdata('login_msg', 
 						'<div class="alert alert-danger text-center">Login gagal! Silahkan coba lagi.</div>');
-					redirect('/skripsi');
+					redirect('/');
 				}
 		}
 	}

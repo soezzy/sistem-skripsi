@@ -21,11 +21,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <!-- Animation library for notifications   -->
     <link href="<?php echo base_url(); ?>assets/css/animate.min.css" rel="stylesheet"/>
 
+     <!-- custom css   -->
+    <link href="<?php echo base_url(); ?>assets/css/custom.css" rel="stylesheet"/>
+
     <!--  Light Bootstrap Table core CSS    -->
     <link href="<?php echo base_url(); ?>assets/css/light-bootstrap-dashboard.css?v=1.4.0" rel="stylesheet"/>
-
-    <!-- Animation library for notifications   -->
-    <link href="<?php echo base_url(); ?>assets/css/custom.css" rel="stylesheet"/>
 
     <!--  CSS for upload file     -->
     <link href="<?php echo base_url(); ?>dist/css/dropify.css" rel="stylesheet" />
@@ -60,12 +60,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <p>Dashboard</p>
                     </a>
                 </li>
-                <li <?php if($this->uri->segment(1)=="profil"){echo 'class="active"';}?>>
+                <!-- <li <?php if($this->uri->segment(1)=="profil"){echo 'class="active"';}?>>
                     <a href="/skripsi/profil">
                         <i class="pe-7s-user"></i>
                         <p>Profil</p>
                     </a>
-                </li>
+                </li> -->
                 <li <?php if($this->uri->segment(1)=="pengajuan"){echo 'class="active"';}?>>
                     <a href="/skripsi/pengajuan">
                         <i class="pe-7s-note2"></i>
@@ -110,10 +110,37 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                    
 
                     <ul class="nav navbar-nav navbar-right">
-                        <li>
-                            <a href="logout">
-                                <p>Log out</p>
-                            </a>
+                        <li class="dropdown">
+                              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    <i class="fa fa-globe"></i>
+                                    <b class="caret hidden-sm hidden-xs"></b>
+                                    <span class="notification hidden-sm hidden-xs">5</span>
+                                    <p class="hidden-lg hidden-md">
+                                        5 Notifications
+                                        <b class="caret"></b>
+                                    </p>
+                              </a>
+                              <ul class="dropdown-menu">
+                                <li><a href="#">Notification 1</a></li>
+                                <li><a href="#">Notification 2</a></li>
+                                <li><a href="#">Notification 3</a></li>
+                                <li><a href="#">Notification 4</a></li>
+                                <li><a href="#">Another notification</a></li>
+                              </ul>
+                        </li>
+                       <li class="dropdown">
+                              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    <i class="fa fa-cog"></i>
+                                    <b class="caret hidden-sm hidden-xs"></b>
+                                    <p class="hidden-lg hidden-md">
+                                        5 Notifications
+                                        <b class="caret"></b>
+                                    </p>
+                              </a>
+                              <ul class="dropdown-menu">
+                                <li><a href="/skripsi/profil">Ubah Profil<i class="fa fa-user pull-right"></i></a></li>
+                                <li><a href="/skripsi/logout">Logout<i class="fa fa-sign-out pull-right"></i></a></li>
+                              </ul>
                         </li>
                         <li class="separator hidden-lg"></li>
                     </ul>

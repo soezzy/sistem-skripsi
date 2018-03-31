@@ -48,7 +48,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	  			    <?php echo form_open('login'); ?>
               <div class="form-group">
                 <br>
-                <input type="text" name="login_nim" placeholder="Nomor Induk Mahasiswa" id="login_nim" class="form-control">
+                <input type="text" oninput="this.value=this.value.replace(/[^0-9]/g,'');" name="login_nim" placeholder="Nomor Induk Mahasiswa" id="login_nim" class="form-control">
                 <span class="text-danger"><?php echo form_error('login_nim'); ?></span> 
               </div>
               <div class="form-group">
