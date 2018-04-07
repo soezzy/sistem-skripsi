@@ -1,102 +1,84 @@
+<style type="text/css">
+  .abu {
+    width: 120px !important;
+  }
+</style>
 <div class="content">
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-12">
+            <?php echo $this->session->flashdata('sukses'); ?>
+            <?php echo $this->session->flashdata('success'); ?>
+
             <div class="card">
                 <div class="header">
                     <h4 class="title">Data Pegawai</h4>
                 </div>
                 <div class="content">
-                    
-                <div class="table-full-width">
-                    <table class="table">
+                    <a type="button" rel="tooltip" href="/skripsi/adm-pegawai/tambah" title="Tambah pegawai baru" class="btn btn-info btn-fill abu"><i class="fa fa-plus"></i>Pegawai</a>
+                     <a type="button" rel="tooltip" href="/skripsi/adm-pegawai" title="Refresh" class="btn btn-default btn-fill abu"><i class="fa fa-refresh"></i>Refresh</a>
+                <div class="content table-responsive">
+                    <table class="table table-bordered table-hover" id="manageMemberTable">
                       <thead>
-                        <th class="text-center">No.</th>
+                        <th class="text-center no-sort">No.</th>
                         <th class="text-center">Nama Pegawai</th>
-                        <th class="text-center">E-mail</th>
                         <th class="text-center">No. Telepon</th>
                         <th class="text-center">Grup</th>
                         <th class="text-center">Level</th>
-                        <th class="text-center">Acction</th>
+                        <?php if ($this->session->userdata('logged_in')) { ?>
+                            <th class="text-center"></th>
+                        <?php } ?>
                       </thead>
                         <tbody>
-                            <tr>
-                                <td class="text-center"><p>1</p></td>
-                                <td>Abu Rizal Hakim</td>
-                                <td>abuhakim45@gmail.com</td>
-                                <td>087856635586</td>
-                                <td>Dosen</td>
-                                <td>2</td>
+                            <?php 
+                            $rowCount = 1;
+                                foreach ($data as $value) { ?>
+                                <tr>
+                                <td class="text-center"><p><?php echo $rowCount; ?></p></td>
+                                <td><?php echo $value->namapeg; ?></td>
+                                <td><?php echo $value->telepon; ?></td>
+                                <td><?php echo $value->kelompok; ?></td>
+                                <td><?php 
+                                    switch ($value->level) {
+                                        case '5':
+                                            echo "Super Admin";
+                                            break;
+
+                                        case '4':
+                                            echo "Staff Admin";
+                                            break;
+
+                                        case '3':
+                                            echo "Kaprodi";
+                                            break;
+
+                                        default:
+                                            echo "Dosen";
+                                            break;
+                                    }
+                                 ?></td>
                                 <td class="td-actions text-center">
-                                    <a type="button" rel="tooltip" href="adm-pengajuan/detailskripsi" title="Detail" class="btn btn-info btn-simple">
+                                    <a type="button" rel="tooltip" href="<?php echo base_url('adm-pegawai/detail/'.$value->nip);?>" title="Detail" class="btn btn-info btn-fill">
                                         <i class="fa fa-eye"></i>
                                     </a>
-                                    <a type="button" rel="tooltip" href="#" title="File Skripsi" class="btn btn-danger btn-simple">
-                                        <i class="fa fa-file"></i>
+                                    <a type="button" rel="tooltip" href="<?php echo base_url('adm-pegawai/edit/'.$value->idpeg);?>" title="Ubah hak akses" class="btn btn-info btn-fill">
+                                        <i class="fa fa-edit"></i>
                                     </a>
+                                    <?php if($value->nip==$_SESSION['iduser'])  { ?>
+                                        <a type="button" rel="tooltip" href="<?php echo base_url('adm-pegawai/unbanuser/'.$value->nip);?>" style="display: none;" title="Aktifkan user" class="btn btn-success btn-fill"><i class="fa fa-plus-circle"></i></a>
+                                    <?php }else if ($value->status=="aktif"){?>
+                                         <a type="button" rel="tooltip" href="<?php echo base_url('adm-pegawai/banuser/'.$value->nip);?>" title="Non-aktifkan user" class="btn btn-danger btn-fill">
+                                        <i class="fa fa-ban"></i>
+                                    </a>
+                                   <?php }else{ ?>
+                                        <a type="button" rel="tooltip" href="<?php echo base_url('adm-pegawai/unbanuser/'.$value->nip);?>" title="Aktifkan user" class="btn btn-success btn-fill">
+                                        <i class="fa fa-plus-circle"></i>
+                                    </a>
+                                   <?php } ?>
+                                    
                                 </td>
                             </tr>
-                             <tr>
-                                <td class="text-center"><p>2</p></td>
-                                <td>Hartoni</td>
-                                <td>hartono@gmail.com</td>
-                                <td>087856635586</td>
-                                <td>Dosen</td>
-                                <td>2</td>
-                                <td class="td-actions text-center">
-                                    <a type="button" rel="tooltip" href="adm-pengajuan/detailskripsi" title="Detail" class="btn btn-info btn-simple">
-                                        <i class="fa fa-eye"></i>
-                                    </a>
-                                    <a type="button" rel="tooltip" href="#" title="File Skripsi" class="btn btn-danger btn-simple">
-                                        <i class="fa fa-file"></i>
-                                    </a>
-                                </td>
-                            </tr> <tr>
-                                <td class="text-center"><p>3</p></td>
-                                <td>Tia Arianti</td>
-                                <td>tia@gmail.com</td>
-                                <td>07265635586</td>
-                                <td>Staff</td>
-                                <td>4</td>
-                                <td class="td-actions text-center">
-                                    <a type="button" rel="tooltip" href="adm-pengajuan/detailskripsi" title="Detail" class="btn btn-info btn-simple">
-                                        <i class="fa fa-eye"></i>
-                                    </a>
-                                    <a type="button" rel="tooltip" href="#" title="File Skripsi" class="btn btn-danger btn-simple">
-                                        <i class="fa fa-file"></i>
-                                    </a>
-                                </td>
-                            </tr> <tr>
-                                <td class="text-center"><p>4</p></td>
-                                <td>Mariyati</td>
-                                <td>marioyem@gmail.com</td>
-                                <td>087856600068</td>
-                                <td>Kaprodi</td>
-                                <td>3</td>
-                                <td class="td-actions text-center">
-                                    <a type="button" rel="tooltip" href="adm-pengajuan/detailskripsi" title="Detail" class="btn btn-info btn-simple">
-                                        <i class="fa fa-eye"></i>
-                                    </a>
-                                    <a type="button" rel="tooltip" href="#" title="File Skripsi" class="btn btn-danger btn-simple">
-                                        <i class="fa fa-file"></i>
-                                    </a>
-                                </td>
-                            </tr> <tr>
-                                <td class="text-center"><p>5</p></td>
-                                <td>Yoni Iskandar</td>
-                                <td>iskandar@yahoo.com</td>
-                                <td>087858888765</td>
-                                <td>Super User</td>
-                                <td>5</td>
-                                <td class="td-actions text-center">
-                                    <a type="button" rel="tooltip" href="adm-pengajuan/detailskripsi" title="Detail" class="btn btn-info btn-simple">
-                                        <i class="fa fa-eye"></i>
-                                    </a>
-                                    <a type="button" rel="tooltip" href="#" title="File Skripsi" class="btn btn-danger btn-simple">
-                                        <i class="fa fa-file"></i>
-                                    </a>
-                                </td>
-                            </tr>
+                           <?php $rowCount++; } ?>
                         </tbody>
                     </table>
                 </div>

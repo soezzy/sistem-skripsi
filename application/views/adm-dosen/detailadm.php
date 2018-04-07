@@ -7,10 +7,9 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-12">
-          <?php echo $this->session->flashdata('sukses'); ?>
             <div class="card">
                 <div class="header">
-                    <h4 class="title">Profil Pegawai</h4>
+                    <h4 class="title">Detail Dosen</h4>
                 </div>
                 <div class="content">
                   <div class="row">
@@ -54,9 +53,7 @@
                 <div class="row">
                   <div class="col-md-9"></div>
                   <div class="col-md-3">
-                    <?php if ($this->session->userdata('logged_in')) { ?>
-                      <a class="btn btn-warning btn-fill pull-right abu"  href="<?php echo base_url('adm-profil/edit/'.$value->idpeg); ?>" role="button"><i class="fa fa-pencil-square-o"></i>Ubah</a>
-                    <?php } ?>
+                      <a href="/skripsi/adm-dosen" class="btn btn-fill btn-danger pull-right abu" role="button"><i class="fa fa-chevron-circle-left"></i>Kembali</a>
                   </div>
                 <div class="clearfix"></div>
                 </div>

@@ -13,10 +13,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
 
-
     <!-- Bootstrap core CSS     -->
     <link href="<?php echo base_url(); ?>assets/css/bootstrap.min.css" rel="stylesheet" />
 
+    <!-- Data Tables Plugin CSS -->
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/datatables/css/dataTables.bootstrap4.min.css" />
 
     <!-- Animation library for notifications   -->
     <link href="<?php echo base_url(); ?>assets/css/animate.min.css" rel="stylesheet"/>

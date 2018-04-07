@@ -67,12 +67,14 @@
                 $userArr[0] = $row->idmhs;
                 $userArr[1] = $row->nim;
                 $userArr[10] = $row->level;
+                $userArr[11] = $row->status;
                 
             }
             $userData = array(
                 'idmhs'     => $userArr[0],
                 'iduser' 	=> $userArr[1],
                 'level'		=> $userArr[10],
+                'status'    => $userArr[11],
                 'logged_in'	=> TRUE
             );
             $this->session->set_userdata($userData);
@@ -98,12 +100,14 @@
                 $userArr[0]  = $row->idpeg;
                 $userArr[1]  = $row->nip;
                 $userArr[12] = $row->level;
+                $userArr[13] = $row->status;
                 
             }
             $userData = array(
                 'idpeg'     => $userArr[0],
                 'iduser'    => $userArr[1],
                 'level'     => $userArr[12],
+                'status'    => $userArr[13],
                 'logged_in' => TRUE
             );
             $this->session->set_userdata($userData);
