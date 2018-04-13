@@ -22,11 +22,12 @@ class AdminProfilController extends CI_Controller {
         
     }
 
-    public function editAdm($id)
+    public function editAdm()
 	{
+        // var_dump($_SESSION);die();
 		if(isset($_SESSION['iduser']) && ($_SESSION['level'])!=1){
             $title = array('title' => 'Profil Pegawai');
-            $data['data'] = $this->madmprofil->edit($id);
+            $data['data'] = $this->madmprofil->edit($_SESSION['idpeg']);
             $this->load->view('admin/header',$title);
 			$this->load->view('adm-profil/editadm',$data);
             $this->load->view('admin/footer');
@@ -73,10 +74,9 @@ class AdminProfilController extends CI_Controller {
             $data2 = array(
                 'iduser' => $_SESSION['iduser'],
                 'email'  => $this->input->post('email'));
-        // masuk model
-            $this->madmprofil->update($data);
-            $this->madmprofil->updateuser($data2);
-            if ($this->madmprofil->update($data)==true && $this->madmprofil->updateuser($data2)==true) {
+
+            // masuk model
+            if ($this->madmprofil->update($data) && $this->madmprofil->updateuser($data2)) {
                 $this->session->set_flashdata('sukses', '<div class="alert alert-success text-center">Data anda sudah diperbarui.</div>');
                 redirect('adm-profil');
             }

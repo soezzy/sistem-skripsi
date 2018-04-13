@@ -19,10 +19,10 @@ class Madmprofil extends CI_Model {
     	return $this->db->update('pegawai', $data);
     }
 
-     public function updateuser($iduser)
+     public function updateuser($data2)
     {
-    	$this->db->where('iduser',$iduser);
-    	return $this->db->update('users', array('status' => 'nonaktif'));
+    	$this->db->where('iduser',$data2['iduser']);
+    	return $this->db->update('users', array('email' => $data2['email']));
     }
 
 

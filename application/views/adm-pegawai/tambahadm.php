@@ -62,7 +62,7 @@
                            <div class="form-group">
                             <label for="jeniskel">Jenis Kelamin</label>
                               <select id="jeniskel" name="jeniskel" class="form-control">
-                              <option selected>Laki-laki</option><option>Perempuan</option>
+                              <option value="L" selected>Laki-laki</option><option value="P">Perempuan</option>
                               </select>
                         </div>
                         </div>
@@ -70,9 +70,9 @@
                         <div class="form-group">
                               <label>Level</label>
                               <select id="level" name="level" class="form-control">
-                                <option selected>Dosen</option>
-                                <option>Kaprodi</option>
-                                <option>Staff Admin</option>
+                                <option value="2" selected>Dosen</option>
+                                <option value="3">Kaprodi</option>
+                                <option value="4">Staff Admin</option>
                               </select>
                           </div>
                           </div>
@@ -80,9 +80,9 @@
                              <div class="form-group">
                               <label>Grup</label>
                               <select id="grup" name="grup" class="form-control">
-                                <option selected>Dosen</option>
-                                <option>Kaprodi</option>
-                                <option>Staff Admin</option>
+                                <option value="dosen" selected>Dosen</option>
+                                <option value="kaprodi">Kaprodi</option>
+                                <option value="staff admin">Staff Admin</option>
                               </select>
                           </div>
                           </div>

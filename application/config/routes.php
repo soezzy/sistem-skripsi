@@ -14,12 +14,14 @@ $route['loginadmin'] 			= 'WelcomeController/loginAdmin';
 
 //--------------- menu profil-mhs -------------------
 $route['profil'] 				= 'InfomhsController';
-$route['profil/edit/(:num)'] 	= 'InfomhsController/editmhs/$1';
+$route['profil/edit'] 			= 'InfomhsController/editmhs';
 $route['profil/update'] 		= 'infomhscontroller/update';
 
 //--------------- menu pengajaun-mhs -------------------
 $route['pengajuan'] 			= 'PengajuanController';
 $route['pengajuan/edit'] 		= 'PengajuanController/editskripsi';
+$route['pengajuan/tambah'] 		= 'PengajuanController/tambah';
+
 //--------------- menu bimbingan skripsi ----------------
 $route['bimbingan'] 			= 'BimbinganController';
 //--------------- menu status skripsi -----------------
@@ -33,7 +35,7 @@ $route['admin'] 						= 'AdminDashboardController';
 $route['adlogout'] 						= '/AdminDashboardController/logout';
 //--------------- menu profil admin --------------------
 $route['adm-profil'] 					= 'AdminProfilController';
-$route['adm-profil/edit/(:num)'] 		= 'AdminProfilController/editAdm/$1';
+$route['adm-profil/edit'] 				= 'AdminProfilController/editAdm';
 $route['adm-profil/update'] 			= 'AdminProfilController/update';
 
 //--------------- menu pegawai admin -------------------

@@ -9,7 +9,6 @@ class AdminPegawaiController extends CI_Controller {
     }
 
 	public function index(){
-
         $title = array('title' => 'Data Pegawai');
         $data['data'] = $this->madmpegawai->info(); 
         if(isset($_SESSION['iduser']) && ($_SESSION['level'])!=1){
@@ -35,6 +34,8 @@ class AdminPegawaiController extends CI_Controller {
 
     public function tambah()
     {
+        date_default_timezone_set('Asia/Jakarta');
+        
         // validasi form
         $this->form_validation->set_rules('nip', 'nip', 'required|is_unique[users.iduser]',
             array('required'    => 'Nomor Induk Pegawai harus terisi.',
@@ -67,32 +68,12 @@ class AdminPegawaiController extends CI_Controller {
         $this->load->view('admin/header', $title);
         $this->load->view('adm-pegawai/tambahadm');
         $this->load->view('admin/footer');
-            
-        }else{
-            if($this->input->post('jeniskel')=="Laki-laki") {
-                $jenis = 'L';
-            }else{
-                $jenis =  'P';
-            }
-
-            switch ($this->input->post('level')) {
-                case 'Dosen':
-                    $level = 2;
-                    break;
-
-                case 'Kaprodi':
-                    $level = 3;
-                    break;
-
-                default:
-                    $level = 4;
-                    break;
-            }
+    }else{
             $enc_password = md5($this->input->post('password'));
             $nip = $this->input->post('nip');
             $data = array(
                 'namapeg'    => $this->input->post('namapeg'),
-                'jeniskel'   => $jenis,
+                'jeniskel'   => $this->input->post('jeniskel'),
                 'jabatan'    => $this->input->post('jabatan'),
                 'pangkat'    => $this->input->post('pangkat'),
                 'golongan'   => $this->input->post('golongan'),
@@ -103,10 +84,10 @@ class AdminPegawaiController extends CI_Controller {
                 'iduser'       => $this->input->post('nip'),
                 'email'        => $this->input->post('email'),
                 'password'     => $enc_password,
-                'level'        => $level,
+                'level'        => $this->input->post('level'),
                 'status'       => "aktif",
-                'created_at'   => date('Y-m-d'),
-                'lastvisit_at' => date('Y-m-d H:i:s'),
+                'created_at'   => strftime("%Y-%m-%d"),
+                'lastvisit_at' => strftime("%Y-%m-%d %H:%M:%S"),
                 );
         // masuk model
             if ($this->madmpegawai->tambahuser($data2) && $this->madmpegawai->tambah($data,$nip)) {
@@ -159,23 +140,6 @@ class AdminPegawaiController extends CI_Controller {
     }
 
     public function edit($id){
-         switch ($this->input->post('level')) {
-                case 'Super Admin':
-                    $level = 5;
-                    break;
-
-                case 'Staff Admin':
-                    $level = 4;
-                    break;
-
-                case 'Kaprodi':
-                    $level = 3;
-                    break;
-
-                default:
-                    $level = 2;
-                    break;
-            }
 
         $data = array('kelompok' => $this->input->post('grup'));
         $data2 = array('level' => $level);

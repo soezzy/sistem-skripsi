@@ -55,7 +55,7 @@
                   <div class="col-md-9"></div>
                   <div class="col-md-3">
                     <?php if ($this->session->userdata('logged_in')) { ?>
-                      <a class="btn btn-warning btn-fill pull-right abu"  href="<?php echo base_url('adm-profil/edit/'.$value->idpeg); ?>" role="button"><i class="fa fa-pencil-square-o"></i>Ubah</a>
+                      <a class="btn btn-warning btn-fill pull-right abu"  href="<?php echo base_url('adm-profil/edit'); ?>" role="button"><i class="fa fa-pencil-square-o"></i>Ubah</a>
                     <?php } ?>
                   </div>
                 <div class="clearfix"></div>
