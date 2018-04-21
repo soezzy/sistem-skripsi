@@ -43,6 +43,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           <!-- login mahasiswa -->
 	        <div class="row justify-content-md-center"> 
 	          <div class="col-md-6 text-center">
+             <?php echo $this->session->flashdata('error'); ?>
              <?php echo $this->session->flashdata('login_msg'); ?>
 	            <h2>Login</h2>
 	  			    <?php echo form_open('login'); ?>

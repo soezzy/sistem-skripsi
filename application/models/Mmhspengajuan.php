@@ -3,17 +3,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Mmhspengajuan extends CI_Model {
 
 	public function info($id) {
-    $query = $this->db->select('*')
-                ->where('idmhs', $id)
-                ->limit(1)
-                ->order_by('idskripsi','DESC')
-                ->get('dt_skripsi');
-		// $this->db->select('*');
-		// $this->db->from('dt_skripsi');
-  //   $this->db->where('idmhs', $id);
-		// $query = $this->db->get();
-
-    return $query->result();
+    $query = $this->db
+    ->select('*')
+    ->where('idmhs', $id)
+    ->limit(1)
+    ->order_by('idskripsi','DESC')
+    ->get('dt_skripsi');
+    return $query->result();   
     }
 
     public function DataDosen()
@@ -26,21 +22,13 @@ class Mmhspengajuan extends CI_Model {
 
       return $query->result();
     }
-    public function insert($postpdf)
-    {
-      date_default_timezone_set('Asia/Jakarta');
 
+    public function insert($data)
+    {
       $this->db->set('kuota', 'kuota-1', FALSE);
-      $this->db->where('idpeg',$this->input->post('dospem'));
+      $this->db->where('idpeg',$data['dospem']);
       $this->db->update('pegawai'); 
 
-      $data = array('judul'       => strtoupper($this->input->post('judul')),
-                    'abstrak'     => $this->input->post('abstrak'),
-                    'idmhs'       => $_SESSION['idmhs'],
-                    'dospem'      => $this->input->post('dospem'),
-                    'statskripsi' => 1,
-                    'fileupload'  => $postpdf,
-                    'created_at'  => strftime('%Y-%m-%d %H:%M:%S'));
       return $this->db->insert('skripsi', $data);
     }
 

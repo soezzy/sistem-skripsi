@@ -8,7 +8,7 @@
                         <div class="form-group row">
                             <label for="nim" class="col-md-3 col-form-label">NIM</label>
                             <div class="col-md-9">
-                              <input id="nim" type="text" class="form-control" name="nim" value="<?php echo set_value('nim'); ?>" autofocus>
+                              <input id="nim" type="text" class="form-control" name="nim" oninput="this.value=this.value.replace(/[^0-9]/g,'');" value="<?php echo set_value('nim'); ?>" autofocus>
                              <span class="text-danger"><?php echo form_error('nim'); ?></span> 
                             </div>
                         </div>

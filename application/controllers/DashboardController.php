@@ -5,7 +5,7 @@ class DashboardController extends CI_Controller{
     
     public function index(){
         $data = array('title' => 'Dashboard');
-        if(isset($_SESSION['iduser']) && ($_SESSION['level'])==1){
+        if(isset($_SESSION['iduser']) && ($_SESSION['level'])==1 && ($_SESSION['status']=='aktif')){
             $this->load->view('outer/header', $data);
 			$this->load->view('dashboard');
             $this->load->view('outer/footer');
@@ -14,6 +14,7 @@ class DashboardController extends CI_Controller{
             $this->load->view('admin-dashboard');
             $this->load->view('admin/footer');
         }else{
+            $this->session->set_flashdata('error', '<div class="alert alert-danger text-center">Akunb anda belum melalui verifikasi email. Silahkan verifikasi terlebih dahulu.</div>');
             redirect('/');
         }
         
