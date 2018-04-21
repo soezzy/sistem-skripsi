@@ -44,17 +44,16 @@ class WelcomeController extends CI_Controller {
 		array('required' => 'Password harus diisi.'));
 
 		if ($this->form_validation->run() == false) {
-			redirect('/');
+			$this->load->view('welcome');
 		}else{
 			$login_nim = $this->input->post('login_nim');
 			$login_password = md5($this->input->post('login_password'));
 
 			if ($this->Mahasiswa_model->LoginUser($login_nim, $login_password)) {
-					$userInfo = $this->Mahasiswa_model->loginUser($login_nim, $login_password);
 					redirect('dashboard');
 				}else{
 					$this->session->set_flashdata('login_msg', 
-						'<div class="alert alert-danger text-center">Login gagal! Silahkan coba lagi.</div>');
+						'<div class="alert alert-danger text-center">Login gagal! Silahkan verifikasi email anda terlebih dahulu.</div>');
 					redirect('/');
 				}
 		}

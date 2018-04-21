@@ -22,35 +22,30 @@
     <!--  Notifications Plugin    -->
     <script src="<?php echo base_url(); ?>assets/js/bootstrap-notify.js"></script>
 
-    <!--  Google Maps Plugin    -->
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
-
     <!-- Light Bootstrap Table Core javascript and methods for Demo purpose -->
     <script src="<?php echo base_url(); ?>assets/js/light-bootstrap-dashboard.js?v=1.4.0"></script>
 
     <!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
-    <script src="<?php echo base_url(); ?>src/js/dropify.js"></script>
+    <script src="<?php echo base_url(); ?>dist/js/dropify.js"></script>
 
     <script type="text/javascript">
-        $('.dropify').dropify({
-        error: {
-            'imageFormat': 'The image format is not allowed ({{ value }} only).'
-        }
+       $(document).ready(function(){
+        $('.dropify').dropify();
     });
-        $(document).ready(function(){
+        // $(document).ready(function(){
 
-            // demo.initChartist();
+        //     // demo.initChartist();
 
-            // $.notify({
-            //     icon: 'pe-7s-gift',
-            //     message: "Welcome to <b>Light Bootstrap Dashboard</b> - a beautiful freebie for every web developer."
+        //     // $.notify({
+        //     //     icon: 'pe-7s-gift',
+        //     //     message: "Welcome to <b>Light Bootstrap Dashboard</b> - a beautiful freebie for every web developer."
 
-            // },{
-            //     type: 'info',
-            //     timer: 4000
-            // });
+        //     // },{
+        //     //     type: 'info',
+        //     //     timer: 4000
+        //     // });
 
-        });
+        // });
     </script>
 
 </html>

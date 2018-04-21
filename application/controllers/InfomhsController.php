@@ -20,11 +20,12 @@ class InfomhsController extends CI_Controller {
         }
 	}
 
-	public function editMhs($id)
+	public function editMhs()
 	{
+		// var_dump($_SESSION);die();
 		if ($this->session->userdata('logged_in')) { 
 				$title = array('title' => 'Profil Mahasiswa');
-				$data['data'] = $this->mmhsprofil->edit($id);
+				$data['data'] = $this->mmhsprofil->edit($_SESSION['idmhs']);
 
 				$this->load->view('outer/header',$title);
 				$this->load->view('mhs-profil/editmhs',$data);

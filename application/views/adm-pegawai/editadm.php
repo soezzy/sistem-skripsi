@@ -39,16 +39,16 @@
                                 <?php 
                                   switch ($data[0]->level) {
                                     case '5':
-                                     echo " <option>Dosen</option><option>Kaprodi</option><option>Staff Admin</option><option selected>Super Admin</option>";
+                                     echo " <option value='2'>Dosen</option><option value='3'>Kaprodi</option><option value='4'>Staff Admin</option><option value='5' selected>Super Admin</option>";
                                       break;
                                     case '4':
-                                     echo " <option>Dosen</option><option>Kaprodi</option><option selected>Staff Admin</option><option>Super Admin</option>";
+                                     echo " <option value='2'>Dosen</option><option value='3'>Kaprodi</option><option value='4' selected>Staff Admin</option><option value='5'>Super Admin</option>";
                                       break;
                                     case '3':
-                                     echo " <option>Dosen</option><option selected>Kaprodi</option><option >Staff Admin</option><option>Super Admin</option>";
+                                     echo " <option value='2'>Dosen</option><option value='3' selected>Kaprodi</option><option value='4'>Staff Admin</option><option value='5'>Super Admin</option>";
                                     break;
                                     default:
-                                      echo "<option selected>Dosen</option><option>Kaprodi</option><option >Staff Admin</option><option>Super Admin</option>";
+                                      echo "<option value='2' selected>Dosen</option><option value='3'>Kaprodi</option><option value='4'>Staff Admin</option><option value='5'>Super Admin</option>";
                                       break;
                                   }
                                  ?>
@@ -63,17 +63,17 @@
                                  
                                  <?php 
                                   switch ($data[0]->kelompok) {
-                                    case 'Dosen':
-                                     echo " <option selected>Dosen</option><option>Kaprodi</option><option >Staff Admin</option>";
+                                    case 'dosen':
+                                     echo " <option value='dosen' selected>Dosen</option><option value='kaprodi'>Kaprodi</option><option value='staff admin' >Staff Admin</option>";
                                       break;
-                                    case 'Kaprodi':
-                                     echo " <option>Dosen</option><option selected>Kaprodi</option><option>Staff Admin</option>";
+                                    case 'kaprodi':
+                                     echo " <option value='dosen'>Dosen</option><option value='kaprodi' selected>Kaprodi</option><option value='staff admin' >Staff Admin</option>";
                                     break;
-                                    case 'Staff Admin':
-                                     echo " <option>Dosen</option><option selected>Kaprodi</option><option>Staff Admin</option>";
+                                    case 'staff admin':
+                                     echo " <option value='dosen'>Dosen</option><option value='kaprodi'>Kaprodi</option><option value='staff admin' selected>Staff Admin</option>";
                                     break;
                                     default:
-                                      echo "<option selected>Dosen</option><option>Kaprodi</option><option >Staff Admin</option>";
+                                      echo "<option selected>Dosen</option><option>Kaprodi</option><option value='staff admin'>Staff Admin</option>";
                                       break;
                                   }
                                  ?>

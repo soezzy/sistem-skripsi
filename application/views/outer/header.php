@@ -29,7 +29,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
     <!--  CSS for upload file     -->
     <link href="<?php echo base_url(); ?>dist/css/dropify.css" rel="stylesheet" />
-
+    
     <!--  Text Editor     -->
     <script src="https://cdn.ckeditor.com/4.8.0/standard/ckeditor.js"></script>
 
@@ -60,12 +60,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <p>Dashboard</p>
                     </a>
                 </li>
-                <!-- <li <?php if($this->uri->segment(1)=="profil"){echo 'class="active"';}?>>
-                    <a href="/skripsi/profil">
-                        <i class="pe-7s-user"></i>
-                        <p>Profil</p>
-                    </a>
-                </li> -->
                 <li <?php if($this->uri->segment(1)=="pengajuan"){echo 'class="active"';}?>>
                     <a href="/skripsi/pengajuan">
                         <i class="pe-7s-note2"></i>

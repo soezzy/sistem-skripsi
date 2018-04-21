@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Madmdosen extends CI_Model {
 
 	public function info() {
-		$query = $this->db->get_where('pegawai', array('kelompok' => 'Dosen'));
+		$query = $this->db->get_where('pegawai', array('kelompok' => 'dosen'));
         return $query->result();
     }
 

@@ -23,8 +23,8 @@
                         <th class="text-center no-sort">No.</th>
                         <th class="text-center">Nama Pegawai</th>
                         <th class="text-center">No. Telepon</th>
-                        <th class="text-center">Grup</th>
                         <th class="text-center">Level</th>
+                        <th class="text-center">Grup</th>
                         <?php if ($this->session->userdata('logged_in')) { ?>
                             <th class="text-center"></th>
                         <?php } ?>
@@ -37,7 +37,6 @@
                                 <td class="text-center"><p><?php echo $rowCount; ?></p></td>
                                 <td><?php echo $value->namapeg; ?></td>
                                 <td><?php echo $value->telepon; ?></td>
-                                <td><?php echo $value->kelompok; ?></td>
                                 <td><?php 
                                     switch ($value->level) {
                                         case '5':
@@ -57,6 +56,7 @@
                                             break;
                                     }
                                  ?></td>
+                                <td><?php echo ucfirst($value->kelompok); ?></td>
                                 <td class="td-actions text-center">
                                     <a type="button" rel="tooltip" href="<?php echo base_url('adm-pegawai/detail/'.$value->nip);?>" title="Detail" class="btn btn-info btn-fill">
                                         <i class="fa fa-eye"></i>
