@@ -25,13 +25,7 @@
     <!-- Light Bootstrap Table Core javascript and methods for Demo purpose -->
     <script src="<?php echo base_url(); ?>assets/js/light-bootstrap-dashboard.js?v=1.4.0"></script>
 
-    <!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
-    <script src="<?php echo base_url(); ?>dist/js/dropify.js"></script>
-
     <script type="text/javascript">
-       $(document).ready(function(){
-        $('.dropify').dropify();
-    });
         // $(document).ready(function(){
 
         //     // demo.initChartist();

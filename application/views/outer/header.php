@@ -27,9 +27,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <!--  Light Bootstrap Table core CSS    -->
     <link href="<?php echo base_url(); ?>assets/css/light-bootstrap-dashboard.css?v=1.4.0" rel="stylesheet"/>
 
-    <!--  CSS for upload file     -->
-    <link href="<?php echo base_url(); ?>dist/css/dropify.css" rel="stylesheet" />
-    
     <!--  Text Editor     -->
     <script src="https://cdn.ckeditor.com/4.8.0/standard/ckeditor.js"></script>
 
@@ -132,8 +129,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                     </p>
                               </a>
                               <ul class="dropdown-menu">
-                                <li><a href="/skripsi/profil">Ubah Profil<i class="fa fa-user pull-right"></i></a></li>
-                                <li><a href="/skripsi/logout">Logout<i class="fa fa-sign-out pull-right"></i></a></li>
+                                <li><a href="/skripsi/profil"><i class="fa fa-user pull-right"></i>Ubah Profil</a></li>
+                                <li><a href="/skripsi/logout"><i class="fa fa-sign-out pull-right"></i>Logout</a></li>
                               </ul>
                         </li>
                         <li class="separator hidden-lg"></li>

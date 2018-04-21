@@ -28,9 +28,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <!-- Animation library for notifications   -->
     <link href="<?php echo base_url(); ?>assets/css/custom.css" rel="stylesheet"/>
 
-    <!--  CSS for upload file     -->
-    <link href="<?php echo base_url(); ?>dist/css/dropify.css" rel="stylesheet" />
-
     <!--  Text Editor     -->
     <script src="https://cdn.ckeditor.com/4.8.0/standard/ckeditor.js"></script>
 
@@ -151,8 +148,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                     </p>
                               </a>
                               <ul class="dropdown-menu">
-                                <li><a href="/skripsi/adm-profil">Ubah Profil<i class="fa fa-user pull-right"></i></a></li>
-                                <li><a href="/skripsi/adlogout">Logout<i class="fa fa-sign-out pull-right"></i></a></li>
+                                <li><a href="/skripsi/adm-profil"><i class="fa fa-user pull-right"></i>Ubah Profil</a></li>
+                                <li><a href="/skripsi/adlogout"><i class="fa fa-sign-out pull-right"></i>Logout</a></li>
                               </ul>
                         </li>
                         <li class="separator hidden-lg"></li>
