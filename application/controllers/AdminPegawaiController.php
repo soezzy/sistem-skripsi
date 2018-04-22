@@ -142,8 +142,8 @@ class AdminPegawaiController extends CI_Controller {
     public function edit($id){
 
         $data = array('kelompok' => $this->input->post('grup'));
-        $data2 = array('level' => $level);
-        ;
+        $data2 = array('level' => $this->input->post('level'));
+        
         if($this->madmpegawai->updateuser($data2,$id) && $this->madmpegawai->updatepeg($data,$id)) {
             $this->session->set_flashdata('sukses', '<div class="alert alert-success text-center">Data anda sudah diperbarui.</div>');
             redirect('adm-pegawai');
