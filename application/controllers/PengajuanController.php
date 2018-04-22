@@ -60,10 +60,10 @@ class PengajuanController extends CI_Controller {
 	        $this->load->view('outer/footer');
 
     	}else{
-    		$config['upload_path'] = './pdf/'; //path folder
-		    $config['allowed_types'] = 'pdf'; //Allowing types
-		    $config['encrypt_name'] = TRUE; //encrypt file name 
-
+    		$config['upload_path'] 		= './pdf/'; 	//path folder
+		    $config['allowed_types'] 	= 'pdf'; 		//Allowing types
+		    $config['encrypt_name'] 	= TRUE; 		//encrypt file name 
+		    $config['detect_mime'] 		= TRUE;			// detect injection attacks
 		    $this->upload->initialize($config);
 
 		    if(!empty($_FILES['fileupload']['name'])){

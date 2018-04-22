@@ -13,41 +13,52 @@
                     <h4 class="title text-center">Profil Mahasiswa</h4>
                 </div>
                 <div class="content">
-                  <div class="row">
                   <?php 
                   foreach ($data as $value) { ?>
-                  <div class="col-md-3 col-md-offset-1">
-                    <p style="line-height: 2.5;">NIM</p>
-                    <p style="line-height: 2.5;">Nama Mahasiswa</p>
-                    <p style="line-height: 2.5;">Jenis Kelamin</p>
-                    <p style="line-height: 2.5;">Email</p>
-                    <p style="line-height: 2.5;">Jurusan</p>
-                    <p style="line-height: 2.5;">Angkatan</p>
-                    <p style="line-height: 2.5;">No. Telepon</p>
-                    <p style="line-height: 2.5;">Alamat</p>
-                  </div>
-                  <div class="col-md-7">
-                    <div class="typo-line">
-                          <p style="line-height: 2.5;">: <?php echo $value->nim ?></p>
-                          <p style="line-height: 2.5;">: <?php echo $value->namamhs ?></p>
-                           <?php 
-                          if ($value->jeniskel=="L") {
-                            echo '<p style="line-height: 2.5;">: Laki-laki</p>';
-                          }else if($value->jeniskel=="P"){
-                            echo '<p style="line-height: 2.5;">: Perempuan</p>';
-                          }else{
-                            echo '<p style="line-height: 2.5;">:</p>';
-                          }
-                           ?>
-                          <p style="line-height: 2.5;">: <?php echo $value->email ?></p>
-                          <p style="line-height: 2.5;">: <?php echo $value->jurusan ?></p>
-                          <p style="line-height: 2.5;">: <?php echo $value->angkatan ?></p>
-                          <p style="line-height: 2.5;">: <?php echo $value->telepon ?></p>
-                          <p style="line-height: 2.5;">: <?php echo $value->alamat ?></p>
-                      </div>
-                  </div>
-                </div>
-
+                   <table class="table table-hover table-bordered">
+                            <tbody>
+                              <tr>
+                                <th width="17%">NIM</th>
+                                <td>: <?php echo $value->nim  ?></td>
+                              </tr>
+                              <tr>
+                                <th width="17%">Nama Mahasiswa</th>
+                                <td>: <?php echo $value->namamhs ?></td>
+                              </tr>
+                              <tr>
+                                <th width="17%">Jenis Kelamin</th>
+                                <td><?php 
+                                        if ($value->jeniskel=="L") {
+                                          echo ': Laki-laki';
+                                        }else if($value->jeniskel=="P"){
+                                          echo ': Perempuan';
+                                        }else{
+                                          echo ':';
+                                        }?>
+                                </td>
+                              </tr>
+                              <tr>
+                                <th width="17%">Email</th>
+                                <td>: <?php echo $value->email ?></td>
+                              </tr>
+                              <tr>
+                                <th width="17%">Jurusan</th>
+                                <td>: <?php echo $value->jurusan ?></td>
+                              </tr>
+                              <tr>
+                                <th width="17%">Angkatan</th>
+                                <td>: <?php echo $value->angkatan ?></td>
+                              </tr>
+                              <tr>
+                                <th width="17%">No.Telepon</th>
+                                <td>: <?php echo $value->telepon ?></td>
+                              </tr>
+                              <tr>
+                                <th width="17%">Alamat</th>
+                                <td>: <?php echo $value->alamat ?></td>
+                              </tr>
+                            </tbody>
+                        </table>
                 <div class="row">
                   <div class="col-md-9"></div>
                   <div class="col-md-3">

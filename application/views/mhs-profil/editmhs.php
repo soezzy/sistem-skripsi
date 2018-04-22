@@ -62,7 +62,14 @@
                           <div class="col-md-4">
                             <div class="form-group">
                                 <label>Jurusan</label>
-                                <input type="text" id="jurusan" name="jurusan" class="form-control" value="<?php echo $data[0]->jurusan; ?>">
+                                <select  id="jurusan" name="jurusan" class="form-control">
+                                  <?php if ($data[0]->jurusan == 'informatika') { ?>
+                                    <option value="informatika">Informatika</option>
+                                  <?php } else { ?>
+                                    <option value="" disabled selected hidden>Pilih Jurusan...</option>
+                                    <option value="informatika">Informatika</option>
+                                  <?php } ?>
+                                </select>
                             </div>
                           </div>
                           <div class="col-md-4">
