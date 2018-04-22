@@ -53,15 +53,23 @@
 
 	public function loginUser($login_nim, $login_password)
 	{
+        date_default_timezone_set('Asia/Jakarta');      
+
 		$query = $this->db->get_where('dt_mahasiswa', 
 				 array('nim'		=> $login_nim, 
 				  	   'password' 	=> $login_password,
 				  	   'level'		=> 1,
 				  	   'status'	  	=> 'aktif'
                     )); 
-        
+        $datauser = $query->result_array();
+
         if($query->num_rows() == 1){
-            
+
+            $lastvisit = array('lastvisit_at' => strftime('%Y-%m-%d %H:%M:%S'));
+
+            $this->db->where('iduser',$datauser[0]['nim']);
+            $this->db->update('users', $lastvisit);
+
             $userArr = array();
             foreach($query->result() as $row){
                 $userArr[0] = $row->idmhs;
@@ -87,14 +95,23 @@
 
     public function loginAdmin($email_admin, $pass_admin)
     {
+        date_default_timezone_set('Asia/Jakarta');      
+
         $query = $this->db->get_where('dt_pegawai', 
                  array('email'    => $email_admin, 
                        'password' => $pass_admin,
                        'status'   => 'aktif'
                     )); 
-        
+
+        $datauser = $query->result_array();
+
         if($query->num_rows() == 1){
-            
+        
+            $lastvisit = array('lastvisit_at' => strftime('%Y-%m-%d %H:%M:%S'));
+
+            $this->db->where('iduser',$datauser[0]['nip']);
+            $this->db->update('users', $lastvisit);
+
             $userArr = array();
             foreach($query->result() as $row){
                 $userArr[0]  = $row->idpeg;

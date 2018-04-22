@@ -38,6 +38,8 @@ class SignupController extends CI_Controller {
 	}
 	public function create()
 	{
+		date_default_timezone_set('Asia/Jakarta');		
+
 		if(isset($_SESSION['iduser'])){
 			redirect('dashboard');
         }
@@ -74,8 +76,8 @@ class SignupController extends CI_Controller {
 			'password' 		=> $enc_password,
 			'level' 		=> 1,
 			'status' 		=> 'nonaktif',
-			'created_at' 	=> date('Y/m/d'),
-			'lastvisit_at' 	=> date('Y/m/d H:i:s', strtotime('now')),
+			'created_at' 	=> strftime('%Y-%m-%d'),
+			'lastvisit_at' 	=> strftime('%Y-%m-%d %H:%M:%S'),
 		);
 		// masuk model
 			if ($this->Mahasiswa_model->register($data)) {

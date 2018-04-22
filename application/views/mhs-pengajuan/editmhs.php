@@ -41,7 +41,7 @@
                       <select  id="dospem" name="dospem" class="form-control">
                         <?php foreach ($data as $value) {
                           echo '<option value="" disabled selected hidden>Pilih Dosen...</option>';
-                          echo '<option value="'.$value->idpeg.'">'.$value->namapeg.'</option>';
+                          echo '<option value="'.$value->idpeg.'">'.$value->namapeg.' | Sisa kuota: '.$value->kuota.'</option>';
                         } ?>
                       </select>
                       <span class="text-danger"><?php echo form_error('dospem'); ?></span> 
