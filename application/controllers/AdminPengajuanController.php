@@ -2,13 +2,19 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 class AdminPengajuanController extends CI_Controller {
 
+    public function __construct(){
+        parent::__construct();
+        $this->load->library('form_validation');
+        $this->load->model('madmpengajuan');
+    }
+
 	public function index(){
+        $title = array('title' => 'Pengajuan Skripsi Mahasiswa');
+        $data['data'] = $this->madmpengajuan->info(); 
 
-        $data = array('title' => 'Pengajuan Skripsi Mahasiswa');
-
-        if(isset($_SESSION['iduser']) && ($_SESSION['level'])){
-            $this->load->view('admin/header', $data);
-			$this->load->view('adm-pengajuan/infoadm');
+        if(isset($_SESSION['iduser']) && ($_SESSION['level']) != 1){
+            $this->load->view('admin/header', $title);
+			$this->load->view('adm-pengajuan/infoadm', $data);
             $this->load->view('admin/footer');
         }else{
             redirect('/');
@@ -16,30 +22,88 @@ class AdminPengajuanController extends CI_Controller {
         
     }
 
-    public function detailSkripsi()
-    {
-    	 $data = array('title' => 'Pengajuan Skripsi Mahasiswa');
+    public function detail($id){
 
-        if(isset($_SESSION['iduser']) && ($_SESSION['level'])){
-            $this->load->view('admin/header', $data);
-			$this->load->view('adm-pengajuan/detailskripsiadm');
+        $title = array('title' => 'Pengajuan Skripsi Mahasiswa');
+        $data['data'] = $this->madmpengajuan->detail($id); 
+        // var_dump($data['data']);die();
+        if(isset($_SESSION['iduser']) && ($_SESSION['level']) != 1){
+            $this->load->view('admin/header', $title);
+            $this->load->view('adm-pengajuan/editadm', $data);
             $this->load->view('admin/footer');
         }else{
             redirect('/');
         }
+        
     }
 
-    public function detailPengajuan()
+    public function terimaskripsi($id)
     {
-    	 $data = array('title' => 'Pengajuan Skripsi Mahasiswa');
+        date_default_timezone_set('Asia/Jakarta');  
 
-        if(isset($_SESSION['iduser']) && ($_SESSION['level'])){
-            $this->load->view('admin/header', $data);
-			$this->load->view('adm-pengajuan/detailpengajuanadm');
-            $this->load->view('admin/footer');
-        }else{
-            redirect('/');
+        $data = array(
+                'idskripsi'   => $id,
+                'statskripsi' => 2,
+                'catatan'     => $this->input->post('catatan'),
+                'created_at'  => strftime('%Y-%m-%d %H:%M:%S'),
+        );
+        
+        if ($this->madmpengajuan->terima($id,$data)) {
+            $this->session->set_flashdata('success', '<div class="alert alert-success text-center">Proses validasi berhasil.</div>');
+            redirect('adm-pengajuan');
+        } else {
+            $this->session->set_flashdata('error', '<div class="alert alert-danger text-center">Terjadi kesalahan dalam proses validasi. Coba ulangi lagi</div>');
+            redirect('adm-pengajuan/detail/'.$id);
         }
+       
     }
+
+    public function tolakskripsi($id)
+    {
+        date_default_timezone_set('Asia/Jakarta');      
+
+        $data = array(
+                'idskripsi'   => $id,
+                'statskripsi' => 3,
+                'catatan'     => $this->input->post('catatan'),
+                'created_at'  => strftime('%Y-%m-%d %H:%M:%S'),
+                'validator'   => $_SESSION['idpeg'],
+        );
+
+        if ($this->madmpengajuan->tolak($id,$data)) {
+            $this->session->set_flashdata('success', '<div class="alert alert-success text-center">Proses validasi berhasil.</div>');
+            redirect('adm-pengajuan');
+        } else {
+            $this->session->set_flashdata('error', '<div class="alert alert-danger text-center">Terjadi kesalahan dalam proses validasi. Coba ulangi lagi</div>');
+            redirect('adm-pengajuan/detail/'.$id);
+        }
+         
+    }
+
+   //  public function detailSkripsi()
+   //  {
+   //  	 $title = array('title' => 'Pengajuan Skripsi Mahasiswa');
+
+   //      if(isset($_SESSION['iduser']) && ($_SESSION['level']) != 1){
+   //          $this->load->view('admin/header', $title);
+			// $this->load->view('adm-pengajuan/detailskripsiadm');
+   //          $this->load->view('admin/footer');
+   //      }else{
+   //          redirect('/');
+   //      }
+   //  }
+
+   //  public function detailPengajuan()
+   //  {
+   //  	 $data = array('title' => 'Pengajuan Skripsi Mahasiswa');
+
+   //      if(isset($_SESSION['iduser']) && ($_SESSION['level']) != 1){
+   //          $this->load->view('admin/header', $data);
+			// $this->load->view('adm-pengajuan/detailpengajuanadm');
+   //          $this->load->view('admin/footer');
+   //      }else{
+   //          redirect('/');
+   //      }
+   //  }
 
 }
