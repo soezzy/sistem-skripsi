@@ -2,22 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class SignupController extends CI_Controller {
-
-	/**
-	 * Index Page for this controller.
-	 *
-	 * Maps to the following URL
-	 * 		http://example.com/index.php/welcome
-	 *	- or -
-	 * 		http://example.com/index.php/welcome/index
-	 *	- or -
-	 * Since this controller is set as the default controller in
-	 * config/routes.php, it's displayed at http://example.com/
-	 *
-	 * So any other public methods not prefixed with an underscore will
-	 * map to /index.php/welcome/<method_name>
-	 * @see https://codeigniter.com/user_guide/general/urls.html
-	 */
+	
 	function __construct()
 	{
 		parent::__construct();
@@ -43,7 +28,6 @@ class SignupController extends CI_Controller {
 		if(isset($_SESSION['iduser'])){
 			redirect('dashboard');
         }
-		
 		    // validasi form
 		$this->form_validation->set_rules('nim', 'NIM', 'required|is_unique[users.iduser]',
 			array('required' 	=> 'nomor induk mahasiswa wajib di isi.',

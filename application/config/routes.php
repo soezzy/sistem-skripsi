@@ -48,15 +48,22 @@ $route['adm-pegawai/tambahpeg'] 		= 'AdminPegawaiController/tambah';
 $route['adm-pegawai/edit/(:num)'] 		= 'AdminPegawaiController/editpeg/$1';
 $route['adm-pegawai/editpeg/(:num)'] 	= 'AdminPegawaiController/edit/$1';
 
+//--------------- menu pengajuan skripsi admin ---------------
+
+$route['adm-pengajuan'] 				= 'AdminPengajuanController';
+$route['adm-pengajuan/detailskripsi'] 	= 'AdminPengajuanController/detailSkripsi';
+$route['adm-pengajuan/detailpengajuan'] = 'AdminPengajuanController/detailPengajuan';
+$route['adm-pengajuan/detail/(:num)']   = 'AdminPengajuanController/detail/$1';
+$route['adm-pengajuan/tolak/(:num)']   	= 'AdminPengajuanController/tolakskripsi/$1';
+$route['adm-pengajuan/terima/(:num)']   = 'AdminPengajuanController/terimaskripsi/$1';
+
 //--------------- menu dosen admin ----------------------
 $route['adm-dosen'] 					= 'AdminDosenController';
 $route['adm-dosen/detail/(:num)']     	= 'AdminDosenController/detaildosen/$1';
 $route['adm-dosen/edit/(:num)']     	= 'AdminDosenController/editdosen/$1';
 $route['adm-dosen/editdosen/(:num)']    = 'AdminDosenController/edit/$1';
 
-$route['adm-pengajuan'] 				= 'AdminPengajuanController';
-$route['adm-pengajuan/detailskripsi'] 	= 'AdminPengajuanController/detailSkripsi';
-$route['adm-pengajuan/detailpengajuan'] = 'AdminPengajuanController/detailPengajuan';
+
 $route['adm-bimbingan'] 				= 'AdminBimbinganController';
 $route['adm-bimbingan/detailbimbingan'] = 'AdminBimbinganController/detailBimbingan';
 $route['adm-pesan'] 					= 'AdminPesanController';

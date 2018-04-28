@@ -11,8 +11,8 @@ class AdminDosenController extends CI_Controller {
 	public function index(){
 
         $title = array('title' => 'Data Dosen');
+        
         $data['data'] = $this->madmdosen->info(); 
-        // var_dump($data);die();
         if(isset($_SESSION['iduser']) && ($_SESSION['level'])){
             $this->load->view('admin/header', $title);
 			$this->load->view('adm-dosen/infoadm', $data);
