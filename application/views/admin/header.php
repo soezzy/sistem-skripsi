@@ -75,6 +75,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <p>Bimbingan Skripsi</p>
                     </a>
                 </li>
+                <li <?php if($this->uri->segment(1)=="adm-validasi"){echo 'class="active"';}?>>
+                    <a href="/skripsi/adm-validasi">
+                        <i class="pe-7s-bookmarks"></i>
+                        <p>Validasi Pengajuan</p>
+                    </a>
+                </li>
                  <li <?php if($this->uri->segment(1)=="adm-dosen"){echo 'class="active"';}?>>
                     <a href="/skripsi/adm-dosen">
                         <i class="pe-7s-users"></i>
@@ -143,7 +149,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                     <i class="fa fa-cog"></i>
                                     <b class="caret hidden-sm hidden-xs"></b>
                                     <p class="hidden-lg hidden-md">
-                                        5 Notifications
+                                        Pengaturan
                                         <b class="caret"></b>
                                     </p>
                               </a>

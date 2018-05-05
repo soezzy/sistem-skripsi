@@ -57,6 +57,15 @@ $route['adm-pengajuan/detail/(:num)']   = 'AdminPengajuanController/detail/$1';
 $route['adm-pengajuan/tolak/(:num)']   	= 'AdminPengajuanController/tolakskripsi/$1';
 $route['adm-pengajuan/terima/(:num)']   = 'AdminPengajuanController/terimaskripsi/$1';
 
+//--------------- menu validasi skripsi admin ---------------
+
+$route['adm-validasi'] 				= 'AdminvalidasiController';
+$route['adm-validasi/detailskripsi'] 	= 'AdminvalidasiController/detailSkripsi';
+$route['adm-validasi/detailvalidasi'] = 'AdminvalidasiController/detailvalidasi';
+$route['adm-validasi/detail/(:num)']   = 'AdminvalidasiController/detail/$1';
+$route['adm-validasi/tolak/(:num)']   	= 'AdminvalidasiController/tolakskripsi/$1';
+$route['adm-validasi/terima/(:num)']   = 'AdminvalidasiController/terimaskripsi/$1';
+
 //--------------- menu dosen admin ----------------------
 $route['adm-dosen'] 					= 'AdminDosenController';
 $route['adm-dosen/detail/(:num)']     	= 'AdminDosenController/detaildosen/$1';

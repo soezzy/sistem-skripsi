@@ -2,8 +2,8 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 class Madmpengajuan extends CI_Model {
 
-	public function info() {
-		$query = $this->db->get_where('dt_skripsi', array('stat' => 1));
+	public function info($id) {
+		$query = $this->db->get_where('dt_skripsi', array('stat' => 1, 'iddospem'=> $id));
         return $query->result();
     }
 
@@ -13,8 +13,6 @@ class Madmpengajuan extends CI_Model {
     }
 
     public function terima($id,$data) {
-        // $this->db->where('idskripsi', $id);
-        // $this->db->update('skripsi', array('statskripsi' => 2));
         $this->db->trans_start();
         $this->db->query('UPDATE skripsi SET statskripsi = 2 WHERE idskripsi ='.$id);
         $this->db->insert('detskripsi', $data);
