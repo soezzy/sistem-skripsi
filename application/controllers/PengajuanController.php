@@ -62,6 +62,7 @@ class PengajuanController extends CI_Controller {
     	}else{
     		$config['upload_path'] 		= './pdf/'; 	//path folder
 		    $config['allowed_types'] 	= 'pdf'; 		//Allowing types
+		    $config['max_size']			= '100000';		// maximum size per file
 		    $config['encrypt_name'] 	= TRUE; 		//encrypt file name 
 		    $config['detect_mime'] 		= TRUE;			// detect injection attacks
 		    $this->upload->initialize($config);

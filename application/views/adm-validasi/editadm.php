@@ -14,11 +14,11 @@
           <?php echo $this->session->flashdata('error'); ?>
             <div class="card">
               <div class="header">
-                    <h4 class="title text-center">Pengajuan Skripsi Mahasiswa</h4>
+                    <h4 class="title text-center">Validasi Skripsi Mahasiswa</h4>
                 </div>
                 <div class="content">
                   <?php 
-                  if ($data != null){
+                  if ($data != FALSE){
                   foreach ($data as $value) { ?>
                     <table class="table table-hover table-bordered">
                             <tbody>
@@ -40,7 +40,16 @@
                               </tr>
                               <tr>
                                 <th width="17%">Dibuat</th>
-                                <td>: <?php echo date('d F Y H:i:s' ,strtotime($value->created_at)); ?></td>
+                                <td>: <?php echo date('d F Y' ,strtotime($value->created_at)); ?></td>
+                              </tr>
+                            </tbody>
+                        </table>
+
+                        <table class="table table-hover table-bordered">
+                            <tbody>
+                              <tr>
+                                <th width="17%">Catatan Dosen Pembimbing</th>
+                                <td>: <?php echo $value->catatan  ?></td>
                               </tr>
                             </tbody>
                         </table>
@@ -64,14 +73,15 @@
               <h4 class="title text-center">Validasi</h4>
             </div>
             <div class="content">
-              <?php echo form_open_multipart(base_url('adm-pengajuan/terima/'.$value->idskripsi)); ?>
+              <?php echo form_open_multipart(base_url('adm-validasi/terima/'.$value->idskripsi)); ?>
                 <div class="form-group required">
                   <label for="catatan" class="label">Catatan</label>
                     <textarea rows="5" name="catatan" id="catatan" class="form-control"></textarea>
                   <span class="text-danger"><?php echo form_error('catatan'); ?></span> 
               </div>
+              <input type="hidden" name="idmhs" value="<?php echo $value->idmhs; ?>">
               <button type="submit" rel="tooltip" class="btn btn-success pull-right btn-fill abu"><i class="fa fa-check-circle"></i>Terima</button>
-              <button type="submit" rel="tooltip" formaction="<?php echo base_url('adm-pengajuan/tolak/'.$value->idskripsi);?>" class="btn btn-danger btn-fill abu"><i class="fa fa-times-circle"></i>Tolak</button>
+              <button type="submit" rel="tooltip" formaction="<?php echo base_url('adm-validasi/tolak/'.$value->idskripsi);?>" class="btn btn-danger btn-fill abu"><i class="fa fa-times-circle"></i>Tolak</button>
               <?php echo form_close(); ?>
             </div>
           </div>

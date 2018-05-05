@@ -1,6 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-class Mmhspengajuan extends CI_Model {
+class Mmhsbimbingan extends CI_Model {
 
 	public function info($id) {
     $query = $this->db
@@ -9,6 +9,7 @@ class Mmhspengajuan extends CI_Model {
             ->limit(1)
             ->order_by('idskripsi','DESC')
             ->get('dt_skripsi');
+
     return $query->result();   
     }
 
@@ -21,6 +22,10 @@ class Mmhspengajuan extends CI_Model {
                ->order_by('namapeg','ASC')
                ->get('pegawai');
                
+		  // $this->db->from('pegawai');
+    //   $this->db->where('kelompok','dosen');
+    //   $this->db->where('kuota !=',0);
+    //   $query = $this->db->get();
 
       return $query->result();
     }

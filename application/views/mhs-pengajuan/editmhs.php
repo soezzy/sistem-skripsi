@@ -55,7 +55,7 @@
                   </div>
                   <div class="col-md-12">
                     <br>
-                      <button type="submit" class="btn btn-success btn-fill pull-right abu"><i class="fa fa-edit"></i>Ubah</button>
+                      <button type="submit" class="btn btn-success btn-fill pull-right abu"><i class="fa fa-edit"></i>Simpan</button>
                       <a class="btn btn-danger btn-fill abu" href="/skripsi/pengajuan" role="button"><i class="fa fa-chevron-circle-left"></i>Kembali</a>
                     <br>
                   </div>
