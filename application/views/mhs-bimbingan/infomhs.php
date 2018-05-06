@@ -1,91 +1,222 @@
+<style type="text/css">
+  .abu {
+    width: 120px !important;
+  }
+  .form-group.required .label:after {
+    content:"*";
+    color:red;
+  }
+</style>
+
 <div class="content">
 <div class="container-fluid">
 <div class="row">
     <div class="col-md-12">
-        <div class="card">
-            <div class="header">
-                <h4 class="title text-center">BIMBINGAN SKRIPSI</h4>
-            </div>
-            <div class="content">
+         <div class="card">
+              <div class="header">
+                <?php echo $this->session->flashdata('success'); ?>
+                <?php echo $this->session->flashdata('error'); ?>
+                <?php echo $this->session->flashdata('errorupload'); ?>
+                  <h4 class="title text-center">Bimbingan Skripsi Mahasiswa</h4>
+                </div>
+                <div class="content">
+                  <?php 
+                  if ($data['query1'] != NULL){
+                  foreach ($data['query1'] as $value) { ?>
+                    <table class="table table-hover table-bordered">
+                            <tbody>
+                              <tr>
+                                <th width="17%">Judul</th>
+                                <td>: <?php echo $value->judul  ?></td>
+                              </tr>
+                              <tr>
+                                <th width="17%">Abstrak</th>
+                                <td>: <?php echo $value->abstrak ?></td>
+                              </tr>
+                              <tr>
+                                <th width="17%">Dosen Pembimbing</th>
+                                <td>: <?php echo $value->statskripsi ?></td>
+                              </tr>
+
+                            </tbody>
+                        </table>
+
+                <?php 
+                echo form_open_multipart(base_url('bimbingan/upload/'.$value->idmhs)); ?>
+                <div class="form-group">
+                  <label>Upload file</label>
+                  <input type="file" name="fileupload" />
+                </div>
+                <button type="submit" class="btn btn-success btn-fill pull-right abu" style="margin-bottom: 1rem;"><i class="fa fa-edit"></i>Simpan</button>
+                <div class="clearfix"></div>
+                <?php echo form_close(); ?>
+
                 <div class="row">
-                  <div class="col-md-10 col-md-offset-1">
-                    <div class="form-group">
-                        <label>judul</label>
-                        <input type="text" class="form-control" disabled value="Rancang Bangun Sistem Skripsi Mahasiswa Di Universitas Muhammadiyah Sidoarjo">
-                    </div>
+                  <div class="col-md-12">
+                    <embed src="./pdf/<?php echo $value->fileupload ?>" type="application/pdf" width="100%" height="600">
                   </div>
-                  <div class="col-md-10 col-md-offset-1">
-                    <div class="form-group">
-                        <label>Abstrak</label>
-                            <textarea rows="5" class="form-control" placeholder="Here can be your description" value="Mike" disabled>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</textarea>
-                    </div>
-                  </div>
-                  <div class="col-md-10 col-md-offset-1">
-                    <div class="form-group">
-                        <label for="jeniskel">Dosen Pembimbing</label>
-                        <input type="text" class="form-control" placeholder="" value="Drs. Syahputra Dinata / Web Development" disabled>
-
-                         <!-- <select class="form-control" id="jeniskel">
-                          <option>-</option>
-                          <option>Laki-laki</option>
-                          <option>Perempuan</option>
-                        </select> -->
-                    </div>
-                  </div>
-
-           <div class="col-md-10 col-md-offset-1 ">
-            <div class="card card-plain">
-                   
-                <div class="content table-responsive table-full-width">
-                    <table class="table">
-                        <thead>
-                            <th>Dosen Pembimbing</th>
-                            <th>Catatan</th>
-                        </thead>
-                        <tbody>
-                            <tr>
-                            <td>Drs. Syahputra Dinata</td>
-                            <td>
-                                  <textarea rows="9" class="form-control" placeholder="Here can be your description" value="Mike" disabled>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</textarea>
-                            </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        </div>
-    </div>
-
-     <div class="col-md-10 col-md-offset-1">
-        <div class="form-group">
-             <label for="statusksripsi">Status</label>
-                <div class="alert alert-warning">
-                    <span>Revisi</span>
                 </div>
-                <div class="alert alert-info">
-                    <span>Direvisi</span>
-                </div>
-</div>
-</div>
-</div>
-</div>
-</div>
+                   <?php }
+                   } else { ?>
+                   <div class="alert alert-danger text-center">Data belum memeiliki data skripsi yang sudah diterima. Tunggu sampai ada pemberitahuan leh lanjut.</div>
+                  <?php } ?>
+               
+              </div>
+          </div>
 <!--<<<<<<<<<<<<<<<<<<<  file mahasiswa  >>>>>>>>>>>>>>>>>>-->
     <div class="row">
         <div class="col-md-12">
             <div class="card ">
                 <div class="header">
-                    <h4 class="title text-center">Formulir Revisi</h4>
+                    <h4 class="title text-center">Revisi Dosen Pembimbing</h4>
                 </div>
                 <div class="content">
-                  <input type="file" class="dropify" data-height="300" data-allowed-file-extensions="pdf" />
-                    <div class="form-group">
+                  <?php foreach ($data['query2'] as $value) { ?>
+                    <table class="table table-hover table-bordered">
+                            <tbody>
+                              <tr>
+                                <th width="17%">Judul</th>
+                                <td>: <?php echo $value->namapeg  ?></td>
+                              </tr>
+                              <tr>
+                                <th width="17%">Status</th>
+                                <td>
+                                    <?php if ($value->statbimbingan==0) {
+                                      echo strtoupper(': revisi');
+                                    } else if ($value->statbimbingan==1) {
+                                      echo strtoupper(': Ter-revisi');
+                                    } else {
+                                      echo strtoupper(': selesai');
+                                    } ?>                  
+                                </td>
+                              </tr>
+                            </tbody>
+                        </table>
+                  <?php echo form_open_multipart(base_url('bimbingan')); ?>
+                   
+                    <div class="form-group required">
                         <label style="padding-top: 3rem;">Catatan</label>
-                            <textarea rows="5" class="form-control" placeholder="Isi catatan disini"></textarea>
+                            <textarea rows="5" class="form-control" aria-describedby="describe" placeholder="Isi catatan disini" name="catatandospem"></textarea>
+                            <small id="describe" class="form-text text-muted label">Pastikan anda sudah memperbarui file pdf skripsi.</small><br>
+                            <small id="describe" class="form-text text-muted label">Catatan berisi perubahan apa saja yg telah anda lakukan atau komentar mengenai skripsi yang sudah direvisi.</small>
+                            <input type="hidden" name="idskripsi" value="<?php echo $value->idskripsi; ?>">
+                            <input type="hidden" name="idpeg" value="<?php echo $value->idpeg; ?>">
                     </div>
+                  <?php } ?>
+
+                    <button type="submit" class="btn btn-success btn-fill pull-right abu"><i class="fa fa-edit"></i>Simpan</button>
+                    <div class="clearfix"></div>
+                  <?php echo form_close(); ?>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!-- revisi dosen penguji 1 -->
+    <?php if ($data['query3'] != NULL): ?>
+      <div class="row">
+        <div class="col-md-12">
+            <div class="card ">
+                <div class="header">
+                    <h4 class="title text-center">Revisi Dosen Penguji 1</h4>
+                </div>
+                <div class="content">
+                  <?php foreach ($data['query3'] as $value) { ?>
+                    <table class="table table-hover table-bordered">
+                            <tbody>
+                              <tr>
+                                <th width="17%">Judul</th>
+                                <td>: <?php echo $value->namapeg  ?></td>
+                              </tr>
+                              <tr>
+                                <th width="17%">Status</th>
+                                <td>
+                                    <?php if ($value->statbimbingan==0) {
+                                      echo strtoupper(': revisi');
+                                    } else if ($value->statbimbingan==1) {
+                                      echo strtoupper(': Ter-revisi');
+                                    } else {
+                                      echo strtoupper(': selesai');
+                                    } ?>                  
+                                </td>
+                              </tr>
+                            </tbody>
+                        </table>
+                  <?php } ?>
+                  <?php echo form_open_multipart(base_url('bimbingan')); ?>
+                   
+                    <div class="form-group required">
+                        <label style="padding-top: 3rem;">Catatan</label>
+                            <textarea rows="5" class="form-control" aria-describedby="describe" placeholder="Isi catatan disini" name="catatanpenguji1"></textarea>
+                            <small id="describe" class="form-text text-muted label">Pastikan anda sudah memperbarui file pdf skripsi.</small><br>
+                            <small id="describe" class="form-text text-muted label">Catatan berisi perubahan apa saja yg telah anda lakukan atau komentar mengenai skripsi yang sudah direvisi.</small>
+                    </div>
+                    <button type="submit" class="btn btn-success btn-fill pull-right abu"><i class="fa fa-edit"></i>Simpan</button>
+                    <div class="clearfix"></div>
+                  <?php echo form_close(); ?>
+
+                  
+
                 </div>
 
             </div>
         </div>
     </div>
+    <?php endif ?>
+
+<!-- revisi dosen penguji 2 -->
+    <?php if ($data['query4'] != NULL): ?>
+      <div class="row">
+        <div class="col-md-12">
+            <div class="card ">
+                <div class="header">
+                    <h4 class="title text-center">Revisi Penguji 2</h4>
+                </div>
+                <div class="content">
+                  <?php foreach ($data['query4'] as $value) { ?>
+                    <table class="table table-hover table-bordered">
+                            <tbody>
+                              <tr>
+                                <th width="17%">Judul</th>
+                                <td>: <?php echo $value->namapeg  ?></td>
+                              </tr>
+                              <tr>
+                                <th width="17%">Status</th>
+                                <td>
+                                    <?php if ($value->statbimbingan==0) {
+                                      echo strtoupper(': revisi');
+                                    } else if ($value->statbimbingan==1) {
+                                      echo strtoupper(': Ter-revisi');
+                                    } else {
+                                      echo strtoupper(': selesai');
+                                    } ?>                  
+                                </td>
+                              </tr>
+                            </tbody>
+                        </table>
+                  <?php } ?>
+                  <?php echo form_open_multipart(base_url('bimbingan')); ?>
+                    
+                    <div class="form-group required">
+                        <label style="padding-top: 3rem;">Catatan</label>
+                            <textarea rows="5" class="form-control" aria-describedby="describe" placeholder="Isi catatan disini" name="catatanpenguji2"></textarea>
+                            <small id="describe" class="form-text text-muted label">Pastikan anda sudah memperbarui file pdf skripsi.</small><br>
+                            <small id="describe" class="form-text text-muted label">Catatan berisi perubahan apa saja yg telah anda lakukan atau komentar mengenai skripsi yang sudah direvisi.</small>
+                    </div>
+                    <button type="submit" class="btn btn-success btn-fill pull-right abu"><i class="fa fa-edit"></i>Simpan</button>
+                    <div class="clearfix"></div>
+                  <?php echo form_close(); ?>
+
+                  
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <?php endif ?>
+    
+</div>
+</div>
 </div>
 </div>

@@ -23,7 +23,9 @@ $route['pengajuan/edit'] 		= 'PengajuanController/editskripsi';
 $route['pengajuan/tambah'] 		= 'PengajuanController/tambah';
 
 //--------------- menu bimbingan skripsi ----------------
-$route['bimbingan'] 			= 'BimbinganController';
+$route['bimbingan'] 					= 'BimbinganController/revisi';
+$route['bimbingan/upload/(:num)'] 		= 'BimbinganController/tambah/$1';
+
 //--------------- menu status skripsi -----------------
 $route['status'] 				= 'StatusController';
 //--------------- menu pesan ------------------------- 

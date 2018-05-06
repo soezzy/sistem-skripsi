@@ -10,33 +10,69 @@ class Mmhsbimbingan extends CI_Model {
             ->order_by('idskripsi','DESC')
             ->get('dt_skripsi');
 
-    return $query->result();   
+    $query2 = $this->db->query('
+      SELECT idbimbingan
+        , a.idskripsi
+        , namapeg
+        , statbimbingan
+        , a.idpeg
+
+      FROM bimbingan a
+      LEFT JOIN pegawai b ON a.idpeg = b.idpeg
+      INNER JOIN skripsi c ON a.idpeg = c.dospem
+      WHERE TRUE AND a.idmhs = '.$id.'
+      ORDER BY idbimbingan DESC
+      LIMIT 1');
+
+    $query3 = $this->db->query('
+      SELECT idbimbingan
+        , a.idskripsi
+        , namapeg
+        , statbimbingan
+        , a.idpeg
+
+      FROM bimbingan a
+      LEFT JOIN pegawai b ON a.idpeg = b.idpeg
+      INNER JOIN skripsi c ON a.idpeg = c.penguji1
+      WHERE TRUE AND a.idmhs = '.$id.'
+      ORDER BY idbimbingan DESC
+      LIMIT 1');
+
+    $query4 = $this->db->query('
+     SELECT idbimbingan
+        , a.idskripsi
+        , namapeg
+        , statbimbingan
+        , a.idpeg
+
+      FROM bimbingan a
+      LEFT JOIN pegawai b ON a.idpeg = b.idpeg
+      INNER JOIN skripsi c ON a.idpeg = c.penguji2
+      WHERE TRUE AND a.idmhs = '.$id.'
+      ORDER BY idbimbingan DESC
+      LIMIT 1');
+
+    $data = [
+      'query1' => $query->result(),
+      'query2' => $query2->result(),
+      'query3' => $query3->result(),
+      'query4' => $query4->result(),
+
+    ];
+
+    return $data;   
     }
 
-    public function DataDosen()
+    public function revisi($data)
     {
-    	$query = $this->db
-               ->select('idpeg, namapeg, kuota')
-               ->where('kelompok','dosen')
-               ->where('kuota !=',0)
-               ->order_by('namapeg','ASC')
-               ->get('pegawai');
-               
-		  // $this->db->from('pegawai');
-    //   $this->db->where('kelompok','dosen');
-    //   $this->db->where('kuota !=',0);
-    //   $query = $this->db->get();
-
-      return $query->result();
+      return $this->db->insert('bimbingan', $data);
     }
 
-    public function insert($data)
+    public function insert($id,$filepdf)
     {
-      $this->db->set('kuota', 'kuota-1', FALSE);
-      $this->db->where('idpeg',$data['dospem']);
-      $this->db->update('pegawai'); 
-
-      return $this->db->insert('skripsi', $data);
+      $this->db->set('fileupload', $filepdf);
+      $this->db->where('idmhs',$id);
+      return $this->db->update('skripsi'); 
     }
 
 
