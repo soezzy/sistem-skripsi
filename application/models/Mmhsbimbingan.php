@@ -6,6 +6,7 @@ class Mmhsbimbingan extends CI_Model {
     $query = $this->db
             ->select('*')
             ->where('idmhs', $id)
+            ->where('stat', 4)
             ->limit(1)
             ->order_by('idskripsi','DESC')
             ->get('dt_skripsi');
@@ -16,6 +17,7 @@ class Mmhsbimbingan extends CI_Model {
         , namapeg
         , statbimbingan
         , a.idpeg
+        , a.catatan
 
       FROM bimbingan a
       LEFT JOIN pegawai b ON a.idpeg = b.idpeg
@@ -30,6 +32,7 @@ class Mmhsbimbingan extends CI_Model {
         , namapeg
         , statbimbingan
         , a.idpeg
+        , a.catatan
 
       FROM bimbingan a
       LEFT JOIN pegawai b ON a.idpeg = b.idpeg
@@ -44,6 +47,7 @@ class Mmhsbimbingan extends CI_Model {
         , namapeg
         , statbimbingan
         , a.idpeg
+        , a.catatan
 
       FROM bimbingan a
       LEFT JOIN pegawai b ON a.idpeg = b.idpeg

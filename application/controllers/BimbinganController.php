@@ -98,11 +98,11 @@ class BimbinganController extends CI_Controller {
 			         	redirect('bimbingan');
 			    		}
 					}else{
-						$this->session->set_flashdata('errorupload', '<div class="alert alert-danger text-center">Terjadi kesalahan saat proses upload. Silahkan coba lagi.</div>');
+						$this->session->set_flashdata('errorupload', '<div class="alert alert-danger text-center">Terjadi kesalahan saat proses unggah. Silahkan coba lagi.</div>');
 			            redirect('bimbingan');
 			      }
 		   	} else {
-			    	$this->session->set_flashdata('error', '<div class="alert alert-danger text-center">File nama PDF anda tidak sesuai! Silahkan Cek kembali.</div>');
+			    	$this->session->set_flashdata('error', '<div class="alert alert-danger text-center">Berkas nama PDF harus sesuai dengan berkas skripsi yang anda unduh! Silahkan Cek kembali.</div>');
 			      redirect('bimbingan');
 	    		} 
 		   	}

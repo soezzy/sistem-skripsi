@@ -26,7 +26,7 @@
                     <table class="table table-hover table-bordered">
                             <tbody>
                               <tr>
-                                <th width="17%">Judul</th>
+                                <th width="17%">Nama Dosen</th>
                                 <td>: <?php echo $value->judul  ?></td>
                               </tr>
                               <tr>
@@ -58,13 +58,14 @@
                 </div>
                    <?php }
                    } else { ?>
-                   <div class="alert alert-danger text-center">Data belum memeiliki data skripsi yang sudah diterima. Tunggu sampai ada pemberitahuan leh lanjut.</div>
+                   <div class="alert alert-danger text-center">Anda belum memiliki data skripsi yang sudah diterima. Tunggu sampai ada pemberitahuan lebih lanjut.</div>
                   <?php } ?>
                
               </div>
           </div>
 <!--<<<<<<<<<<<<<<<<<<<  file mahasiswa  >>>>>>>>>>>>>>>>>>-->
-    <div class="row">
+  <?php if ($data['query2']!=NULL): ?>
+     <div class="row">
         <div class="col-md-12">
             <div class="card ">
                 <div class="header">
@@ -75,8 +76,12 @@
                     <table class="table table-hover table-bordered">
                             <tbody>
                               <tr>
-                                <th width="17%">Judul</th>
+                                <th width="17%">Nama Dosen</th>
                                 <td>: <?php echo $value->namapeg  ?></td>
+                              </tr>
+                              <tr>
+                                <th width="17%">Catatan</th>
+                                <td>: <?php echo $value->catatan  ?></td>
                               </tr>
                               <tr>
                                 <th width="17%">Status</th>
@@ -111,6 +116,8 @@
             </div>
         </div>
     </div>
+  <?php endif ?>
+   
 
 <!-- revisi dosen penguji 1 -->
     <?php if ($data['query3'] != NULL): ?>
@@ -125,8 +132,12 @@
                     <table class="table table-hover table-bordered">
                             <tbody>
                               <tr>
-                                <th width="17%">Judul</th>
+                                <th width="17%">Nama Dosen</th>
                                 <td>: <?php echo $value->namapeg  ?></td>
+                              </tr>
+                              <tr>
+                                <th width="17%">Catatan</th>
+                                <td>: <?php echo $value->catatan  ?></td>
                               </tr>
                               <tr>
                                 <th width="17%">Status</th>
@@ -179,6 +190,10 @@
                               <tr>
                                 <th width="17%">Judul</th>
                                 <td>: <?php echo $value->namapeg  ?></td>
+                              </tr>
+                              <tr>
+                                <th width="17%">Catatan</th>
+                                <td>: <?php echo $value->catatan  ?></td>
                               </tr>
                               <tr>
                                 <th width="17%">Status</th>
