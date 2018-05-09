@@ -32,7 +32,7 @@
                         <div class="col-md-2">
                           <div class="form-group">
                               <label for="jeniskel">Jenis Kelamin</label>
-                               <select id="jeniskel" id="jeniskel" name="jeniskel" name="jeniskel" class="form-control" id="jeniskel">
+                               <select id="jeniskel" name="jeniskel" class="form-control">
 
                                   <?php 
                                   switch ($data[0]->jeniskel) {

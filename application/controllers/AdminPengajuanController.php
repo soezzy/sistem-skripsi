@@ -11,7 +11,6 @@ class AdminPengajuanController extends CI_Controller {
 	public function index(){
         $title = array('title' => 'Pengajuan Skripsi Mahasiswa');
         $data['data'] = $this->madmpengajuan->info($_SESSION['idpeg']);
-         
         if(isset($_SESSION['iduser']) && ($_SESSION['level']) != 1){
             $this->load->view('admin/header', $title);
 			$this->load->view('adm-pengajuan/infoadm', $data);

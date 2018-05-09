@@ -74,8 +74,16 @@ $route['adm-dosen/detail/(:num)']     	= 'AdminDosenController/detaildosen/$1';
 $route['adm-dosen/edit/(:num)']     	= 'AdminDosenController/editdosen/$1';
 $route['adm-dosen/editdosen/(:num)']    = 'AdminDosenController/edit/$1';
 
-
+//--------------- menu bimbingan admin -------------------
 $route['adm-bimbingan'] 				= 'AdminBimbinganController';
-$route['adm-bimbingan/detailbimbingan'] = 'AdminBimbinganController/detailBimbingan';
+$route['adm-bimbingan/detail/(:num)']  	= 'AdminBimbinganController/detailBimbingan/$1';
+$route['adm-bimbingan/proposal/(:num)']  = 'AdminBimbinganController/ujiprop/$1';
+$route['adm-bimbingan/skripsi/(:num)'] = 'AdminBimbinganController/ujiskrip/$1';
+
+//--------------- menu daftar pengajuan proposal dan skripsi -----
+$route['adm-daftar'] 				= 'AdminPendaftaranController';
+
+
+//---------------- menu pesan admin -----------------------
 $route['adm-pesan'] 					= 'AdminPesanController';
 
