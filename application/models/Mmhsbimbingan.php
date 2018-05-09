@@ -18,6 +18,7 @@ class Mmhsbimbingan extends CI_Model {
         , statbimbingan
         , a.idpeg
         , a.catatan
+        , a.idmhs
 
       FROM bimbingan a
       LEFT JOIN pegawai b ON a.idpeg = b.idpeg
