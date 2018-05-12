@@ -84,7 +84,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <li <?php if($this->uri->segment(1)=="adm-daftar"){echo 'class="active"';}?>>
                     <a href="/skripsi/adm-daftar">
                         <i class="pe-7s-medal"></i>
-                        <p>Pendaftaran Penguji</p>
+                        <p>Pendaftaran Ujian</p>
                     </a>
                 </li>
                  <li <?php if($this->uri->segment(1)=="adm-dosen"){echo 'class="active"';}?>>

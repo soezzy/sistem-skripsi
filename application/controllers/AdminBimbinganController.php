@@ -57,7 +57,16 @@ class AdminBimbinganController extends CI_Controller {
 
     public function ujiprop($id)
     {
-        if ($this->madmbimbingan->ujiprop($id)) {
+        date_default_timezone_set('Asia/Jakarta');  
+        $data = array(
+                'idskripsi'   => $id,
+                'validator'   => $_SESSION['idpeg'],
+                'statskripsi' => 5,
+                'catatan'     => 'Daftar Ujian Proposal',
+                'created_at'  => strftime('%Y-%m-%d %H:%M:%S'),
+        );
+
+        if ($this->madmbimbingan->ujiprop($id,$data)) {
             $this->session->set_flashdata('success', '<div class="alert alert-success text-center">Skripsi telah didaftarkan ke Ujian Proposal.</div>');
             redirect('adm-bimbingan');
         }
@@ -65,8 +74,16 @@ class AdminBimbinganController extends CI_Controller {
 
     public function ujiskrip($id)
     {
-        if ($this->madmbimbingan->ujiskrip($id)) {
-            $this->session->set_flashdata('success', '<div class="alert alert-success text-center">Skripsi telah didaftarkan ke Ujian Skripsi.</div>');
+        date_default_timezone_set('Asia/Jakarta');  
+        $data = array(
+                'idskripsi'   => $id,
+                'validator'   => $_SESSION['idpeg'],
+                'statskripsi' => 7,
+                'catatan'     => 'Daftar Ujian Skripsi',
+                'created_at'  => strftime('%Y-%m-%d %H:%M:%S'),
+        );
+        if ($this->madmbimbingan->ujiskrip($id,$data)) {
+            $this->session->set_flashdata('success1', '<div class="alert alert-success text-center">Skripsi telah didaftarkan ke Ujian Skripsi.</div>');
             redirect('adm-bimbingan');
         }
     }

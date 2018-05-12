@@ -56,7 +56,7 @@
       <div class="row">
         <div class="col-md-12">
             <div class="card">
-                <?php echo $this->session->flashdata('success'); ?>
+                <?php echo $this->session->flashdata('success1'); ?>
                 <div class="header">
                     <h4 class="title text-center">Daftar Bimbingan Skripsi Mahasiswa</h4>
                     <p class="category text-center">sebagai Penguji 1</p>
@@ -67,7 +67,7 @@
                         <th class="text-center no-sort">No.</th>
                         <th class="text-center">Nama Mahasiswa</th>
                         <th class="text-center" width="46%">Judul</th>
-                        <th class="text-center" width="46%">Status</th>
+                        <th class="text-center" width="13%">Status</th>
                         <?php if ($this->session->userdata('logged_in')) { ?>
                             <th class="text-center" width="10%">Action</th>
                         <?php } ?>

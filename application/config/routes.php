@@ -81,7 +81,10 @@ $route['adm-bimbingan/proposal/(:num)']  = 'AdminBimbinganController/ujiprop/$1'
 $route['adm-bimbingan/skripsi/(:num)'] = 'AdminBimbinganController/ujiskrip/$1';
 
 //--------------- menu daftar pengajuan proposal dan skripsi -----
-$route['adm-daftar'] 				= 'AdminPendaftaranController';
+$route['adm-daftar'] 						= 'AdminPendaftaranController';
+$route['adm-daftar/penguji/(:num)'] 		= 'AdminPendaftaranController/tambahpenguji/$1';
+$route['adm-daftar/proposal/(:num)/(:num)'] = 'AdminPendaftaranController/validasi/$1/$2';
+$route['adm-daftar/update'] 				= 'AdminPendaftaranController/updatepenguji';
 
 
 //---------------- menu pesan admin -----------------------

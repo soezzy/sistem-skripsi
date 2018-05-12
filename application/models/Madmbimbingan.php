@@ -155,13 +155,36 @@ class Madmbimbingan extends CI_Model {
         }
     }
 
-    public function ujiskrip($id)
+    public function ujiprop($id,$data)
     {
+        $this->db->trans_start();
+        $this->db->query('UPDATE skripsi SET statskripsi = 5 WHERE idskripsi ='.$id);
+        $this->db->insert('detskripsi', $data);
+        $this->db->trans_complete();
+
+        if ($this->db->trans_status() === FALSE)
+        {
+            return FALSE;
+        } else {
+            return TRUE;
+        }
+    }
+
+    public function ujiskrip($id,$data)
+    {
+        $this->db->trans_start();
+        $this->db->query('UPDATE skripsi SET statskripsi = 7 WHERE idskripsi ='.$id);
+        $this->db->insert('detskripsi', $data);
+        $this->db->trans_complete();
+
+        if ($this->db->trans_status() === FALSE)
+        {
+            return FALSE;
+        } else {
+            return TRUE;
+        }
         return $this->db->query('UPDATE skripsi SET statskripsi = 7 WHERE idskripsi ='.$id);
     }
 
-    public function ujiprop($id)
-    {
-        return $this->db->query('UPDATE skripsi SET statskripsi = 5 WHERE idskripsi ='.$id);
-    }
+    
 }
