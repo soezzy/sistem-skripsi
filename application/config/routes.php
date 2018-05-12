@@ -30,10 +30,10 @@ $route['bimbingan/upload/(:num)'] 		= 'BimbinganController/tambah/$1';
 $route['status'] 				= 'StatusController';
 //--------------- menu pesan ------------------------- 
 $route['pesan'] 				= 'PesanController';
-
+$route['pesan/detail/(:num)'] 	= 'PesanController/DetailPesan/$1';
+$route['pesan/balas'] 			= 'PesanController/BalasPesan';
 
 $route['admin'] 						= 'AdminDashboardController';
-
 $route['adlogout'] 						= '/AdminDashboardController/logout';
 //--------------- menu profil admin --------------------
 $route['adm-profil'] 					= 'AdminProfilController';
@@ -61,12 +61,12 @@ $route['adm-pengajuan/terima/(:num)']   = 'AdminPengajuanController/terimaskrips
 
 //--------------- menu validasi skripsi admin ---------------
 
-$route['adm-validasi'] 				= 'AdminvalidasiController';
+$route['adm-validasi'] 					= 'AdminvalidasiController';
 $route['adm-validasi/detailskripsi'] 	= 'AdminvalidasiController/detailSkripsi';
-$route['adm-validasi/detailvalidasi'] = 'AdminvalidasiController/detailvalidasi';
-$route['adm-validasi/detail/(:num)']   = 'AdminvalidasiController/detail/$1';
+$route['adm-validasi/detailvalidasi'] 	= 'AdminvalidasiController/detailvalidasi';
+$route['adm-validasi/detail/(:num)']   	= 'AdminvalidasiController/detail/$1';
 $route['adm-validasi/tolak/(:num)']   	= 'AdminvalidasiController/tolakskripsi/$1';
-$route['adm-validasi/terima/(:num)']   = 'AdminvalidasiController/terimaskripsi/$1';
+$route['adm-validasi/terima/(:num)']   	= 'AdminvalidasiController/terimaskripsi/$1';
 
 //--------------- menu dosen admin ----------------------
 $route['adm-dosen'] 					= 'AdminDosenController';
@@ -77,16 +77,19 @@ $route['adm-dosen/editdosen/(:num)']    = 'AdminDosenController/edit/$1';
 //--------------- menu bimbingan admin -------------------
 $route['adm-bimbingan'] 				= 'AdminBimbinganController';
 $route['adm-bimbingan/detail/(:num)']  	= 'AdminBimbinganController/detailBimbingan/$1';
-$route['adm-bimbingan/proposal/(:num)']  = 'AdminBimbinganController/ujiprop/$1';
-$route['adm-bimbingan/skripsi/(:num)'] = 'AdminBimbinganController/ujiskrip/$1';
+$route['adm-bimbingan/proposal/(:num)'] = 'AdminBimbinganController/ujiprop/$1';
+$route['adm-bimbingan/skripsi/(:num)'] 	= 'AdminBimbinganController/ujiskrip/$1';
 
 //--------------- menu daftar pengajuan proposal dan skripsi -----
 $route['adm-daftar'] 						= 'AdminPendaftaranController';
 $route['adm-daftar/penguji/(:num)'] 		= 'AdminPendaftaranController/tambahpenguji/$1';
 $route['adm-daftar/proposal/(:num)/(:num)'] = 'AdminPendaftaranController/validasi/$1/$2';
+$route['adm-daftar/skripsi/(:num)/(:num)'] 	= 'AdminPendaftaranController/validasiskripsi/$1/$2';
 $route['adm-daftar/update'] 				= 'AdminPendaftaranController/updatepenguji';
 
 
 //---------------- menu pesan admin -----------------------
-$route['adm-pesan'] 					= 'AdminPesanController';
+$route['adm-pesan'] 				= 'AdminPesanController';
+$route['adm-pesan/detail/(:num)'] 	= 'AdminPesanController/DetailPesan/$1';
+$route['adm-pesan/balas'] 			= 'AdminPesanController/BalasPesan';
 

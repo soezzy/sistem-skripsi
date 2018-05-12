@@ -12,6 +12,7 @@ class AdminPendaftaranController extends CI_Controller {
 
         $title = array('title' => 'Pengajuan Ujian Mahasiswa');
         $data['data'] = $this->madmpendaftaran->info();
+        // var_dump($data['data']['query1']);die();
         if(isset($_SESSION['iduser']) && ($_SESSION['level'])){
             $this->load->view('admin/header', $title);
 			$this->load->view('adm-pendaftaran/infoadm',$data);
@@ -88,6 +89,40 @@ class AdminPendaftaranController extends CI_Controller {
 
         if ($isi != NULL) {
                 if ($this->madmpendaftaran->updateproposal($isi)) {
+                    $this->session->set_flashdata('success', '<div class="alert alert-success text-center">Validasi telah berhasil.</div>');
+                   redirect('adm-daftar');
+                }
+            }
+
+        }else{
+            redirect('/');
+        }
+    }
+
+    public function validasiskripsi($idm,$ids)
+    {
+        date_default_timezone_set('Asia/Jakarta');
+
+        $title = array('title' => 'Pengajuan Ujian Mahasiswa');
+        $data['data'] = ['idm' =>$idm, 'ids'=>$ids];
+        $isi = '';
+        if(isset($_SESSION['iduser']) && ($_SESSION['level'])){
+            $this->load->view('admin/header', $title);
+            $this->load->view('adm-pendaftaran/valskripsiadm',$data);
+            $this->load->view('admin/footer');
+
+        if ($this->input->post('catatan')!=NULL) {
+                $isi = array(
+                    'idskripsi'   => $ids,
+                    'validator'   => $_SESSION['idpeg'],
+                    'statskripsi' => 8,
+                    'catatan'     => $this->input->post('catatan'),
+                    'created_at'  => strftime('%Y-%m-%d %H:%M:%S'),
+                );
+            }    
+
+        if ($isi != NULL) {
+                if ($this->madmpendaftaran->updateskripsi($isi)) {
                     $this->session->set_flashdata('success', '<div class="alert alert-success text-center">Validasi telah berhasil.</div>');
                    redirect('adm-daftar');
                 }

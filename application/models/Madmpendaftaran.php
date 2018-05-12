@@ -7,7 +7,7 @@ class Madmpendaftaran extends CI_Model {
         SELECT a.*, b.statskripsi, b.idskripsi
             FROM dt_mahasiswa a
             INNER JOIN dt_skripsi b ON b.idmhs=a.idmhs
-            WHERE stat=5');
+            WHERE stat>=5');
 
     $query2 = $this->db->query('
         SELECT a.*, b.statskripsi, b.idskripsi
@@ -88,6 +88,21 @@ class Madmpendaftaran extends CI_Model {
     {
         $this->db->trans_start();
         $this->db->query('UPDATE skripsi SET statskripsi = 6 WHERE idskripsi ='.$isi['idskripsi']);
+        $this->db->insert('detskripsi', $isi);
+        $this->db->trans_complete();
+
+        if ($this->db->trans_status() === FALSE)
+        {
+            return FALSE;
+        } else {
+            return TRUE;
+        }
+    }
+
+    public function updateskripsi($isi)
+    {
+        $this->db->trans_start();
+        $this->db->query('UPDATE skripsi SET statskripsi = 8 WHERE idskripsi ='.$isi['idskripsi']);
         $this->db->insert('detskripsi', $isi);
         $this->db->trans_complete();
 

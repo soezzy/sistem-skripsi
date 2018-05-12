@@ -2,16 +2,57 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 class PesanController extends CI_Controller {
 
-	public function index(){
-		$data = array('title' => 'Perpesanan');
+    public function __construct(){
+        parent::__construct();
+        $this->load->library('form_validation');
+        $this->load->model('mmhspesan');
+    }
 
-		if(isset($_SESSION['iduser']) && ($_SESSION['level'])){
-            $this->load->view('outer/header', $data);
-			$this->load->view('mhs-pesan/infomhs');
+    public function index(){
+
+        $title = array('title' => 'Perpesanan');
+        $data['data'] = $this->mmhspesan->info($_SESSION['idmhs']);
+        if(isset($_SESSION['iduser']) && ($_SESSION['level'])){
+            $this->load->view('outer/header', $title);
+            $this->load->view('mhs-pesan/infomhs', $data);
             $this->load->view('outer/footer');
         }else{
             redirect('/');
         }
-	}
+        
+    }
+
+    public function DetailPesan($id){
+        $this->mmhspesan->read($id);
+
+        $title = array('title' => 'Perpesanan');
+        $data['data'] = $this->mmhspesan->infopesan($id);
+        if(isset($_SESSION['iduser']) && ($_SESSION['level'])){
+            $this->load->view('outer/header', $title);
+            $this->load->view('mhs-pesan/editmhs', $data);
+            $this->load->view('outer/footer');
+        }else{
+            redirect('/');
+        }
+        
+    }
+
+    public function BalasPesan(){
+        date_default_timezone_set('Asia/Jakarta');
+        $data = array(
+            'idmhs'     => $_SESSION['idmhs'],
+            'idpeg'     => $this->input->post('idpeg'),
+            'subject'   => $this->input->post('subject'),
+            'konten'    => $this->input->post('pesan'),
+            'created_at'=> strftime('%Y-%m-%d %H:%M:%S'),
+            'statpesan' => 0,
+            'pengirim'  => $_SESSION['idmhs'],
+        );
+
+        if ($this->mmhspesan->balas($data)) {
+            $this->session->set_flashdata('success', '<div class="alert alert-success text-center">Pesan telah terkirim.</div>');
+            redirect('pesan');
+        }
+    }
 
 }

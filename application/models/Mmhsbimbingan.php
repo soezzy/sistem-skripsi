@@ -6,7 +6,7 @@ class Mmhsbimbingan extends CI_Model {
     $query = $this->db
             ->select('*')
             ->where('idmhs', $id)
-            ->where('stat', 4)
+            ->where('stat>=', 4)
             ->limit(1)
             ->order_by('idskripsi','DESC')
             ->get('dt_skripsi');

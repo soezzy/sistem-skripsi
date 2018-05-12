@@ -1,110 +1,53 @@
- <div class="content">
-            <div class="container-fluid">
-
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="card ">
-                            <div class="header">
-                                <h4 class="title text-center">PESAN</h4>
-                            </div>
-                            <div class="content">
-                              <form>
-                                  <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <input type="text" class="form-control" placeholder="Penerima">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <input type="text" class="form-control" placeholder="Subjek">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                         <div class="col-md-12">
-                                            <div class="form-group">
-                                                <textarea name="editor1" class="form-control" placeholder="Page Body"></textarea>
-                                            </div>
-                                        </div>
-                                    </div>
-                              </form>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-12">
-                        <div class="card ">
-                            <div class="header">
-                                <h4 class="title text-center">RIWAYAT PESAN</h4>
-                            </div>
-                            <div class="content">
-                            <div class="table-full-width">
-                                <table class="table">
-                                    <tbody>
-                                        <tr>
-                                            <td>12 January 2018</td>
-                                            <td><b>ini subject pertama</b></td>
-                                            <td>Abu Rizal Hakim</td>
-                                            <td class="td-actions text-right">
-                                                <button type="button" rel="tooltip" title="Detail" class="btn btn-info btn-simple btn-sm">
-                                                    <i class="fa fa-eye"></i>
-                                                </button>
-                                                <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-sm">
-                                                    <i class="fa fa-times"></i>
-                                                </button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>12 January 2018</td>
-                                            <td><b>ini subject kedua</b></td>
-                                            <td>Abu Rizal Hakim</td>
-                                            <td class="td-actions text-right">
-                                                <button type="button" rel="tooltip" title="Detail" class="btn btn-info btn-simple btn-sm">
-                                                    <i class="fa fa-eye"></i>
-                                                </button>
-                                                <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-sm">
-                                                    <i class="fa fa-times"></i>
-                                                </button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>12 January 2018</td>
-                                            <td><b>ini subject ketiga</b></td>
-                                            <td>Abu Rizal Hakim</td>
-                                            <td class="td-actions text-right">
-                                                <button type="button" rel="tooltip" title="Detail" class="btn btn-info btn-simple btn-sm">
-                                                    <i class="fa fa-eye"></i>
-                                                </button>
-                                                <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-sm">
-                                                    <i class="fa fa-times"></i>
-                                                </button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>12 January 2018</td>
-                                            <td><b>ini subject keempat</b></td>
-                                            <td>Abu Rizal Hakim</td>
-                                            <td class="td-actions text-right">
-                                                <button type="button" rel="tooltip" title="Detail" class="btn btn-info btn-simple btn-sm">
-                                                    <i class="fa fa-eye"></i>
-                                                </button>
-                                                <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-sm">
-                                                    <i class="fa fa-times"></i>
-                                                </button>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
+<div class="content">
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <?php echo $this->session->flashdata('success'); ?>
+                <div class="header">
+                    <h4 class="title text-center">Daftar Mahasiswa Skripsi</h4>
                 </div>
-            </div>
-        </div>
+                <div class="content">
+                    <table class="table table-bordered table-hover" id="manageMemberTable">
+                      <thead>
+                        <th class="text-center no-sort">No.</th>
+                        <th class="text-center">Pengirim</th>
+                        <th class="text-center" width="30%">Subjek</th>
+                        <th class="text-center" width="15%">status</th>
+                        <th class="text-center" width="15%">Tanggal</th>
+                        <?php if ($this->session->userdata('logged_in')) { ?>
+                            <th class="text-center" width="10%">Action</th>
+                        <?php } ?>
+                      </thead>
+                        <tbody>
+                            <?php 
+                            $rowCount = 1;
+                                foreach ($data as $value) { ?>
+                                <tr>
+                                <td class="text-center"><p><?php echo $rowCount; ?></p></td>
+                                <td><?php echo $value->namamhs; ?></td>
+                                <td><?php echo $value->subject; ?></td>
+                                <td><?php 
+                                    if ($value->statpesan==1) {
+                                        echo 'Sudah dibaca';
+                                    } else {
+                                        echo 'Belum dibaca';
+                                    }
+                                 ?></td>
+                                 <td><?php echo date('d F Y',strtotime($value->created_at)); ?></td>
 
-    <script>
-      CKEDITOR.replace( 'editor1' );
-    </script>
+                                <td class="td-actions text-center">
+                                    <a type="button" rel="tooltip" href="<?php echo base_url('pesan/detail/'.$value->idpesan);?>" title="Detail Pesan" class="btn btn-info btn-fill">
+                                        <i class="fa fa-edit"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                           <?php $rowCount++; } ?>
+                        </tbody>
+                    </table>
+              </div>
+          </div>
+      </div>
+    </div>
+</div>
+</div>
