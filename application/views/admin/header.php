@@ -40,7 +40,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <body>
 
 <div class="wrapper">
-    <div class="sidebar" data-color="green" data-image="<?php echo base_url(); ?>assets/img/sidebar-5.jpg">
+    <div class="sidebar" data-color="azure" data-image="<?php echo base_url(); ?>assets/img/sidebar-5.jpg">
 
     <!--
 
@@ -96,7 +96,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <li <?php if($this->uri->segment(1)=="adm-pesan"){echo 'class="active"';}?>>
                     <a href="/skripsi/adm-pesan">
                         <i class="pe-7s-chat"></i>
-                        <p>Pesan<span class="badge badge-primary pull-right">5</span></p>
+                        <p>Pesan</p>
                     </a>
                 </li> 
                 <li <?php if($this->uri->segment(1)=="adm-pegawai"){echo 'class="active"';}?>>

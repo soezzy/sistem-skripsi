@@ -32,6 +32,8 @@ $route['status'] 				= 'StatusController';
 $route['pesan'] 				= 'PesanController';
 $route['pesan/detail/(:num)'] 	= 'PesanController/DetailPesan/$1';
 $route['pesan/balas'] 			= 'PesanController/BalasPesan';
+$route['pesan/tambah'] 			= 'PesanController/TambahPesan';
+$route['pesan/tambahpesan'] 	= 'PesanController/PesanBaru';
 
 $route['admin'] 						= 'AdminDashboardController';
 $route['adlogout'] 						= '/AdminDashboardController/logout';
@@ -92,4 +94,5 @@ $route['adm-daftar/update'] 				= 'AdminPendaftaranController/updatepenguji';
 $route['adm-pesan'] 				= 'AdminPesanController';
 $route['adm-pesan/detail/(:num)'] 	= 'AdminPesanController/DetailPesan/$1';
 $route['adm-pesan/balas'] 			= 'AdminPesanController/BalasPesan';
-
+$route['adm-pesan/tambah'] 			= 'AdminPesanController/TambahPesan';
+$route['adm-pesan/tambahpesan'] 	= 'AdminPesanController/PesanBaru';

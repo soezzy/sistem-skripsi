@@ -54,6 +54,16 @@ class Madmpesan extends CI_Model {
       return $this->db->insert('pesan', $data);
     }
 
+    public function ambilid($id)
+    {
+        $query = $this->db->query('SELECT idmhs FROM mahasiswa WHERE nim='.$id);
+        return $query->result_array();
+    }
+
+    public function pesanbaru($data) {
+      return $this->db->insert('pesan', $data);
+    }
+
     // public function updatepeg($id,$data)
     // {
     //     $this->db->where('idpeg', $id);

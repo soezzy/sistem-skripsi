@@ -22,6 +22,19 @@ class AdminPesanController extends CI_Controller {
         
     }
 
+    public function TambahPesan(){
+
+        $title = array('title' => 'Perpesanan');
+        if(isset($_SESSION['iduser']) && ($_SESSION['level'])){
+            $this->load->view('admin/header', $title);
+            $this->load->view('adm-pesan/tambahadm');
+            $this->load->view('admin/footer');
+        }else{
+            redirect('/');
+        }
+        
+    }
+
     public function DetailPesan($id){
         $this->madmpesan->read($id);
 
@@ -35,6 +48,27 @@ class AdminPesanController extends CI_Controller {
             redirect('/');
         }
         
+    }
+
+    public function PesanBaru(){
+        date_default_timezone_set('Asia/Jakarta');
+        $nim = $this->input->post('nim');
+        $idmhs = $this->madmpesan->ambilid($nim);
+
+        $data = array(
+            'idmhs'     => $idmhs[0]['idmhs'],
+            'idpeg'     => $_SESSION['idpeg'],
+            'subject'   => $this->input->post('subject'),
+            'konten'    => $this->input->post('pesan'),
+            'created_at'=> strftime('%Y-%m-%d %H:%M:%S'),
+            'statpesan' => 0,
+            'pengirim'  => $_SESSION['idpeg'],
+        );
+
+        if ($this->madmpesan->pesanbaru($data)) {
+            $this->session->set_flashdata('success', '<div class="alert alert-success text-center">Pesan telah terkirim.</div>');
+            redirect('adm-pesan');
+        }
     }
 
     public function BalasPesan(){

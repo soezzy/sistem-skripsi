@@ -13,11 +13,11 @@
 		function kirimEmail($email)
 		{
 			$from = "abuhakim45@gmail.com";    //senders email address
-        	$subject = 'Verify email address';  //email subject
+        	$subject = 'Verifikasi alamat email';  //email subject
         
         	//sending confirmEmail($email) function calling link to the user, inside message body
-        	$message = 'Dear User,<br><br> Please click on the below activation link to verify your email address<br><br>
-        	<a href=\'http://localhost/skripsi/signupcontroller/confirmemail/'.md5($email).'\'>http://localhost/skripsi/signupcontroller/confirmemail/'. md5($email) .'</a><br><br>Thanks';
+        	$message = 'Bagi pengguna,<br><br> Silahkan klik alamat link dibawah ini untuk mengaktifkan akun anda<br><br>
+        	<a href=\'http://localhost/skripsi/signupcontroller/confirmemail/'.md5($email).'\'>http://localhost/skripsi/signupcontroller/confirmemail/'. md5($email) .'</a><br><br>Terimakasih.';
         
         	$config['protocol'] 	= 'smtp';
         	$config['smtp_host'] 	= 'smtp.mailtrap.io';
@@ -41,9 +41,9 @@
         	}else{
             	echo "email send failed";
             	return false;
-        }
+            }
 
-	}
+	    }
 	// aktivasi user
 	function verifyEmail($key) {
 		$data = array('status' => 'aktif'); //ubah data menjadi aktif ketika user klik verifikasi
@@ -98,7 +98,7 @@
         date_default_timezone_set('Asia/Jakarta');      
 
         $query = $this->db->get_where('dt_pegawai', 
-                 array('email'    => $email_admin, 
+                 array('nip'    => $email_admin, 
                        'password' => $pass_admin,
                        'status'   => 'aktif'
                     )); 

@@ -69,16 +69,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <p>Bimbingan Skripsi</p>
                     </a>
                 </li>
-                <li <?php if($this->uri->segment(1)=="status"){echo 'class="active"';}?>>
+               <!--  <li <?php //if($this->uri->segment(1)=="status"){echo 'class="active"';}?>>
                     <a href="/skripsi/status">
                         <i class="pe-7s-graph1"></i>
                         <p>Status Skripsi</p>
                     </a>
-                </li>
+                </li> -->
                 <li <?php if($this->uri->segment(1)=="pesan"){echo 'class="active"';}?>>
                     <a href="/skripsi/pesan">
                         <i class="pe-7s-chat"></i>
-                        <p>Pesan<span class="badge badge-primary pull-right">5</span></p>
+                        <p>Pesan</p>
                     </a>
                 </li>
             </ul>
@@ -101,30 +101,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                    
 
                     <ul class="nav navbar-nav navbar-right">
-                        <li class="dropdown">
-                              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    <i class="fa fa-globe"></i>
-                                    <b class="caret hidden-sm hidden-xs"></b>
-                                    <span class="notification hidden-sm hidden-xs">5</span>
-                                    <p class="hidden-lg hidden-md">
-                                        5 Notifications
-                                        <b class="caret"></b>
-                                    </p>
-                              </a>
-                              <ul class="dropdown-menu">
-                                <li><a href="#">Notification 1</a></li>
-                                <li><a href="#">Notification 2</a></li>
-                                <li><a href="#">Notification 3</a></li>
-                                <li><a href="#">Notification 4</a></li>
-                                <li><a href="#">Another notification</a></li>
-                              </ul>
-                        </li>
                        <li class="dropdown">
                               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                     <i class="fa fa-cog"></i>
                                     <b class="caret hidden-sm hidden-xs"></b>
                                     <p class="hidden-lg hidden-md">
-                                        5 Notifications
+                                        Pengaturan
                                         <b class="caret"></b>
                                     </p>
                               </a>
