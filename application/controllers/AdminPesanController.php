@@ -12,7 +12,7 @@ class AdminPesanController extends CI_Controller {
 
         $title = array('title' => 'Perpesanan');
         $data['data'] = $this->madmpesan->info($_SESSION['idpeg']);
-        if(isset($_SESSION['iduser']) && ($_SESSION['level'])){
+        if(($_SESSION['level'])!=1 && ($_SESSION['status'])=='aktif'){
             $this->load->view('admin/header', $title);
 			$this->load->view('adm-pesan/infoadm', $data);
             $this->load->view('admin/footer');
@@ -25,7 +25,7 @@ class AdminPesanController extends CI_Controller {
     public function TambahPesan(){
 
         $title = array('title' => 'Perpesanan');
-        if(isset($_SESSION['iduser']) && ($_SESSION['level'])){
+        if(($_SESSION['level'])!=1 && ($_SESSION['status'])=='aktif'){
             $this->load->view('admin/header', $title);
             $this->load->view('adm-pesan/tambahadm');
             $this->load->view('admin/footer');
@@ -40,7 +40,7 @@ class AdminPesanController extends CI_Controller {
 
         $title = array('title' => 'Perpesanan');
         $data['data'] = $this->madmpesan->infopesan($id);
-        if(isset($_SESSION['iduser']) && ($_SESSION['level'])){
+        if(($_SESSION['level'])!=1 && ($_SESSION['status'])=='aktif'){
             $this->load->view('admin/header', $title);
             $this->load->view('adm-pesan/editadm', $data);
             $this->load->view('admin/footer');

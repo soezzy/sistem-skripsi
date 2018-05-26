@@ -11,7 +11,7 @@ class AdminPegawaiController extends CI_Controller {
 	public function index(){
         $title = array('title' => 'Data Pegawai');
         $data['data'] = $this->madmpegawai->info(); 
-        if(isset($_SESSION['iduser']) && ($_SESSION['level'])!=1){
+        if(($_SESSION['level'])==3 || ($_SESSION['level'])==5 && ($_SESSION['status'])=='aktif'){
             $this->load->view('admin/header', $title);
 			$this->load->view('adm-pegawai/infoadm', $data);
             $this->load->view('admin/footer');
@@ -23,7 +23,7 @@ class AdminPegawaiController extends CI_Controller {
 
     public function tambahpeg(){
         $title = array('title' => 'Data Pegawai');
-        if(isset($_SESSION['status'])=="aktif" && ($_SESSION['level'])!=1){
+        if(($_SESSION['level'])==3 || ($_SESSION['level'])==5 && ($_SESSION['status'])=='aktif'){
             $this->load->view('admin/header', $title);
             $this->load->view('adm-pegawai/tambahadm');
             $this->load->view('admin/footer');
@@ -102,7 +102,7 @@ class AdminPegawaiController extends CI_Controller {
 
         $title = array('title' => 'Data Pegawai');
         $data['data'] = $this->madmpegawai->detail($id);
-        if(isset($_SESSION['iduser']) && ($_SESSION['level'])!=1){
+        if(($_SESSION['level'])==3 || ($_SESSION['level'])==5 && ($_SESSION['status'])=='aktif'){
             $this->load->view('admin/header', $title);
             $this->load->view('adm-pegawai/detailadm', $data);
             $this->load->view('admin/footer');

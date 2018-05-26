@@ -112,7 +112,7 @@
                         <th class="text-center no-sort">No.</th>
                         <th class="text-center">Nama Mahasiswa</th>
                         <th class="text-center" width="46%">Judul</th>
-                        <th class="text-center" width="46%">Status</th>
+                        <th class="text-center" width="13%">Status</th>
                         <?php if ($this->session->userdata('logged_in')) { ?>
                             <th class="text-center" width="10%">Action</th>
                         <?php } ?>

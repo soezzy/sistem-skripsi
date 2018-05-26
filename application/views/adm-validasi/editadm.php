@@ -24,23 +24,23 @@
                             <tbody>
                               <tr>
                                 <th width="17%">Judul</th>
-                                <td>: <?php echo $value->judul  ?></td>
+                                <td> <?php echo $value->judul  ?></td>
                               </tr>
                               <tr>
                                 <th width="17%">Abstrak</th>
-                                <td>: <?php echo $value->abstrak ?></td>
+                                <td> <?php echo $value->abstrak ?></td>
                               </tr>
                               <tr>
                                 <th width="17%">Dosen Pembimbing</th>
-                                <td>: <?php echo $value->dospem ?></td>
+                                <td> <?php echo $value->dospem ?></td>
                               </tr>
                               <tr>
                                 <th width="17%">Status Skripsi</th>
-                                <td>: <?php echo strtoupper($value->statskripsi) ?></td>
+                                <td> <?php echo strtoupper($value->statskripsi) ?></td>
                               </tr>
                               <tr>
                                 <th width="17%">Dibuat</th>
-                                <td>: <?php echo date('d F Y' ,strtotime($value->created_at)); ?></td>
+                                <td> <?php echo date('d F Y' ,strtotime($value->created_at)); ?></td>
                               </tr>
                             </tbody>
                         </table>
@@ -49,7 +49,7 @@
                             <tbody>
                               <tr>
                                 <th width="17%">Catatan Dosen Pembimbing</th>
-                                <td>: <?php echo $value->catatan  ?></td>
+                                <td> <?php echo $value->catatan  ?></td>
                               </tr>
                             </tbody>
                         </table>
@@ -80,6 +80,7 @@
                   <span class="text-danger"><?php echo form_error('catatan'); ?></span> 
               </div>
               <input type="hidden" name="idmhs" value="<?php echo $value->idmhs; ?>">
+              <input type="hidden" name="iddospem" value="<?php echo $value->iddospem; ?>">
               <button type="submit" rel="tooltip" class="btn btn-success pull-right btn-fill abu"><i class="fa fa-check-circle"></i>Terima</button>
               <button type="submit" rel="tooltip" formaction="<?php echo base_url('adm-validasi/tolak/'.$value->idskripsi);?>" class="btn btn-danger btn-fill abu"><i class="fa fa-times-circle"></i>Tolak</button>
               <?php echo form_close(); ?>

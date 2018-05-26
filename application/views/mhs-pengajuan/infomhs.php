@@ -21,31 +21,31 @@
                             <tbody>
                               <tr>
                                 <th width="17%">Judul</th>
-                                <td>: <?php echo $value->judul  ?></td>
+                                <td> <?php echo $value->judul  ?></td>
                               </tr>
                               <tr>
                                 <th width="17%">Abstrak</th>
-                                <td>: <?php echo $value->abstrak ?></td>
+                                <td> <?php echo $value->abstrak ?></td>
                               </tr>
                               <tr>
                                 <th width="17%">Dosen Pembimbing</th>
-                                <td>: <?php echo $value->dospem ?></td>
+                                <td> <?php echo $value->dospem ?></td>
                               </tr>
                               <tr>
                                 <th width="17%">Penguji 1</th>
-                                <td>: <?php echo $value->penguji1 ?></td>
+                                <td> <?php echo $value->penguji1 ?></td>
                               </tr>
                               <tr>
                                 <th width="17%">Penguji 2</th>
-                                <td>: <?php echo $value->penguji2 ?></td>
+                                <td> <?php echo $value->penguji2 ?></td>
                               </tr>
                               <tr>
                                 <th width="17%">Status Skripsi</th>
-                                <td>: <?php echo strtoupper($value->statskripsi) ?></td>
+                                <td> <?php echo strtoupper($value->statskripsi) ?></td>
                               </tr>
                               <tr>
                                 <th width="17%">Dibuat</th>
-                                <td>: <?php echo $value->created_at ?></td>
+                                <td> <?php echo $value->created_at ?></td>
                               </tr>
                             </tbody>
                         </table>

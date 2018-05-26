@@ -42,7 +42,6 @@
             	echo "email send failed";
             	return false;
             }
-
 	    }
 	// aktivasi user
 	function verifyEmail($key) {

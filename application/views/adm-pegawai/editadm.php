@@ -9,7 +9,7 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="header">
-                    <h4 class="title">Tambah Data Pegawai</h4>
+                    <h4 class="title">Ubah Hak Akses</h4>
                 </div>
                 <div class="content">
                   <?php echo form_open_multipart(base_url('adm-pegawai/editpeg/'.$data[0]->nip)); ?>

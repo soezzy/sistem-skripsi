@@ -12,7 +12,7 @@ class AdminBimbinganController extends CI_Controller {
 
         $title = array('title' => 'Bimbingan Skripsi Mahasiswa');
         $data['data'] = $this->madmbimbingan->info($_SESSION['idpeg']);
-        if(isset($_SESSION['iduser']) && ($_SESSION['level'])){
+        if(($_SESSION['level'])==3 || ($_SESSION['level'])==2 || ($_SESSION['level'])==5 && ($_SESSION['status'])=='aktif'){
             $this->load->view('admin/header', $title);
 			$this->load->view('adm-bimbingan/infoadm',$data);
             $this->load->view('admin/footer');
@@ -27,7 +27,7 @@ class AdminBimbinganController extends CI_Controller {
         $isi = '';
         $tittle = array('title' => 'Bimbingan Skripsi Mahasiswa');
         $data['data'] = $this->madmbimbingan->detail($id,$_SESSION['idpeg']);
-        if(isset($_SESSION['iduser']) && ($_SESSION['level'])){
+        if(($_SESSION['level'])==3 || ($_SESSION['level'])==2 || ($_SESSION['level'])==5 && ($_SESSION['status'])=='aktif'){
             $this->load->view('admin/header', $tittle);
 			$this->load->view('adm-bimbingan/editadm' ,$data);
             $this->load->view('admin/footer');

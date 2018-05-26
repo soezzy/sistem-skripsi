@@ -69,6 +69,7 @@
                   <label for="catatan" class="label">Catatan</label>
                     <textarea rows="5" name="catatan" id="catatan" class="form-control"></textarea>
                   <span class="text-danger"><?php echo form_error('catatan'); ?></span> 
+                  <input type="hidden" name="idmhs" value="<?= $value->idmhs; ?>">
               </div>
               <button type="submit" rel="tooltip" class="btn btn-success pull-right btn-fill abu"><i class="fa fa-check-circle"></i>Terima</button>
               <button type="submit" rel="tooltip" formaction="<?php echo base_url('adm-pengajuan/tolak/'.$value->idskripsi);?>" class="btn btn-danger btn-fill abu"><i class="fa fa-times-circle"></i>Tolak</button>

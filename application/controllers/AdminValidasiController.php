@@ -11,7 +11,7 @@ class AdminValidasiController extends CI_Controller {
     public function index(){
         $title = array('title' => 'Validasi Pengajuan Skripsi');
         $data['data'] = $this->madmvalidasi->info(); 
-        if(isset($_SESSION['iduser']) && ($_SESSION['level']) != 1){
+        if(($_SESSION['level'])==3 || ($_SESSION['level'])==5 && ($_SESSION['status'])=='aktif'){
             $this->load->view('admin/header', $title);
             $this->load->view('adm-validasi/infoadm', $data);
             $this->load->view('admin/footer');
@@ -25,7 +25,7 @@ class AdminValidasiController extends CI_Controller {
 
         $title = array('title' => 'Validasi Pengajuan Skripsi');
         $data['data'] = $this->madmvalidasi->detail($id); 
-        if(isset($_SESSION['iduser']) && ($_SESSION['level']) != 1){
+        if(($_SESSION['level'])==3 || ($_SESSION['level'])==5 && ($_SESSION['status'])=='aktif'){
             $this->load->view('admin/header', $title);
             $this->load->view('adm-validasi/editadm', $data);
             $this->load->view('admin/footer');
@@ -49,7 +49,7 @@ class AdminValidasiController extends CI_Controller {
         $data2 = array(
                 'idskripsi' => $id,
                 'idmhs' => $this->input->post('idmhs'),
-                'idpeg' => $_SESSION['idpeg'],
+                'idpeg' => $this->input->post('iddospem'),
                 'catatan' => '',
                 'statbimbingan' => 0,
                 'updated_at' => strftime('%Y-%m-%d %H:%M:%S'),
@@ -77,7 +77,9 @@ class AdminValidasiController extends CI_Controller {
                 'created_at'  => strftime('%Y-%m-%d %H:%M:%S'),
         );
 
-        if ($this->madmvalidasi->tolak($id,$data)) {
+        $idm = $this->input->post('idmhs');
+
+        if ($this->madmvalidasi->tolak($id,$data,$idm)) {
             $this->session->set_flashdata('success', '<div class="alert alert-success text-center">Proses validasi berhasil.</div>');
             redirect('adm-validasi');
         } else {

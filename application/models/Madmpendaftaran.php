@@ -24,10 +24,12 @@ class Madmpendaftaran extends CI_Model {
     }
 
     public function detail($id) {
-        $query1 = $this->db->query('SELECT a.*, b.dospem, b.penguji1, b.penguji2, b.stat, b.idskripsi
-                        FROM dt_mahasiswa a
-                        LEFT JOIN dt_skripsi b on a.idmhs=b.idmhs
-                        WHERE a.idmhs = '.$id);
+        $query1 = $this->db->query('SELECT b.idskripsi, a.*, b.dospem, b.penguji1, b.penguji2, b.stat, b.idskripsi, b.iddospem, b.idmhs
+            FROM dt_mahasiswa a
+            LEFT JOIN dt_skripsi b on a.idmhs=b.idmhs
+            WHERE a.idmhs = '.$id.'
+            ORDER BY b.idskripsi DESC 
+            LIMIT 1');
 
         $query2 = $this->db->query("SELECT idpeg, namapeg
                         FROM dt_pegawai
@@ -39,14 +41,34 @@ class Madmpendaftaran extends CI_Model {
         return $data;
     }
 
-    public function uppenguji1($isi,$ids)
+    public function uppenguji1($isi,$ids,$data)
     {
-        return $this->db->query('UPDATE skripsi SET penguji1 = '.$isi.' WHERE idskripsi ='.$ids);
+        $this->db->trans_start();
+        $this->db->query('UPDATE skripsi SET penguji1 = '.$isi.' WHERE idskripsi ='.$ids);
+        $this->db->insert('bimbingan', $data);
+        $this->db->trans_complete();
+
+        if ($this->db->trans_status() === FALSE)
+        {
+            return FALSE;
+        } else {
+            return TRUE;
+        }
     }
 
-    public function uppenguji2($isi2,$ids)
+    public function uppenguji2($isi2,$ids,$data2)
     {
-        return $this->db->query('UPDATE skripsi SET penguji2 = '.$isi2.' WHERE idskripsi ='.$ids);
+        $this->db->trans_start();
+        $this->db->query('UPDATE skripsi SET penguji2 = '.$isi2.' WHERE idskripsi ='.$ids);
+        $this->db->insert('bimbingan', $data2);
+        $this->db->trans_complete();
+
+        if ($this->db->trans_status() === FALSE)
+        {
+            return FALSE;
+        } else {
+            return TRUE;
+        }
     }
 
     public function detailpenguji1($id,$idpeg) {

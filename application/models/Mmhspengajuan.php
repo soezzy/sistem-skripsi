@@ -27,10 +27,6 @@ class Mmhspengajuan extends CI_Model {
 
     public function insert($data)
     {
-      $this->db->set('kuota', 'kuota-1', FALSE);
-      $this->db->where('idpeg',$data['dospem']);
-      $this->db->update('pegawai'); 
-
       return $this->db->insert('skripsi', $data);
     }
 
