@@ -84,7 +84,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                    <?php echo form_open('loginadmin'); ?>
                     <div class="form-group">
                       <br>
-                      <input type="text" name="email_admin" placeholder="Email" id="email_admin" class="form-control">
+                      <input type="text" name="email_admin" placeholder="NIP" id="email_admin" class="form-control">
                     </div>
                     <div class="form-group">
                       <input type="password" name="pass_admin" placeholder="Password" id="pass_admin" class="form-control">

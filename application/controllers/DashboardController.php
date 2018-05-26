@@ -14,7 +14,7 @@ class DashboardController extends CI_Controller{
             $this->load->view('admin-dashboard');
             $this->load->view('admin/footer');
         }else{
-            $this->session->set_flashdata('error', '<div class="alert alert-danger text-center">Akunb anda belum melalui verifikasi email. Silahkan verifikasi terlebih dahulu.</div>');
+            $this->session->set_flashdata('error', '<div class="alert alert-danger text-center">Akun anda belum melalui verifikasi email. Silahkan verifikasi terlebih dahulu.</div>');
             redirect('/');
         }
         

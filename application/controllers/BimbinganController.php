@@ -12,14 +12,14 @@ class BimbinganController extends CI_Controller {
 	public function index(){
 
 		if(isset($_SESSION['iduser']) && ($_SESSION['level'])=='1'){
-		$title = array('title' => 'Pengajuan Skripsi');
-     	$data['data'] = $this->mmhsbimbingan->info($_SESSION['idmhs']);
-      $this->load->view('outer/header', $title);
-		$this->load->view('mhs-bimbingan/infomhs',$data);
-      $this->load->view('outer/footer');
-      }else{
-            redirect('/');
-        }
+			$title = array('title' => 'Bimbingan Skripsi');
+		 	$data['data'] = $this->mmhsbimbingan->info($_SESSION['idmhs']);
+		    $this->load->view('outer/header', $title);
+			$this->load->view('mhs-bimbingan/infomhs',$data);
+		    $this->load->view('outer/footer');
+	    }else{
+	        redirect('/');
+	    }
 		
 	}
 
@@ -27,7 +27,7 @@ class BimbinganController extends CI_Controller {
 	{
 		date_default_timezone_set('Asia/Jakarta');
 			$isi = '';
-			$title = array('title' => 'Pengajuan Skripsi');
+			$title = array('title' => 'Bimbingan Skripsi');
 	     	$data['data'] = $this->mmhsbimbingan->info($_SESSION['idmhs']);
 	      	$this->load->view('outer/header', $title);
 			$this->load->view('mhs-bimbingan/infomhs',$data);

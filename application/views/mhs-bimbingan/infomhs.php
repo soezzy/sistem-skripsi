@@ -27,15 +27,15 @@
                             <tbody>
                               <tr>
                                 <th width="17%">Nama Dosen</th>
-                                <td>: <?php echo $value->judul  ?></td>
+                                <td> <?php echo $value->judul  ?></td>
                               </tr>
                               <tr>
                                 <th width="17%">Abstrak</th>
-                                <td>: <?php echo $value->abstrak ?></td>
+                                <td> <?php echo $value->abstrak ?></td>
                               </tr>
                               <tr>
-                                <th width="17%">Dosen Pembimbing</th>
-                                <td>: <?php echo $value->statskripsi ?></td>
+                                <th width="17%">Status Skripsi</th>
+                                <td> <?php echo $value->statskripsi ?></td>
                               </tr>
 
                             </tbody>
@@ -77,21 +77,21 @@
                             <tbody>
                               <tr>
                                 <th width="17%">Nama Dosen</th>
-                                <td>: <?php echo $value->namapeg  ?></td>
+                                <td> <?php echo $value->namapeg  ?></td>
                               </tr>
                               <tr>
                                 <th width="17%">Catatan</th>
-                                <td>: <?php echo $value->catatan  ?></td>
+                                <td> <?php echo $value->catatan  ?></td>
                               </tr>
                               <tr>
                                 <th width="17%">Status</th>
                                 <td>
                                     <?php if ($value->statbimbingan==0) {
-                                      echo strtoupper(': revisi');
+                                      echo strtoupper(' revisi');
                                     } else if ($value->statbimbingan==1) {
-                                      echo strtoupper(': Ter-revisi');
+                                      echo strtoupper(' Ter-revisi');
                                     } else {
-                                      echo strtoupper(': selesai');
+                                      echo strtoupper(' selesai');
                                     } ?>                  
                                 </td>
                               </tr>
@@ -133,21 +133,21 @@
                             <tbody>
                               <tr>
                                 <th width="17%">Nama Dosen</th>
-                                <td>: <?php echo $value->namapeg  ?></td>
+                                <td> <?php echo $value->namapeg  ?></td>
                               </tr>
                               <tr>
                                 <th width="17%">Catatan</th>
-                                <td>: <?php echo $value->catatan  ?></td>
+                                <td> <?php echo $value->catatan  ?></td>
                               </tr>
                               <tr>
                                 <th width="17%">Status</th>
                                 <td>
                                     <?php if ($value->statbimbingan==0) {
-                                      echo strtoupper(': revisi');
+                                      echo strtoupper(' revisi');
                                     } else if ($value->statbimbingan==1) {
-                                      echo strtoupper(': Ter-revisi');
+                                      echo strtoupper(' Ter-revisi');
                                     } else {
-                                      echo strtoupper(': selesai');
+                                      echo strtoupper(' selesai');
                                     } ?>                  
                                 </td>
                               </tr>
@@ -161,6 +161,8 @@
                             <textarea rows="5" class="form-control" aria-describedby="describe" placeholder="Isi catatan disini" name="catatanpenguji1"></textarea>
                             <small id="describe" class="form-text text-muted label">Pastikan anda sudah memperbarui file pdf skripsi.</small><br>
                             <small id="describe" class="form-text text-muted label">Catatan berisi perubahan apa saja yg telah anda lakukan atau komentar mengenai skripsi yang sudah direvisi.</small>
+                            <input type="hidden" name="idskripsi" value="<?php echo $value->idskripsi; ?>">
+                            <input type="hidden" name="idpeg" value="<?php echo $value->idpeg; ?>">
                     </div>
                     <button type="submit" class="btn btn-success btn-fill pull-right abu"><i class="fa fa-edit"></i>Simpan</button>
                     <div class="clearfix"></div>
@@ -189,21 +191,21 @@
                             <tbody>
                               <tr>
                                 <th width="17%">Judul</th>
-                                <td>: <?php echo $value->namapeg  ?></td>
+                                <td> <?php echo $value->namapeg  ?></td>
                               </tr>
                               <tr>
                                 <th width="17%">Catatan</th>
-                                <td>: <?php echo $value->catatan  ?></td>
+                                <td> <?php echo $value->catatan  ?></td>
                               </tr>
                               <tr>
                                 <th width="17%">Status</th>
                                 <td>
                                     <?php if ($value->statbimbingan==0) {
-                                      echo strtoupper(': revisi');
+                                      echo strtoupper(' revisi');
                                     } else if ($value->statbimbingan==1) {
-                                      echo strtoupper(': Ter-revisi');
+                                      echo strtoupper(' Ter-revisi');
                                     } else {
-                                      echo strtoupper(': selesai');
+                                      echo strtoupper(' selesai');
                                     } ?>                  
                                 </td>
                               </tr>
@@ -211,12 +213,13 @@
                         </table>
                   <?php } ?>
                   <?php echo form_open_multipart(base_url('bimbingan')); ?>
-                    
                     <div class="form-group required">
                         <label style="padding-top: 3rem;">Catatan</label>
                             <textarea rows="5" class="form-control" aria-describedby="describe" placeholder="Isi catatan disini" name="catatanpenguji2"></textarea>
                             <small id="describe" class="form-text text-muted label">Pastikan anda sudah memperbarui file pdf skripsi.</small><br>
                             <small id="describe" class="form-text text-muted label">Catatan berisi perubahan apa saja yg telah anda lakukan atau komentar mengenai skripsi yang sudah direvisi.</small>
+                            <input type="hidden" name="idskripsi" value="<?php echo $value->idskripsi; ?>">
+                            <input type="hidden" name="idpeg" value="<?php echo $value->idpeg; ?>">
                     </div>
                     <button type="submit" class="btn btn-success btn-fill pull-right abu"><i class="fa fa-edit"></i>Simpan</button>
                     <div class="clearfix"></div>

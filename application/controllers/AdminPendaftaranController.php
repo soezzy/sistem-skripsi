@@ -10,9 +10,9 @@ class AdminPendaftaranController extends CI_Controller {
 
 	public function index(){
 
-        $title = array('title' => 'Bimbingan Skripsi Mahasiswa');
-        $data['data'] = $this->madmpendaftaran->info($_SESSION['idpeg']);
-        if(isset($_SESSION['iduser']) && ($_SESSION['level'])){
+        $title = array('title' => 'Pengajuan Ujian Mahasiswa');
+        $data['data'] = $this->madmpendaftaran->info();
+        if(($_SESSION['level'])==4 || ($_SESSION['level'])==5 && ($_SESSION['status'])=='aktif'){
             $this->load->view('admin/header', $title);
 			$this->load->view('adm-pendaftaran/infoadm',$data);
             $this->load->view('admin/footer');
@@ -21,32 +21,59 @@ class AdminPendaftaranController extends CI_Controller {
         }
     }
 
-    public function detailBimbingan($id){
-
-        date_default_timezone_set('Asia/Jakarta');
+    public function tambahpenguji($id){
+        date_default_timezone_set('Asia/Jakarta');  
         $isi = '';
-        $tittle = array('title' => 'Bimbingan Skripsi Mahasiswa');
-        $data['data'] = $this->madmpendaftaran->detail($id,$_SESSION['idpeg']);
-        if(isset($_SESSION['iduser']) && ($_SESSION['level'])){
+        $isi2 = '';
+        $ids ='';
+        $tittle = array('title' => 'Pengajuan Ujian Mahasiswa');
+        $data['data'] = $this->madmpendaftaran->detail($id);
+        if(($_SESSION['level'])==4 || ($_SESSION['level'])==5 && ($_SESSION['status'])=='aktif'){
             $this->load->view('admin/header', $tittle);
-			$this->load->view('adm-bimbingan/editadm' ,$data);
+			$this->load->view('adm-pendaftaran/editadm' ,$data);
             $this->load->view('admin/footer');
 
-        if ($this->input->post('catatandospem')!=NULL) {
-                $isi = array(
-                    'idskripsi'         => $this->input->post('idskripsi'),
-                    'idmhs'             => $this->input->post('idmhs'),
-                    'idpeg'             => $_SESSION['idpeg'],
-                    'catatan'           => $this->input->post('catatandospem'),
-                    'statbimbingan'     => $this->input->post('status'),
-                    'updated_at'        => strftime('%Y-%m-%d %H:%M:%S'),
+            if ($this->input->post('penguji1')!=NULL) {
+                $ids = $this->input->post('idskripsi');
+                $isi = $this->input->post('penguji1');
+
+                $data = array(
+                    'idskripsi' => $ids,
+                    'idmhs' => $this->input->post('idmhs'),
+                    'idpeg' => $isi,
+                    'catatan' => '',
+                    'statbimbingan' => 0,
+                    'updated_at' => strftime('%Y-%m-%d %H:%M:%S'),
+                );
+        
+            }
+
+            if ($this->input->post('penguji2')!=NULL) {
+                $ids = $this->input->post('idskripsi');
+                $isi2 = $this->input->post('penguji2');
+                $data2 = array(
+                    'idskripsi' => $ids,
+                    'idmhs' => $this->input->post('idmhs'),
+                    'idpeg' => $isi2,
+                    'catatan' => '',
+                    'statbimbingan' => 0,
+                    'updated_at' => strftime('%Y-%m-%d %H:%M:%S'),
                 );
             }
-        if ($isi != NULL) {
-                if ($this->madmpendaftaran->revisi($isi)) {
-                    $this->session->set_flashdata('success', '<div class="alert alert-success text-center">Catatan revisi anda telah berhasil diperbarui.</div>');
-                    $url = base_url('adm-bimbingan/detail/'.$id);
-                   redirect($url);
+
+            if ($isi != NULL && $ids != NULL) {
+                if ($this->madmpendaftaran->uppenguji1($isi,$ids,$data)) {
+                    $this->session->set_flashdata('success', '<div class="alert alert-success text-center">Dosen penguji 1 telah berhasil ditambahkan.</div>');
+                    $url = base_url('adm-daftar/penguji/'.$id);
+                    redirect($url);
+                }
+            }
+
+            if ($isi2 != NULL && $ids != NULL) {
+                if ($this->madmpendaftaran->uppenguji2($isi2,$ids,$data2)) {
+                    $this->session->set_flashdata('success', '<div class="alert alert-success text-center">Dosen penguji 2 telah berhasil ditambahkan.</div>');
+                    $url = base_url('adm-daftar/penguji/'.$id);
+                    redirect($url);
                 }
             }
 
@@ -55,20 +82,71 @@ class AdminPendaftaranController extends CI_Controller {
         }
     }
 
-    public function ujiprop($id)
+    public function validasi($idm,$ids)
     {
-        if ($this->madmpendaftaran->ujiprop($id)) {
-            $this->session->set_flashdata('success', '<div class="alert alert-success text-center">Skripsi telah didaftarkan ke Ujian Proposal.</div>');
-            redirect('adm-bimbingan');
+        date_default_timezone_set('Asia/Jakarta');
+
+        $title = array('title' => 'Pengajuan Ujian Mahasiswa');
+        $data['data'] = ['idm' =>$idm, 'ids'=>$ids];
+        $isi = '';
+        if(($_SESSION['level'])==4 || ($_SESSION['level'])==5 && ($_SESSION['status'])=='aktif'){
+            $this->load->view('admin/header', $title);
+            $this->load->view('adm-pendaftaran/validasiadm',$data);
+            $this->load->view('admin/footer');
+
+        if ($this->input->post('catatan')!=NULL) {
+                $isi = array(
+                    'idskripsi'   => $ids,
+                    'validator'   => $_SESSION['idpeg'],
+                    'statskripsi' => 6,
+                    'catatan'     => $this->input->post('catatan'),
+                    'created_at'  => strftime('%Y-%m-%d %H:%M:%S'),
+                );
+            }    
+
+        if ($isi != NULL) {
+                if ($this->madmpendaftaran->updateproposal($isi)) {
+                    $this->session->set_flashdata('success', '<div class="alert alert-success text-center">Validasi telah berhasil.</div>');
+                   redirect('adm-daftar');
+                }
+            }
+
+        }else{
+            redirect('/');
         }
     }
 
-    public function ujiskrip($id)
+    public function validasiskripsi($idm,$ids)
     {
-        if ($this->madmpendaftaran->ujiskrip($id)) {
-            $this->session->set_flashdata('success', '<div class="alert alert-success text-center">Skripsi telah didaftarkan ke Ujian Skripsi.</div>');
-            redirect('adm-bimbingan');
+        date_default_timezone_set('Asia/Jakarta');
+
+        $title = array('title' => 'Pengajuan Ujian Mahasiswa');
+        $data['data'] = ['idm' =>$idm, 'ids'=>$ids];
+        $isi = '';
+        if(($_SESSION['level'])==4 || ($_SESSION['level'])==5 && ($_SESSION['status'])=='aktif'){
+            $this->load->view('admin/header', $title);
+            $this->load->view('adm-pendaftaran/valskripsiadm',$data);
+            $this->load->view('admin/footer');
+
+        if ($this->input->post('catatan')!=NULL) {
+                $isi = array(
+                    'idskripsi'   => $ids,
+                    'validator'   => $_SESSION['idpeg'],
+                    'statskripsi' => 8,
+                    'catatan'     => $this->input->post('catatan'),
+                    'created_at'  => strftime('%Y-%m-%d %H:%M:%S'),
+                );
+            }    
+
+        if ($isi != NULL) {
+                if ($this->madmpendaftaran->updateskripsi($isi)) {
+                    $this->session->set_flashdata('success', '<div class="alert alert-success text-center">Validasi telah berhasil.</div>');
+                   redirect('adm-daftar');
+                }
+            }
+
+        }else{
+            redirect('/');
         }
     }
-
 }

@@ -13,7 +13,7 @@ class AdminDosenController extends CI_Controller {
         $title = array('title' => 'Data Dosen');
         
         $data['data'] = $this->madmdosen->info(); 
-        if(isset($_SESSION['iduser']) && ($_SESSION['level'])){
+        if(($_SESSION['level'])==3 || ($_SESSION['level'])==5 && ($_SESSION['status'])=='aktif'){
             $this->load->view('admin/header', $title);
 			$this->load->view('adm-dosen/infoadm', $data);
             $this->load->view('admin/footer');
@@ -27,7 +27,7 @@ class AdminDosenController extends CI_Controller {
 
         $title = array('title' => 'Data Dosen');
         $data['data'] = $this->madmdosen->detail($id);
-        if(isset($_SESSION['iduser']) && ($_SESSION['level'])!=1){
+        if(($_SESSION['level'])==3 || ($_SESSION['level'])==5 && ($_SESSION['status'])=='aktif'){
             $this->load->view('admin/header', $title);
             $this->load->view('adm-dosen/detailadm', $data);
             $this->load->view('admin/footer');

@@ -40,7 +40,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <body>
 
 <div class="wrapper">
-    <div class="sidebar" data-color="green" data-image="<?php echo base_url(); ?>assets/img/sidebar-5.jpg">
+    <div class="sidebar" data-color="azure" data-image="<?php echo base_url(); ?>assets/img/sidebar-5.jpg">
 
     <!--
 
@@ -63,48 +63,64 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <p>Profil Pegawai</p>
                     </a>
                 </li> -->
+                <?php if (($_SESSION['level'])==3 || ($_SESSION['level'])==2 || ($_SESSION['level'])==5 && ($_SESSION['status'])=='aktif'): ?>
                 <li <?php if($this->uri->segment(1)=="adm-pengajuan"){echo 'class="active"';}?>>
                     <a href="/skripsi/adm-pengajuan">
                         <i class="pe-7s-note2"></i>
                         <p>Pengajuan Skripsi</p>
                     </a>
-                </li>
+                </li>   
+                <?php endif ?>
+                
+                <?php if (($_SESSION['level'])==3 || ($_SESSION['level'])==2 || ($_SESSION['level'])==5 && ($_SESSION['status'])=='aktif'): ?>
                 <li <?php if($this->uri->segment(1)=="adm-bimbingan"){echo 'class="active"';}?>>
                     <a href="/skripsi/adm-bimbingan">
                         <i class="pe-7s-news-paper"></i>
                         <p>Bimbingan Skripsi</p>
                     </a>
-                </li>
-                <li <?php if($this->uri->segment(1)=="adm-validasi"){echo 'class="active"';}?>>
+                </li>   
+                <?php endif ?>
+               
+                <?php if (($_SESSION['level'])==3 || ($_SESSION['level'])==5 && ($_SESSION['status'])=='aktif'): ?>
+                 <li <?php if($this->uri->segment(1)=="adm-validasi"){echo 'class="active"';}?>>
                     <a href="/skripsi/adm-validasi">
                         <i class="pe-7s-bookmarks"></i>
                         <p>Validasi Pengajuan</p>
                     </a>
-                </li>
+                </li>   
+                <?php endif ?>
+               
+                <?php if (($_SESSION['level'])==4 || ($_SESSION['level'])==5 && ($_SESSION['status'])=='aktif'): ?>
                 <li <?php if($this->uri->segment(1)=="adm-daftar"){echo 'class="active"';}?>>
                     <a href="/skripsi/adm-daftar">
                         <i class="pe-7s-medal"></i>
-                        <p>Pendaftaran Penguji</p>
+                        <p>Pendaftaran Ujian</p>
                     </a>
-                </li>
+                </li>   
+                <?php endif ?>
+                
+                <?php if (($_SESSION['level'])==3 || ($_SESSION['level'])==5 && ($_SESSION['status'])=='aktif'): ?>
                  <li <?php if($this->uri->segment(1)=="adm-dosen"){echo 'class="active"';}?>>
                     <a href="/skripsi/adm-dosen">
                         <i class="pe-7s-users"></i>
                         <p>Manajemen Kuota</p>
                     </a>
                 </li>
+                <?php endif ?>
                 <li <?php if($this->uri->segment(1)=="adm-pesan"){echo 'class="active"';}?>>
                     <a href="/skripsi/adm-pesan">
                         <i class="pe-7s-chat"></i>
-                        <p>Pesan<span class="badge badge-primary pull-right">5</span></p>
+                        <p>Pesan</p>
                     </a>
-                </li> 
+                </li>
+                <?php if (($_SESSION['level'])==3 || ($_SESSION['level'])==5 && ($_SESSION['status'])=='aktif'): ?>
                 <li <?php if($this->uri->segment(1)=="adm-pegawai"){echo 'class="active"';}?>>
                     <a href="/skripsi/adm-pegawai">
                         <i class="pe-7s-config"></i>
                         <p>Pengaturan Pegawai</p>
                     </a>
                 </li> 
+                <?php endif ?> 
                 <!-- <li <?php if($this->uri->segment(1)=="status"){echo 'class="active"';}?>>
                     <a href="/skripsi/status">
                         <i class="pe-7s-graph1"></i>
@@ -132,24 +148,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                    
 
                     <ul class="nav navbar-nav navbar-right">
-                         <li class="dropdown">
-                              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    <i class="fa fa-globe"></i>
-                                    <b class="caret hidden-sm hidden-xs"></b>
-                                    <span class="notification hidden-sm hidden-xs">5</span>
-                                    <p class="hidden-lg hidden-md">
-                                        5 Notifications
-                                        <b class="caret"></b>
-                                    </p>
-                              </a>
-                              <ul class="dropdown-menu">
-                                <li><a href="#">Notification 1</a></li>
-                                <li><a href="#">Notification 2</a></li>
-                                <li><a href="#">Notification 3</a></li>
-                                <li><a href="#">Notification 4</a></li>
-                                <li><a href="#">Another notification</a></li>
-                              </ul>
-                        </li>
                         <li class="dropdown">
                               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                     <i class="fa fa-cog"></i>

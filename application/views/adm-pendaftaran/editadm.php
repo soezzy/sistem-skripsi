@@ -2,119 +2,123 @@
   .abu {
     width: 120px !important;
   }
-  .form-group.required .label:before {
-    content:"*";
-    color:red;
-  }
 </style>
-
 <div class="content">
-<div class="container-fluid">
-<div class="row">
-    <div class="col-md-12">
-         <div class="card">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <?php echo $this->session->flashdata('success'); ?>
+          <div class="header">
+            <h4 class="title text-center">Detail Skripsi Mahasiswa</h4>
+          </div>
+          <div class="content">
+            <table class="table table-hover table-bordered">
+                    <tbody>
+                    <?php foreach ($data['datamhs'] as $value) { ?>
+                      <tr>
+                        <th width="17%">NIM</th>
+                        <td>: <?php echo $value->nim  ?></td>
+                      </tr>
+                      <tr>
+                        <th width="17%">Nama Mahasiswa</th>
+                        <td>: <?php echo $value->namamhs ?></td>
+                      </tr>
+                      <tr>
+                        <th width="17%">Jenis Kelamin</th>
+                        <td><?php 
+                                if ($value->jeniskel=="L") {
+                                  echo ': Laki-laki';
+                                }else if($value->jeniskel=="P"){
+                                  echo ': Perempuan';
+                                }else{
+                                  echo ':';
+                                }?>
+                        </td>
+                      </tr>
+                      <tr>
+                        <th width="17%">Email</th>
+                        <td>: <?php echo $value->email ?></td>
+                      </tr>
+                      <tr>
+                        <th width="17%">Jurusan</th>
+                        <td>: <?php echo $value->jurusan ?></td>
+                      </tr>
+                      <tr>
+                        <th width="17%">Angkatan</th>
+                        <td>: <?php echo $value->angkatan ?></td>
+                      </tr>
+                      <tr>
+                        <th width="17%">No.Telepon</th>
+                        <td>: <?php echo $value->telepon ?></td>
+                      </tr>
+                      <tr>
+                        <th width="17%">Alamat</th>
+                        <td>: <?php echo $value->alamat ?></td>
+                      </tr>
+                      <tr>
+                        <th width="17%">Dosen Pembimbing</th>
+                        <td>: <?php echo $value->dospem ?></td>
+                      </tr>
+                      <tr>
+                        <th width="17%">Penguji 1</th>
+                        <td>: <?php echo $value->penguji1 ?></td>
+                      </tr>
+                      <tr>
+                        <th width="17%">Penguji 2</th>
+                        <td>: <?php echo $value->penguji2 ?></td>
+                      </tr>
+                      <?php } ?>     
+                    </tbody>
+                  </table>
+          </div>
+        </div>
+      </div>
+    </div>
+      <div class="row">
+          <div class="col-md-12">
+            <div class="card">
               <div class="header">
-                <?php echo $this->session->flashdata('success'); ?>
-                <?php echo $this->session->flashdata('error'); ?>
-                <?php echo $this->session->flashdata('errorupload'); ?>
-                  <h4 class="title text-center">Bimbingan Skripsi Mahasiswa</h4>
-                </div>
-                <div class="content">
-                  <?php 
-                  if ($data['query1'] != NULL){
-                  foreach ($data['query1'] as $value) { ?>
-                    <table class="table table-hover table-bordered">
-                            <tbody>
-                              <tr>
-                                <th width="17%">Nama Mahasiswa</th>
-                                <td>: <?php echo $value->namamhs  ?></td>
-                              </tr>
-                              <tr>
-                                <th width="17%">Judul</th>
-                                <td>: <?php echo $value->judul  ?></td>
-                              </tr>
-                              <tr>
-                                <th width="17%">Abstrak</th>
-                                <td>: <?php echo $value->abstrak ?></td>
-                              </tr>
-                            </tbody>
-                        </table>
-
+                <h4 class="title text-center">Tambahkan Penguji</h4>
+              </div>
+              <div class="content">
+              <?php echo form_open_multipart(base_url('adm-daftar/penguji/'.$data['datamhs'][0]->idmhs)); ?>
                 <div class="row">
                   <div class="col-md-12">
-                    <embed src="/skripsi/pdf/<?php echo $value->fileupload ?>" type="application/pdf" width="100%" height="600">
+                      <div class="form-group">
+                        <label for="penguji1" class="label">Dosen Penguji 1</label>
+                          <select  id="penguji1" name="penguji1" class="form-control">
+                            <?php foreach ($data['datapenguji'] as $value) {
+                              echo '<option value="" disabled selected hidden>Pilih Penguji</option>';
+                              echo '<option value="'.$value->idpeg.'">'.$value->namapeg.'</option>';
+                            } ?>
+                          </select>
+                          <span class="text-danger"><?php echo form_error('penguji1'); ?></span> 
+                          <input type="hidden" name="idskripsi" value="<?php echo $data['datamhs'][0]->idskripsi; ?>">
+                          <input type="hidden" name="idmhs" value="<?php echo $data['datamhs'][0]->idmhs; ?>">
+                      </div>
+                    <?php if (!empty($data['datamhs'][0]->penguji1)): ?>
+                      <div class="form-group">
+                          <label for="penguji2" class="label">Dosen Penguji 2</label>
+                            <select  id="penguji2" name="penguji2" class="form-control">
+                              <?php foreach ($data['datapenguji'] as $value) {
+                                echo '<option value="" disabled selected hidden>Pilih Penguji</option>';
+                                echo '<option value="'.$value->idpeg.'">'.$value->namapeg.'</option>';
+                              } ?>
+                            </select>
+                          <span class="text-danger"><?php echo form_error('penguji2'); ?></span> 
+                      </div>
+                    <?php endif ?>
+                      <a href="/skripsi/adm-daftar" class="btn btn-fill btn-danger abu" role="button"><i class="fa fa-chevron-circle-left"></i>Kembali</a>
+                      <button type="submit" class="btn btn-success btn-fill pull-right abu"><i class="fa fa-check"></i>Simpan</button>
+                    <div class="clearfix"></div>
                   </div>
                 </div>
-                   <?php }
-                   } ?>
-              </div>
-          </div>
-<!--<<<<<<<<<<<<<<<<<<<  file mahasiswa  >>>>>>>>>>>>>>>>>>-->
-  <?php if ($data['query2']!=NULL): ?>
-     <div class="row">
-        <div class="col-md-12">
-            <div class="card ">
-                <div class="header">
-                    <h4 class="title text-center">Revisi Mahasiswa Bimbingan</h4>
-                    <p class="category text-center">sebagai dosen pembimbing</p>
-                </div>
-                <div class="content">
-                  <?php foreach ($data['query2'] as $value) { ?>
-                    <table class="table table-hover table-bordered">
-                            <tbody>
-                              <tr>
-                                <th width="17%">Nama Mahasiswa</th>
-                                <td>: <?php echo $value->namamhs  ?></td>
-                              </tr>
-                              <tr>
-                                <th width="17%">Catatan</th>
-                                <td>: <?php echo $value->catatan  ?></td>
-                              </tr>
-                              <tr>
-                                <th width="17%">Status</th>
-                                <td>
-                                    <?php if ($value->statbimbingan==0) {
-                                      echo strtoupper(': revisi');
-                                    } else if ($value->statbimbingan==1) {
-                                      echo strtoupper(': Ter-revisi');
-                                    } else {
-                                      echo strtoupper(': selesai');
-                                    } ?>                  
-                                </td>
-                              </tr>
-                            </tbody>
-                        </table>
-                  <?php echo form_open_multipart(base_url('adm-bimbingan/detail/'.$data['query1'][0]->idskripsi)); ?>
-                   
-                    <div class="form-group required">
-                        <label style="padding-top: 3rem;">Catatan</label>
-                            <textarea rows="5" class="form-control" aria-describedby="describe" placeholder="Isi catatan disini" name="catatandospem"></textarea>
-                            <small id="describe" class="form-text text-muted label">Catatan berisi perubahan apa saja yang perlu dilakukan oleh mahasiswa atau komentar mengenai skripsi.</small>
-                            <input type="hidden" name="idskripsi" value="<?php echo $value->idskripsi; ?>">
-                            <input type="hidden" name="idmhs" value="<?php echo $value->idmhs; ?>">
-                    </div>
-
-                    <div class="form-group row">
-                      <div class="col-md-4">
-                              <label for="status">Status</label>
-                              <select id="status" name="status" class="form-control">
-                                <option value="0">Revisi</option>
-                                <option value="2">Selesai</option>
-                              </select>
-                          </div>
-                      </div>
-                  <?php } ?>
-                    <a href="<?php echo base_url('adm-bimbingan');?>" class="btn btn-fill btn-danger abu" role="button"><i class="fa fa-chevron-circle-left"></i>Kembali</a>
-                    <button type="submit" class="btn btn-success btn-fill pull-right abu"><i class="fa fa-edit"></i>Simpan</button>
-                    <div class="clearfix"></div>
-                  <?php echo form_close(); ?>
-                </div>
+              <?php echo form_close(); ?>
             </div>
-        </div>
-    </div>
-  <?php endif ?>
-   
+          </div>
+      </div>
+  </div>
 </div>
 </div>
-</div>
-</div>
+

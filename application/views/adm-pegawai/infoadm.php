@@ -12,7 +12,7 @@
 
             <div class="card">
                 <div class="header">
-                    <h4 class="title">Data Pegawai</h4>
+                    <h4 class="title text-center">Data Pegawai</h4>
                 </div>
                 <div class="content">
                     <a type="button" rel="tooltip" href="/skripsi/adm-pegawai/tambah" title="Tambah pegawai baru" class="btn btn-info btn-fill abu"><i class="fa fa-plus"></i>Pegawai</a>

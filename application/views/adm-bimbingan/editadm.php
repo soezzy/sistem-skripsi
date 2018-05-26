@@ -10,32 +10,33 @@
 
 <div class="content">
 <div class="container-fluid">
+            <?php if ($data['query1'] != NULL){ ?>
 <div class="row">
     <div class="col-md-12">
          <div class="card">
+            <?php echo $this->session->flashdata('success'); ?>
+            <?php echo $this->session->flashdata('error'); ?>
+            <?php echo $this->session->flashdata('errorupload'); ?>
+                  
               <div class="header">
-                <?php echo $this->session->flashdata('success'); ?>
-                <?php echo $this->session->flashdata('error'); ?>
-                <?php echo $this->session->flashdata('errorupload'); ?>
                   <h4 class="title text-center">Bimbingan Skripsi Mahasiswa</h4>
                 </div>
                 <div class="content">
                   <?php 
-                  if ($data['query1'] != NULL){
                   foreach ($data['query1'] as $value) { ?>
                     <table class="table table-hover table-bordered">
                             <tbody>
                               <tr>
                                 <th width="17%">Nama Mahasiswa</th>
-                                <td>: <?php echo $value->namamhs  ?></td>
+                                <td> <?php echo $value->namamhs  ?></td>
                               </tr>
                               <tr>
                                 <th width="17%">Judul</th>
-                                <td>: <?php echo $value->judul  ?></td>
+                                <td> <?php echo $value->judul  ?></td>
                               </tr>
                               <tr>
                                 <th width="17%">Abstrak</th>
-                                <td>: <?php echo $value->abstrak ?></td>
+                                <td> <?php echo $value->abstrak ?></td>
                               </tr>
                             </tbody>
                         </table>
@@ -45,10 +46,11 @@
                     <embed src="/skripsi/pdf/<?php echo $value->fileupload ?>" type="application/pdf" width="100%" height="600">
                   </div>
                 </div>
-                   <?php }
-                   } ?>
+                   <?php } ?>
               </div>
           </div>
+                  <?php } ?>
+
 <!--<<<<<<<<<<<<<<<<<<<  file mahasiswa  >>>>>>>>>>>>>>>>>>-->
   <?php if ($data['query2']!=NULL): ?>
      <div class="row">
@@ -56,7 +58,7 @@
             <div class="card ">
                 <div class="header">
                     <h4 class="title text-center">Revisi Mahasiswa Bimbingan</h4>
-                    <p class="category text-center">sebagai dosen pembimbing</p>
+                    <p class="category text-center">Sebagai Penguji 1</p>
                 </div>
                 <div class="content">
                   <?php foreach ($data['query2'] as $value) { ?>
@@ -64,27 +66,27 @@
                             <tbody>
                               <tr>
                                 <th width="17%">Nama Mahasiswa</th>
-                                <td>: <?php echo $value->namamhs  ?></td>
+                                <td> <?php echo $value->namamhs  ?></td>
                               </tr>
                               <tr>
                                 <th width="17%">Catatan</th>
-                                <td>: <?php echo $value->catatan  ?></td>
+                                <td> <?php echo $value->catatan  ?></td>
                               </tr>
                               <tr>
                                 <th width="17%">Status</th>
                                 <td>
                                     <?php if ($value->statbimbingan==0) {
-                                      echo strtoupper(': revisi');
+                                      echo strtoupper(' revisi');
                                     } else if ($value->statbimbingan==1) {
-                                      echo strtoupper(': Ter-revisi');
+                                      echo strtoupper(' Ter-revisi');
                                     } else {
-                                      echo strtoupper(': selesai');
+                                      echo strtoupper(' selesai');
                                     } ?>                  
                                 </td>
                               </tr>
                             </tbody>
                         </table>
-                  <?php echo form_open_multipart(base_url('adm-bimbingan/detail/'.$data['query1'][0]->idskripsi)); ?>
+                  <?php echo form_open_multipart(base_url('adm-bimbingan/detail/'.$value->idskripsi)); ?>
                    
                     <div class="form-group required">
                         <label style="padding-top: 3rem;">Catatan</label>
