@@ -23,7 +23,7 @@
                   <label for="pesan">Balas Pesan</label>
                     <textarea name="pesan" class="form-control"></textarea>
                 </div>
-                <a href="<?php echo base_url('pesan');?>" class="btn btn-fill btn-danger abu" role="button"><i class="fa fa-chevron-circle-left"></i>Kembali</a>
+                <a href="<?php echo base_url('adm-pesan');?>" class="btn btn-fill btn-danger abu" role="button"><i class="fa fa-chevron-circle-left"></i>Kembali</a>
                 <button type="submit" rel="tooltip" class="btn btn-success pull-right btn-fill abu"><i class="fa fa-edit"></i>Balas</button>
                 <div class="clearfix"></div>
                 <?php echo form_close(); ?>

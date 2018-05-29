@@ -39,7 +39,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <body>
 
 <div class="wrapper">
-    <div class="sidebar" data-color="blue" data-image="<?php echo base_url(); ?>assets/img/sidebar-5.jpg">
+    <div class="sidebar" data-color="blue" data-image="<?php echo base_url(); ?>assets/img/sidebar-2.jpg">
 
     <!--
 
