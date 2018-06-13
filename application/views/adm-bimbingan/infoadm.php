@@ -82,7 +82,7 @@
                                 <td><?php echo $value->judul; ?></td>
                                 <td><?php echo $value->statskripsi; ?></td>
                                 <td class="td-actions text-center">
-                                    <a type="button" rel="tooltip" href="<?php echo base_url('adm-bimbingan/detail/'.$value->idskripsi);?>" title="Revisi" class="btn btn-info btn-fill">
+                                    <a type="button" rel="tooltip" href="<?php echo base_url('adm-bimbingan/detail-uji1/'.$value->idskripsi);?>" title="Revisi" class="btn btn-info btn-fill">
                                         <i class="fa fa-edit"></i>
                                     </a>
                                 </td>
@@ -127,7 +127,7 @@
                                 <td><?php echo $value->judul; ?></td>
                                 <td><?php echo $value->statskripsi; ?></td>
                                 <td class="td-actions text-center">
-                                    <a type="button" rel="tooltip" href="<?php echo base_url('adm-bimbingan/detail/'.$value->idskripsi);?>" title="Revisi" class="btn btn-info btn-fill">
+                                    <a type="button" rel="tooltip" href="<?php echo base_url('adm-bimbingan/detail-uji2/'.$value->idskripsi);?>" title="Revisi" class="btn btn-info btn-fill">
                                         <i class="fa fa-edit"></i>
                                     </a>
                                 </td>

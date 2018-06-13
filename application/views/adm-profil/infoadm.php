@@ -19,43 +19,43 @@
                     <tbody>
                       <tr>
                         <th width="17%">NIP</th>
-                        <td>: <?php echo $value->nip  ?></td>
+                        <td> <?php echo $value->nip  ?></td>
                       </tr>
                       <tr>
                         <th width="17%">Nama Pegawai</th>
-                        <td>: <?php echo $value->namapeg ?></td>
+                        <td> <?php echo $value->namapeg ?></td>
                       </tr>
                       <tr>
                         <th width="17%">Jenis Kelamin</th>
                         <td><?php 
                                 if ($value->jeniskel=="L") {
-                                  echo ': Laki-laki';
+                                  echo ' Laki-laki';
                                 }else if($value->jeniskel=="P"){
-                                  echo ': Perempuan';
+                                  echo ' Perempuan';
                                 }else{
-                                  echo ':';
+                                  echo '';
                                 }?>
                         </td>
                       </tr>
                       <tr>
                         <th width="17%">Email</th>
-                        <td>: <?php echo $value->email ?></td>
+                        <td> <?php echo $value->email ?></td>
                       </tr>
                       <tr>
                         <th width="17%">Jabatan</th>
-                        <td>: <?php echo $value->jabatan ?></td>
+                        <td> <?php echo $value->jabatan ?></td>
                       </tr>
                       <tr>
                         <th width="17%">Pangkat</th>
-                        <td>: <?php echo $value->pangkat ?></td>
+                        <td> <?php echo $value->pangkat ?></td>
                       </tr>
                       <tr>
                         <th width="17%">Golongan</th>
-                        <td>: <?php echo $value->golongan ?></td>
+                        <td> <?php echo $value->golongan ?></td>
                       </tr>
                       <tr>
                         <th width="17%">Telepon</th>
-                        <td>: <?php echo $value->telepon ?></td>
+                        <td> <?php echo $value->telepon ?></td>
                       </tr>
                     </tbody>
                   </table>
