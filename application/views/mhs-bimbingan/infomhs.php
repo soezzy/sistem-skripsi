@@ -26,7 +26,7 @@
                     <table class="table table-hover table-bordered">
                             <tbody>
                               <tr>
-                                <th width="17%">Nama Dosen</th>
+                                <th width="17%">Judul</th>
                                 <td> <?php echo $value->judul  ?></td>
                               </tr>
                               <tr>

@@ -79,6 +79,8 @@ $route['adm-dosen/editdosen/(:num)']    = 'AdminDosenController/edit/$1';
 //--------------- menu bimbingan admin -------------------
 $route['adm-bimbingan'] 				= 'AdminBimbinganController';
 $route['adm-bimbingan/detail/(:num)']  	= 'AdminBimbinganController/detailBimbingan/$1';
+$route['adm-bimbingan/detail-uji1/(:num)']  	= 'AdminBimbinganController/detailBimuji1/$1';
+$route['adm-bimbingan/detail-uji2/(:num)']  	= 'AdminBimbinganController/detailBimuji2/$1';
 $route['adm-bimbingan/proposal/(:num)'] = 'AdminBimbinganController/ujiprop/$1';
 $route['adm-bimbingan/skripsi/(:num)'] 	= 'AdminBimbinganController/ujiskrip/$1';
 

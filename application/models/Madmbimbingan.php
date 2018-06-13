@@ -51,6 +51,76 @@ class Madmbimbingan extends CI_Model {
         return $data;
     }
 
+    public function detailuji1($id,$idpeg) {
+        $query1 = $this->db
+            ->select('*')
+            ->where('idpenguji1', $idpeg)
+            ->where('idskripsi', $id)
+            ->where('stat >=', 4)
+            ->limit(1)
+            ->order_by('idskripsi','DESC')
+            ->get('dt_skripsi');
+
+        $query2 = $this->db->query('
+
+            SELECT idbimbingan
+            , a.idskripsi
+            , namamhs
+            , statbimbingan
+            , a.idpeg
+            , a.catatan
+            , c.idmhs
+
+              FROM bimbingan a
+              LEFT JOIN mahasiswa b ON a.idmhs = b.idmhs
+              INNER JOIN skripsi c ON a.idpeg = c.penguji1
+              WHERE TRUE AND a.idpeg = '.$idpeg.'
+              ORDER BY idbimbingan DESC
+              LIMIT 1');
+
+        $data = [
+        'query1' => $query1->result(),
+        'query2' => $query2->result(),
+        ];
+
+        return $data;
+    }
+
+    public function detailuji2($id,$idpeg) {
+        $query1 = $this->db
+            ->select('*')
+            ->where('idpenguji2', $idpeg)
+            ->where('idskripsi', $id)
+            ->where('stat >=', 4)
+            ->limit(1)
+            ->order_by('idskripsi','DESC')
+            ->get('dt_skripsi');
+
+        $query2 = $this->db->query('
+
+            SELECT idbimbingan
+            , a.idskripsi
+            , namamhs
+            , statbimbingan
+            , a.idpeg
+            , a.catatan
+            , c.idmhs
+
+              FROM bimbingan a
+              LEFT JOIN mahasiswa b ON a.idmhs = b.idmhs
+              INNER JOIN skripsi c ON a.idpeg = c.penguji2
+              WHERE TRUE AND a.idpeg = '.$idpeg.'
+              ORDER BY idbimbingan DESC
+              LIMIT 1');
+
+        $data = [
+        'query1' => $query1->result(),
+        'query2' => $query2->result(),
+        ];
+
+        return $data;
+    }
+
     public function detailpenguji1($id,$idpeg) {
         $query1 = $this->db
             ->select('*')

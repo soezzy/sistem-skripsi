@@ -55,6 +55,73 @@ class AdminBimbinganController extends CI_Controller {
         }
     }
 
+    public function detailBimuji1($id){
+        date_default_timezone_set('Asia/Jakarta');
+        $isi = '';
+        $tittle = array('title' => 'Bimbingan Skripsi Mahasiswa');
+        $data['data'] = $this->madmbimbingan->detailuji1($id,$_SESSION['idpeg']);
+        if(($_SESSION['level'])==3 || ($_SESSION['level'])==2 || ($_SESSION['level'])==5 && ($_SESSION['status'])=='aktif'){
+            $this->load->view('admin/header', $tittle);
+            $this->load->view('adm-bimbingan/editadm1' ,$data);
+            $this->load->view('admin/footer');
+
+        if ($this->input->post('catatandospem')!=NULL) {
+                $isi = array(
+                    'idskripsi'         => $this->input->post('idskripsi'),
+                    'idmhs'             => $this->input->post('idmhs'),
+                    'idpeg'             => $_SESSION['idpeg'],
+                    'catatan'           => $this->input->post('catatandospem'),
+                    'statbimbingan'     => $this->input->post('status'),
+                    'updated_at'        => strftime('%Y-%m-%d %H:%M:%S'),
+                );
+            }
+        if ($isi != NULL) {
+                if ($this->madmbimbingan->revisi($isi)) {
+                    $this->session->set_flashdata('success', '<div class="alert alert-success text-center">Catatan revisi anda telah berhasil diperbarui.</div>');
+                    $url = base_url('adm-bimbingan/detail-uji1/'.$id);
+                   redirect($url);
+                }
+            }
+
+        }else{
+            redirect('/');
+        }
+    }
+
+    public function detailBimuji2($id){
+
+        date_default_timezone_set('Asia/Jakarta');
+        $isi = '';
+        $tittle = array('title' => 'Bimbingan Skripsi Mahasiswa');
+        $data['data'] = $this->madmbimbingan->detailuji2($id,$_SESSION['idpeg']);
+        if(($_SESSION['level'])==3 || ($_SESSION['level'])==2 || ($_SESSION['level'])==5 && ($_SESSION['status'])=='aktif'){
+            $this->load->view('admin/header', $tittle);
+            $this->load->view('adm-bimbingan/editadm2' ,$data);
+            $this->load->view('admin/footer');
+
+        if ($this->input->post('catatandospem')!=NULL) {
+                $isi = array(
+                    'idskripsi'         => $this->input->post('idskripsi'),
+                    'idmhs'             => $this->input->post('idmhs'),
+                    'idpeg'             => $_SESSION['idpeg'],
+                    'catatan'           => $this->input->post('catatandospem'),
+                    'statbimbingan'     => $this->input->post('status'),
+                    'updated_at'        => strftime('%Y-%m-%d %H:%M:%S'),
+                );
+            }
+        if ($isi != NULL) {
+                if ($this->madmbimbingan->revisi($isi)) {
+                    $this->session->set_flashdata('success', '<div class="alert alert-success text-center">Catatan revisi anda telah berhasil diperbarui.</div>');
+                    $url = base_url('adm-bimbingan/detail-uji2/'.$id);
+                   redirect($url);
+                }
+            }
+
+        }else{
+            redirect('/');
+        }
+    }
+
     public function ujiprop($id)
     {
         date_default_timezone_set('Asia/Jakarta');  

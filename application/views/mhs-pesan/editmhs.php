@@ -19,19 +19,19 @@
                             <tbody>
                               <tr>
                                 <th width="17%">Pengirim</th>
-                                <td>: <?php echo $value->namamhs  ?></td>
+                                <td> <?php echo $value->namamhs  ?></td>
                               </tr>
                               <tr>
                                 <th width="17%">Subject</th>
-                                <td>: <?php echo $value->subject ?></td>
+                                <td> <?php echo $value->subject ?></td>
                               </tr>
                               <tr>
                                 <th width="17%">Isi Pesan</th>
-                                <td>: <?php echo $value->konten ?></td>
+                                <td> <?php echo $value->konten ?></td>
                               </tr>
                               <tr>
                                 <th width="17%">Dibuat</th>
-                                <td>: <?php echo date('d F Y H:i:s' ,strtotime($value->created_at)); ?></td>
+                                <td> <?php echo date('d F Y H:i:s' ,strtotime($value->created_at)); ?></td>
                               </tr>
                             </tbody>
                         </table>
