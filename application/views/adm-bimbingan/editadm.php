@@ -58,7 +58,6 @@
             <div class="card ">
                 <div class="header">
                     <h4 class="title text-center">Revisi Mahasiswa Bimbingan</h4>
-                    <p class="category text-center">Sebagai Penguji 1</p>
                 </div>
                 <div class="content">
                   <?php foreach ($data['query2'] as $value) { ?>
@@ -113,6 +112,13 @@
                 </div>
             </div>
         </div>
+    </div>
+  <?php endif ?>
+   
+</div>
+</div>
+</div>
+</div>        </div>
     </div>
   <?php endif ?>
    
