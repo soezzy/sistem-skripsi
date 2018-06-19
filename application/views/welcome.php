@@ -105,7 +105,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <div class="copyrights">
           <div class="row">
             <div class="col-md-12 text-center">
-              <p>&copy; 2017 Universitas Muhammadiyah Sidoarjo | Teknik Informatika. All rights reserved.</p>
+              <p>&copy; <script>document.write(new Date().getFullYear())</script> Universitas Muhammadiyah Sidoarjo | Teknik Informatika. All rights reserved.</p>
             </div>
           </div>
       </div>
