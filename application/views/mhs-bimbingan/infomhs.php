@@ -183,7 +183,7 @@
         <div class="col-md-12">
             <div class="card ">
                 <div class="header">
-                    <h4 class="title text-center">Revisi Penguji 2</h4>
+                    <h4 class="title text-center">Revisi Dosen Penguji 2</h4>
                 </div>
                 <div class="content">
                   <?php foreach ($data['query4'] as $value) { ?>

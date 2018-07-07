@@ -120,7 +120,6 @@
 </div>
 </div>        </div>
     </div>
-  <?php endif ?>
    
 </div>
 </div>

@@ -20,7 +20,7 @@
                   <input type="text" name="subject" class="form-control">
                 </div>
                 <div class="form-group">
-                  <label for="pesan">Balas Pesan</label>
+                  <label for="pesan">Isi pesan</label>
                     <textarea name="pesan" class="form-control"></textarea>
                 </div>
                 <a href="<?php echo base_url('adm-pesan');?>" class="btn btn-fill btn-danger abu" role="button"><i class="fa fa-chevron-circle-left"></i>Kembali</a>
