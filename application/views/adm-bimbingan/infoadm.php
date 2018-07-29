@@ -4,6 +4,7 @@
         <div class="col-md-12">
             <div class="card">
                 <?php echo $this->session->flashdata('success'); ?>
+                <?php echo $this->session->flashdata('success1'); ?>
                 <div class="header">
                     <h4 class="title text-center">Daftar Bimbingan Skripsi Mahasiswa</h4>
                     <p class="category text-center">sebagai dosen pembimbing</p>
@@ -56,7 +57,6 @@
       <div class="row">
         <div class="col-md-12">
             <div class="card">
-                <?php echo $this->session->flashdata('success1'); ?>
                 <div class="header">
                     <h4 class="title text-center">Daftar Bimbingan Skripsi Mahasiswa</h4>
                     <p class="category text-center">sebagai Penguji 1</p>
@@ -101,7 +101,6 @@
       <div class="row">
         <div class="col-md-12">
             <div class="card">
-                <?php echo $this->session->flashdata('success'); ?>
                 <div class="header">
                     <h4 class="title text-center">Daftar Bimbingan Skripsi Mahasiswa</h4>
                     <p class="category text-center">sebagai Penguji 2</p>

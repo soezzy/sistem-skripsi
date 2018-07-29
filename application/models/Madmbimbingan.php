@@ -12,11 +12,11 @@ class Madmbimbingan extends CI_Model {
         'query2' => $query2->result(),
         'query3' => $query3->result(),
     ];
-
     return $data;
     }
 
     public function detail($id,$idpeg) {
+
         $query1 = $this->db
             ->select('*')
             ->where('iddospem', $idpeg)
@@ -34,12 +34,12 @@ class Madmbimbingan extends CI_Model {
             , statbimbingan
             , a.idpeg
             , a.catatan
-            , c.idmhs
+            , a.idmhs
 
               FROM bimbingan a
               LEFT JOIN mahasiswa b ON a.idmhs = b.idmhs
               INNER JOIN skripsi c ON a.idpeg = c.dospem
-              WHERE TRUE AND a.idpeg = '.$idpeg.'
+              WHERE TRUE AND a.idpeg = '.$idpeg.' AND a.idskripsi = '.$id.'
               ORDER BY idbimbingan DESC
               LIMIT 1');
 
@@ -69,12 +69,12 @@ class Madmbimbingan extends CI_Model {
             , statbimbingan
             , a.idpeg
             , a.catatan
-            , c.idmhs
+            , a.idmhs
 
               FROM bimbingan a
               LEFT JOIN mahasiswa b ON a.idmhs = b.idmhs
               INNER JOIN skripsi c ON a.idpeg = c.penguji1
-              WHERE TRUE AND a.idpeg = '.$idpeg.'
+              WHERE TRUE AND a.idpeg = '.$idpeg.' AND a.idskripsi = '.$id.'
               ORDER BY idbimbingan DESC
               LIMIT 1');
 
@@ -104,12 +104,12 @@ class Madmbimbingan extends CI_Model {
             , statbimbingan
             , a.idpeg
             , a.catatan
-            , c.idmhs
+            , a.idmhs
 
               FROM bimbingan a
               LEFT JOIN mahasiswa b ON a.idmhs = b.idmhs
               INNER JOIN skripsi c ON a.idpeg = c.penguji2
-              WHERE TRUE AND a.idpeg = '.$idpeg.'
+              WHERE TRUE AND a.idpeg = '.$idpeg.' AND a.idskripsi = '.$id.'
               ORDER BY idbimbingan DESC
               LIMIT 1');
 
@@ -139,12 +139,12 @@ class Madmbimbingan extends CI_Model {
             , statbimbingan
             , a.idpeg
             , a.catatan
-            , c.idmhs
+            , a.idmhs
 
               FROM bimbingan a
               LEFT JOIN mahasiswa b ON a.idmhs = b.idmhs
               INNER JOIN skripsi c ON a.idpeg = c.penguji1
-              WHERE TRUE AND a.idpeg = '.$idpeg.'
+              WHERE TRUE AND a.idpeg = '.$idpeg.' AND a.idskripsi = '.$id.'
               ORDER BY idbimbingan DESC
               LIMIT 1');
 
@@ -174,12 +174,12 @@ class Madmbimbingan extends CI_Model {
             , statbimbingan
             , a.idpeg
             , a.catatan
-            , c.idmhs
+            , a.idmhs
 
               FROM bimbingan a
               LEFT JOIN mahasiswa b ON a.idmhs = b.idmhs
               INNER JOIN skripsi c ON a.idpeg = c.penguji2
-              WHERE TRUE AND a.idpeg = '.$idpeg.'
+              WHERE TRUE AND a.idpeg = '.$idpeg.' AND a.idskripsi = '.$id.'
               ORDER BY idbimbingan DESC
               LIMIT 1');
 
