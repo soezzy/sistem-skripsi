@@ -52,20 +52,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <div class="sidebar-wrapper">
             <ul class="nav">
                 <li <?php if($this->uri->segment(1)=="admin"){echo 'class="active"';}?>>
-                    <a href="/skripsi/admin">
+                    <a href="<?php echo base_url()?>admin">
                         <i class="pe-7s-graph"></i>
                         <p>Dashboard</p>
                     </a>
                 </li>
                <!--  <li <?php if($this->uri->segment(1)=="adm-profil"){echo 'class="active"';}?>>
-                    <a href="/skripsi/adm-profil">
+                    <a href="<?php echo base_url()?>adm-profil">
                         <i class="pe-7s-user"></i>
                         <p>Profil Pegawai</p>
                     </a>
                 </li> -->
                 <?php if (($_SESSION['level'])==3 || ($_SESSION['level'])==2 || ($_SESSION['level'])==5 && ($_SESSION['status'])=='aktif'): ?>
                 <li <?php if($this->uri->segment(1)=="adm-pengajuan"){echo 'class="active"';}?>>
-                    <a href="/skripsi/adm-pengajuan">
+                    <a href="<?php echo base_url()?>adm-pengajuan">
                         <i class="pe-7s-note2"></i>
                         <p>Pengajuan Skripsi</p>
                     </a>
@@ -74,7 +74,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 
                 <?php if (($_SESSION['level'])==3 || ($_SESSION['level'])==2 || ($_SESSION['level'])==5 && ($_SESSION['status'])=='aktif'): ?>
                 <li <?php if($this->uri->segment(1)=="adm-bimbingan"){echo 'class="active"';}?>>
-                    <a href="/skripsi/adm-bimbingan">
+                    <a href="<?php echo base_url()?>adm-bimbingan">
                         <i class="pe-7s-news-paper"></i>
                         <p>Bimbingan Skripsi</p>
                     </a>
@@ -83,7 +83,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                
                 <?php if (($_SESSION['level'])==3 || ($_SESSION['level'])==5 && ($_SESSION['status'])=='aktif'): ?>
                  <li <?php if($this->uri->segment(1)=="adm-validasi"){echo 'class="active"';}?>>
-                    <a href="/skripsi/adm-validasi">
+                    <a href="<?php echo base_url()?>adm-validasi">
                         <i class="pe-7s-bookmarks"></i>
                         <p>Validasi Pengajuan</p>
                     </a>
@@ -92,7 +92,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                
                 <?php if (($_SESSION['level'])==4 || ($_SESSION['level'])==5 && ($_SESSION['status'])=='aktif'): ?>
                 <li <?php if($this->uri->segment(1)=="adm-daftar"){echo 'class="active"';}?>>
-                    <a href="/skripsi/adm-daftar">
+                    <a href="<?php echo base_url()?>adm-daftar">
                         <i class="pe-7s-medal"></i>
                         <p>Pendaftaran Ujian</p>
                     </a>
@@ -101,28 +101,28 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 
                 <?php if (($_SESSION['level'])==3 || ($_SESSION['level'])==5 && ($_SESSION['status'])=='aktif'): ?>
                  <li <?php if($this->uri->segment(1)=="adm-dosen"){echo 'class="active"';}?>>
-                    <a href="/skripsi/adm-dosen">
+                    <a href="<?php echo base_url()?>adm-dosen">
                         <i class="pe-7s-users"></i>
                         <p>Manajemen Kuota</p>
                     </a>
                 </li>
                 <?php endif ?>
                 <li <?php if($this->uri->segment(1)=="adm-pesan"){echo 'class="active"';}?>>
-                    <a href="/skripsi/adm-pesan">
+                    <a href="<?php echo base_url()?>adm-pesan">
                         <i class="pe-7s-chat"></i>
                         <p>Pesan</p>
                     </a>
                 </li>
                 <?php if (($_SESSION['level'])==3 || ($_SESSION['level'])==5 && ($_SESSION['status'])=='aktif'): ?>
                 <li <?php if($this->uri->segment(1)=="adm-pegawai"){echo 'class="active"';}?>>
-                    <a href="/skripsi/adm-pegawai">
+                    <a href="<?php echo base_url()?>adm-pegawai">
                         <i class="pe-7s-config"></i>
                         <p>Pengaturan Pegawai</p>
                     </a>
                 </li> 
                 <?php endif ?> 
                 <!-- <li <?php if($this->uri->segment(1)=="status"){echo 'class="active"';}?>>
-                    <a href="/skripsi/status">
+                    <a href="<?php echo base_url()?>status">
                         <i class="pe-7s-graph1"></i>
                         <p>Status Skripsi</p>
                     </a>
@@ -158,8 +158,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                     </p>
                               </a>
                               <ul class="dropdown-menu">
-                                <li><a href="/skripsi/adm-profil"><i class="fa fa-user pull-right"></i>Ubah Profil</a></li>
-                                <li><a href="/skripsi/adlogout"><i class="fa fa-sign-out pull-right"></i>Logout</a></li>
+                                <li><a href="<?php echo base_url()?>adm-profil"><i class="fa fa-user pull-right"></i>Ubah Profil</a></li>
+                                <li><a href="<?php echo base_url()?>adlogout"><i class="fa fa-sign-out pull-right"></i>Logout</a></li>
                               </ul>
                         </li>
                         <li class="separator hidden-lg"></li>

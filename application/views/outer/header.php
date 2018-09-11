@@ -52,31 +52,31 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
             <ul class="nav">
                 <li <?php if($this->uri->segment(1)=="dashboard"){echo 'class="active"';}?>>
-                    <a href="/skripsi/dashboard">
+                    <a href="<?php echo base_url()?>dashboard">
                         <i class="pe-7s-graph"></i>
                         <p>Dashboard</p>
                     </a>
                 </li>
                 <li <?php if($this->uri->segment(1)=="pengajuan"){echo 'class="active"';}?>>
-                    <a href="/skripsi/pengajuan">
+                    <a href="<?php echo base_url()?>pengajuan">
                         <i class="pe-7s-note2"></i>
                         <p>Pengajuan Skripsi</p>
                     </a>
                 </li>
                 <li <?php if($this->uri->segment(1)=="bimbingan"){echo 'class="active"';}?>>
-                    <a href="/skripsi/bimbingan">
+                    <a href="<?php echo base_url()?>bimbingan">
                         <i class="pe-7s-news-paper"></i>
                         <p>Bimbingan Skripsi</p>
                     </a>
                 </li>
                <!--  <li <?php //if($this->uri->segment(1)=="status"){echo 'class="active"';}?>>
-                    <a href="/skripsi/status">
+                    <a href="<?php echo base_url()?>status">
                         <i class="pe-7s-graph1"></i>
                         <p>Status Skripsi</p>
                     </a>
                 </li> -->
                 <li <?php if($this->uri->segment(1)=="pesan"){echo 'class="active"';}?>>
-                    <a href="/skripsi/pesan">
+                    <a href="<?php echo base_url()?>pesan">
                         <i class="pe-7s-chat"></i>
                         <p>Pesan</p>
                     </a>
@@ -111,8 +111,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                     </p>
                               </a>
                               <ul class="dropdown-menu">
-                                <li><a href="/skripsi/profil"><i class="fa fa-user pull-right"></i>Ubah Profil</a></li>
-                                <li><a href="/skripsi/logout"><i class="fa fa-sign-out pull-right"></i>Logout</a></li>
+                                <li><a href="<?php echo base_url()?>profil"><i class="fa fa-user pull-right"></i>Ubah Profil</a></li>
+                                <li><a href="<?php echo base_url()?>logout"><i class="fa fa-sign-out pull-right"></i>Logout</a></li>
                               </ul>
                         </li>
                         <li class="separator hidden-lg"></li>

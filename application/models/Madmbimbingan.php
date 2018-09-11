@@ -12,11 +12,11 @@ class Madmbimbingan extends CI_Model {
         'query2' => $query2->result(),
         'query3' => $query3->result(),
     ];
-
     return $data;
     }
 
     public function detail($id,$idpeg) {
+
         $query1 = $this->db
             ->select('*')
             ->where('iddospem', $idpeg)
@@ -26,6 +26,8 @@ class Madmbimbingan extends CI_Model {
             ->order_by('idskripsi','DESC')
             ->get('dt_skripsi');
 
+            $data1 = $query1->result_array();
+
         $query2 = $this->db->query('
 
             SELECT idbimbingan
@@ -34,12 +36,11 @@ class Madmbimbingan extends CI_Model {
             , statbimbingan
             , a.idpeg
             , a.catatan
-            , c.idmhs
+            , a.idmhs
 
               FROM bimbingan a
               LEFT JOIN mahasiswa b ON a.idmhs = b.idmhs
-              INNER JOIN skripsi c ON a.idpeg = c.dospem
-              WHERE TRUE AND a.idpeg = '.$idpeg.'
+              WHERE TRUE AND a.idmhs = '.$data1[0]['idmhs'].' AND a.idskripsi = '.$id.' AND a.idpeg = '.$idpeg.'
               ORDER BY idbimbingan DESC
               LIMIT 1');
 
@@ -61,6 +62,8 @@ class Madmbimbingan extends CI_Model {
             ->order_by('idskripsi','DESC')
             ->get('dt_skripsi');
 
+        $data1 = $query1->result_array();
+
         $query2 = $this->db->query('
 
             SELECT idbimbingan
@@ -69,12 +72,11 @@ class Madmbimbingan extends CI_Model {
             , statbimbingan
             , a.idpeg
             , a.catatan
-            , c.idmhs
+            , a.idmhs
 
               FROM bimbingan a
               LEFT JOIN mahasiswa b ON a.idmhs = b.idmhs
-              INNER JOIN skripsi c ON a.idpeg = c.penguji1
-              WHERE TRUE AND a.idpeg = '.$idpeg.'
+              WHERE TRUE AND a.idmhs = '.$data1[0]['idmhs'].' AND a.idskripsi = '.$id.' AND a.idpeg = '.$idpeg.'
               ORDER BY idbimbingan DESC
               LIMIT 1');
 
@@ -96,6 +98,7 @@ class Madmbimbingan extends CI_Model {
             ->order_by('idskripsi','DESC')
             ->get('dt_skripsi');
 
+        $data1 = $query1->result_array();
         $query2 = $this->db->query('
 
             SELECT idbimbingan
@@ -104,82 +107,11 @@ class Madmbimbingan extends CI_Model {
             , statbimbingan
             , a.idpeg
             , a.catatan
-            , c.idmhs
+            , a.idmhs
 
               FROM bimbingan a
               LEFT JOIN mahasiswa b ON a.idmhs = b.idmhs
-              INNER JOIN skripsi c ON a.idpeg = c.penguji2
-              WHERE TRUE AND a.idpeg = '.$idpeg.'
-              ORDER BY idbimbingan DESC
-              LIMIT 1');
-
-        $data = [
-        'query1' => $query1->result(),
-        'query2' => $query2->result(),
-        ];
-
-        return $data;
-    }
-
-    public function detailpenguji1($id,$idpeg) {
-        $query1 = $this->db
-            ->select('*')
-            ->where('idpenguji1', $idpeg)
-            ->where('idskripsi', $id)
-            ->where('stat >=', 4)
-            ->limit(1)
-            ->order_by('idskripsi','DESC')
-            ->get('dt_skripsi');
-
-        $query2 = $this->db->query('
-
-            SELECT idbimbingan
-            , a.idskripsi
-            , namamhs
-            , statbimbingan
-            , a.idpeg
-            , a.catatan
-            , c.idmhs
-
-              FROM bimbingan a
-              LEFT JOIN mahasiswa b ON a.idmhs = b.idmhs
-              INNER JOIN skripsi c ON a.idpeg = c.penguji1
-              WHERE TRUE AND a.idpeg = '.$idpeg.'
-              ORDER BY idbimbingan DESC
-              LIMIT 1');
-
-        $data = [
-        'query1' => $query1->result(),
-        'query2' => $query2->result(),
-        ];
-
-        return $data;
-    }
-
-    public function detailpenguji2($id,$idpeg) {
-        $query1 = $this->db
-            ->select('*')
-            ->where('idpenguji2', $idpeg)
-            ->where('idskripsi', $id)
-            ->where('stat >=', 4)
-            ->limit(1)
-            ->order_by('idskripsi','DESC')
-            ->get('dt_skripsi');
-
-        $query2 = $this->db->query('
-
-            SELECT idbimbingan
-            , a.idskripsi
-            , namamhs
-            , statbimbingan
-            , a.idpeg
-            , a.catatan
-            , c.idmhs
-
-              FROM bimbingan a
-              LEFT JOIN mahasiswa b ON a.idmhs = b.idmhs
-              INNER JOIN skripsi c ON a.idpeg = c.penguji2
-              WHERE TRUE AND a.idpeg = '.$idpeg.'
+              WHERE TRUE AND a.idmhs = '.$data1[0]['idmhs'].' AND a.idskripsi = '.$id.' AND a.idpeg = '.$idpeg.'
               ORDER BY idbimbingan DESC
               LIMIT 1');
 
@@ -193,10 +125,20 @@ class Madmbimbingan extends CI_Model {
 
     public function revisi($isi)
     {
-      return $this->db->insert('bimbingan', $isi);
+        $this->db->trans_start();
+        $this->db->insert('bimbingan', $isi);
+        $this->db->trans_complete();
+
+        if ($this->db->trans_status() === FALSE)
+        {
+            return FALSE;
+        } else {
+            return TRUE;
+        }
     }
 
-    public function terima($id,$data,$data2) {
+    public function terima($id,$data,$data2) 
+    {
         $this->db->trans_start();
         $this->db->query('UPDATE skripsi SET statskripsi = 4 WHERE idskripsi ='.$id);
         $this->db->insert('detskripsi', $data);
@@ -211,7 +153,8 @@ class Madmbimbingan extends CI_Model {
         }
     }
 
-    public function tolak($id,$data) {
+    public function tolak($id,$data) 
+    {
         $this->db->trans_start();
         $this->db->query('UPDATE skripsi SET statskripsi = 3 WHERE idskripsi ='.$id);
         $this->db->insert('detskripsi', $data);

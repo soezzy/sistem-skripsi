@@ -21,6 +21,7 @@ class AdminBimbinganController extends CI_Controller {
         }
     }
 
+    //fungsi untuk bimbingan sebagai dosen pembimbing
     public function detailBimbingan($id){
 
         date_default_timezone_set('Asia/Jakarta');
@@ -55,6 +56,7 @@ class AdminBimbinganController extends CI_Controller {
         }
     }
 
+    //fungsi untuk bimbingan sebagai penguji 1
     public function detailBimuji1($id){
         date_default_timezone_set('Asia/Jakarta');
         $isi = '';
@@ -76,10 +78,14 @@ class AdminBimbinganController extends CI_Controller {
                 );
             }
         if ($isi != NULL) {
-                if ($this->madmbimbingan->revisi($isi)) {
+                if ($this->madmbimbingan->revisi($isi)==TRUE) {
                     $this->session->set_flashdata('success', '<div class="alert alert-success text-center">Catatan revisi anda telah berhasil diperbarui.</div>');
                     $url = base_url('adm-bimbingan/detail-uji1/'.$id);
                    redirect($url);
+                }else{
+                    $this->session->set_flashdata('error', '<div class="alert alert-success text-center">Transactions error server occured!</div>');
+                    $url = base_url('adm-bimbingan/detail-uji1/'.$id);
+                    redirect($url);
                 }
             }
 
@@ -88,6 +94,7 @@ class AdminBimbinganController extends CI_Controller {
         }
     }
 
+    //fungsi untuk bimbingan sebagai penguji 2
     public function detailBimuji2($id){
 
         date_default_timezone_set('Asia/Jakarta');
@@ -122,6 +129,7 @@ class AdminBimbinganController extends CI_Controller {
         }
     }
 
+    //fungsi untuk pendaftaran ujian proposal skripsi 
     public function ujiprop($id)
     {
         date_default_timezone_set('Asia/Jakarta');  
@@ -139,6 +147,7 @@ class AdminBimbinganController extends CI_Controller {
         }
     }
 
+    //fungsi untuk pendaftaran ujian skripsi 
     public function ujiskrip($id)
     {
         date_default_timezone_set('Asia/Jakarta');  

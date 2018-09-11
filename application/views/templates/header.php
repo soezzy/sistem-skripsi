@@ -15,12 +15,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <body>
   <header class="header">
     <nav class="navbar navbar-expand-lg fixed-top">
-      <a href="/skripsi" class="navbar-brand">Universitas Muhammadiyah Sidoarjo</a>
+      <a href="<?php echo base_url()?>" class="navbar-brand">Universitas Muhammadiyah Sidoarjo</a>
       <button type="button" data-toggle="collapse" class="navbar-toggler navbar-toggler-right"></button>
 
       <div class="collapse navbar-collapse">
           <div class="navbar-nav ml-auto align-items-start align-items-lg-center">   
-            <a href="/skripsi" class="btn btn-outline-primary">Kembali</a>
+            <a href="<?php echo base_url()?>" class="btn btn-outline-primary">Kembali</a>
           </div>
         </div>
     </nav>
