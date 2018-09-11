@@ -10,6 +10,8 @@ class Mmhsbimbingan extends CI_Model {
             ->limit(1)
             ->order_by('idskripsi','DESC')
             ->get('dt_skripsi');
+    
+    $data1 = $query->result_array();
 
     $query2 = $this->db->query('
       SELECT idbimbingan
@@ -22,8 +24,7 @@ class Mmhsbimbingan extends CI_Model {
 
       FROM bimbingan a
       LEFT JOIN pegawai b ON a.idpeg = b.idpeg
-      INNER JOIN skripsi c ON a.idpeg = c.dospem
-      WHERE TRUE AND a.idmhs = '.$id.'
+      WHERE TRUE AND a.idpeg = '.$data1[0]['iddospem'].' AND a.idskripsi = '.$data1[0]['idskripsi'].'
       ORDER BY idbimbingan DESC
       LIMIT 1');
 
@@ -37,8 +38,7 @@ class Mmhsbimbingan extends CI_Model {
 
       FROM bimbingan a
       LEFT JOIN pegawai b ON a.idpeg = b.idpeg
-      INNER JOIN skripsi c ON a.idpeg = c.penguji1
-      WHERE TRUE AND a.idmhs = '.$id.'
+      WHERE TRUE AND a.idpeg = '.$data1[0]['idpenguji1'].' AND a.idskripsi = '.$data1[0]['idskripsi'].'
       ORDER BY idbimbingan DESC
       LIMIT 1');
 
@@ -52,8 +52,7 @@ class Mmhsbimbingan extends CI_Model {
 
       FROM bimbingan a
       LEFT JOIN pegawai b ON a.idpeg = b.idpeg
-      INNER JOIN skripsi c ON a.idpeg = c.penguji2
-      WHERE TRUE AND a.idmhs = '.$id.'
+      WHERE TRUE AND a.idpeg = '.$data1[0]['idpenguji2'].' AND a.idskripsi = '.$data1[0]['idskripsi'].'
       ORDER BY idbimbingan DESC
       LIMIT 1');
 
